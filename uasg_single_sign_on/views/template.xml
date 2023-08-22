@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <template id="layout" name="UASG login layout" inherit_id="web.login">
+
+            <xpath expr="//t/form/div[hasclass('field-login')]" position="replace"/>
+            <xpath expr="//t/form/div/label[@for='password']" position="replace"/>
+            <xpath expr="//*[@class='mb-3']" position="replace"/>
+            <xpath expr="//*[@class='btn btn-link btn-sm']" position="replace"/>
+            <xpath expr="//*[@class='btn btn-primary']" position="replace"/>
+            <xpath expr="//t/form/div[hasclass('mb-3')]" position="replace"/>
+
+        </template>
+
+        <template id="providers" name="UASG providers" inherit_id="auth_oauth.providers">
+
+            <xpath expr="//em" position="replace"/>
+            
+        </template>
+
+        <template id = "uasg_login_layout" name="UASG login layout" inherit_id="web.login_layout">
+
+            <xpath expr="//*[@class='text-center small mt-4 pt-3 border-top']" position="replace"/>
+
+        </template>
+
+    </data>
+</odoo>
