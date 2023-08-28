@@ -85,7 +85,7 @@
       <field name="budget_line"  widget="section_and_note_one2many"  mode="tree,kanban" attrs="{'readonly':[('state','in',['pending','approved'])]}">
         <tree string="Demands" editable="bottom">
             <field name="name" string="Subject"/>
-            <field name="description" />
+            <field name="description" widget="html" />
             <field name="create_uid" string="Owner"/>
             <field name="duration_from" string="From"/>
             <field name="duration_to" string="To"/>
