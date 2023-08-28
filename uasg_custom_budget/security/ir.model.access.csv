@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_budget_dept_manager,uasg_custom_budget.budget_user,model_budget,group_budget_dept_manager,1,1,1,1
+access_budget_user,uasg_custom_budget.budget_user,model_budget,group_budget_user,1,0,0,0
+access_budget_approval,uasg_custom_budget.budget_approval,model_budget,group_budget_approval,1,1,0,1
+
+
+access_budget_line,budget_line,model_budget_line,group_budget_user,1,1,1,1
+access_budget_line_dept_manager,budget_line_dept_manager,model_budget_line,group_budget_dept_manager,1,1,1,1
+access_budget_line_approval,budget_line,model_budget_line,group_budget_approval,1,0,0,0
+
+
+
+access_department,department,model_department,,1,1,1,1
+access_budget_tags,budget_tags,model_budget_tags,,1,1,1,1

@@ -1,0 +1,198 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="budget_list">
+      <field name="name">Budgets list</field>
+      <field name="model">budget</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="company_id"/>
+          <field name="department" string="Department" />
+          <field name="state" widget="badge" decoration-success="state=='approved'" decoration-warning="state=='pending'" />
+
+      </tree>
+  </field>
+</record>
+
+
+
+<record model="ir.ui.view" id="budget_items_list">
+      <field name="name">Budgets Item</field>
+      <field name="model">budget.line</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="create_uid"/>
+          <field name="department" string="Department"/>
+          <field name="company_id"/>
+          <field name="state" widget="badge" decoration-success="state=='approved'" decoration-warning="state=='pending'" />
+          <field name="cost"/>
+
+
+      </tree>
+  </field>
+</record>
+
+<record model="ir.ui.view" id="budget_form">
+  <field name="name">Budgets form</field>
+  <field name="model">budget</field>
+  <field name="arch" type="xml">
+    <form>
+
+        <header>
+         <button name="action_submit" string="Submit" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['pending','approved'])]}" groups="uasg_custom_budget.group_budget_dept_manager"/>
+
+         <button name="action_approve" string="Approve" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['draft','approved'])]}" groups="uasg_custom_budget.group_budget_approval"/>
+
+         <button name="action_reject" string="Reject" type="object" class="btn-danger" attrs="{'invisible': [('state', 'in', ['draft','approved'])]}" groups="uasg_custom_budget.group_budget_approval"/>
+
+         <field name="state" widget="statusbar"/>
+     </header>
+
+     <sheet>
+      <div class="oe_title">
+        <label for="name" string="Subject"/>
+        <h1>
+            <field class="text-break" name="name" placeholder="e.g. IT Demand plan for 2023" required="1" attrs="{'readonly':[('state','in',['pending','approved'])]}"/>
+        </h1>
+        <div>
+            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" placeholder="Tags" style="width: 100%" attrs="{'readonly':[('state','in',['pending','approved'])]}"/>
+        </div>
+    </div>
+    <group>
+        <group>
+         <label for="duration_from" string="Planned Duration"/>
+         <div name="dates" class="o_row" >
+            <field name="duration_from" widget="date" attrs="{'readonly':[('state','in',['pending','approved'])]}" />
+            <i class="fa fa-long-arrow-right mx-2 oe_edit_only" aria-label="Arrow icon" title="Arrow"/>
+            <i class="fa fa-long-arrow-right mx-2 oe_read_only" aria-label="Arrow icon" title="Arrow" attrs="{'invisible': [('duration_from', '=', False), ('duration_to', '=', False)]}"/>
+            <field name="duration_to" widget="date" attrs="{'readonly':[('state','in',['pending','approved'])]}" />
+        </div>
+        <field name="currency_id" invisible="1"/>
+        <field name="total_budget_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+    </group>
+    <group attrs="{'invisible':[('id' , '=' ,False)]}">
+      <field name="company_id" />
+      <field name="department"/>
+      <field name="department_manager" />
+  </group>
+</group>
+
+<notebook >
+    <page string="Budget Demands" name="demands" >
+      <field name="budget_line"  widget="section_and_note_one2many"  mode="tree,kanban" attrs="{'readonly':[('state','in',['pending','approved'])]}">
+        <tree string="Demands" editable="bottom">
+            <field name="name" string="Description"/>
+            <field name="currency_id" invisible="1"/>
+
+            <field name="cost" widget="monetary" options="{'currency_field': 'currency_id'}" sum="Total Cost"/>
+        </tree>
+    </field>
+</page>
+</notebook>
+</sheet>
+<div class="oe_chatter">
+    <field name="message_follower_ids"/>
+    <field name="message_ids"/>
+</div>
+</form>
+</field>
+</record>
+<record model="ir.ui.view" id="budget_line_form">
+  <field name="name">Budgets Item</field>
+  <field name="model">budget.line</field>
+  <field name="arch" type="xml">
+    <form>
+
+        <header>
+         <field name="state" widget="statusbar"/>
+
+        </header>
+
+        <sheet>
+
+          <div class="oe_title">
+            <label for="name" string="Subject"/>
+            <h1>
+                <field class="text-break" name="name" attrs="{'readonly' : [('state' ,'in', ['approved','pending'])]}"/>
+            </h1>
+
+        </div>
+
+        <group>
+          <field name="budget_id" attrs="{'readonly' : [('state' ,'in', ['approved','pending'])]}" domain="[('state','not in', ['approved','pending'])]" options="{'no_create': True, 'no_create_edit':True}" />
+          <field name="cost" attrs="{'readonly' : [('state' ,'in', ['approved','pending'])]}" />
+          <field name="create_uid"/>
+
+      </group>
+
+      <notebook>
+
+        <page name="description" string = "Description">
+
+            <field name = "description" widget="html" attrs="{'readonly' : [('state' ,'in', ['approved','pending'])]}"/>
+
+        </page>
+
+    </notebook>
+
+</sheet>
+<div class="oe_chatter">
+    <field name="message_follower_ids"/>
+    <field name="message_ids"/>
+</div>
+</form>
+</field>
+</record>
+
+<!-- actions opening views on models -->
+
+<record model="ir.actions.act_window" id="budget_action_window">
+  <field name="name">Demand Budgets</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">budget</field>
+  <field name="view_mode">tree,form</field>
+</record>
+
+
+<record model="ir.actions.act_window" id="department_action_window">
+  <field name="name">Departments</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">department</field>
+  <field name="view_mode">tree,form</field>
+
+</record>
+
+<record model="ir.actions.act_window" id="budget_items_action_window">
+  <field name="name">Budget Items</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">budget.line</field>
+  <field name="view_mode">tree,form</field>
+
+</record>
+
+<!-- Top menu item -->
+
+<menuitem
+    id="budget_main_menu"
+    name="Budget"
+    groups=""
+    sequence="1"
+    web_icon="uasg_custom_budget,static/description/icon.png"
+    />
+
+    <!-- menu categories -->
+
+
+    <menuitem name="Plans" id="demand_budgets" sequence = "1" parent="budget_main_menu" action="budget_action_window" />
+
+    <menuitem name="Budget Items" id="items" sequence = "2" parent="budget_main_menu" action="budget_items_action_window"/>
+
+    <menuitem name="Configuration" id="configuration" sequence = "3" parent="budget_main_menu" groups="base.group_system"/>
+
+    <menuitem name="Departments" id="departments" parent="configuration" action="department_action_window"/>
+
+</data>
+</odoo>
