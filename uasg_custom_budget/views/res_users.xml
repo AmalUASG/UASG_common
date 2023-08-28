@@ -9,7 +9,6 @@
                 	<group>
                 	<field name="uasg_department" string= "Department" placeholder="Department"/>
                 	<field name="company_id"/>
-                	<field name="uasg_budget_user_type"/>
                 </group>
                 </field>
     	</field>

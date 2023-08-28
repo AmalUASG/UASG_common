@@ -72,7 +72,6 @@ class BudgetElements(models.Model):
     _description = 'Budget Elements'
     _inherit = [ 'mail.thread']
 
-
     def _get_default_budget_id(self):
 
         return self.env.context.get('default_budget_id') or self.env.context.get('active_id')
@@ -86,9 +85,9 @@ class BudgetElements(models.Model):
         related='company_id.currency_id', readonly=True,
     )
     cost = fields.Monetary()
-
     description = fields.Text()
     budget_id = fields.Many2one('budget',ondelete='cascade' ,  default=_get_default_budget_id , required=1)
-    
     company_id = fields.Many2one('res.company',name="Company",related='budget_id.company_id', store=True)
     department = fields.Many2one('department',related='budget_id.department',store=True)
+    duration_from = fields.Date()
+    duration_to = fields.Date()
