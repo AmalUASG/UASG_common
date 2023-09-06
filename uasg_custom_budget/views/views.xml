@@ -218,7 +218,7 @@
 
         <field name="business_company_id" options="{'no_create': True, 'no_create_edit':True}" attrs="{'readonly' : ['|',('budget_line_state' ,'=', 'submit'),('state' ,'in', ['approved','pending'])]}" />
               
-        <field name="business_department" options="{'no_create': True, 'no_create_edit':True}" aattrs="{'readonly' : ['|',('budget_line_state' ,'=', 'submit'),('state' ,'in', ['approved','pending'])]}" />
+        <field name="business_department" options="{'no_create': True, 'no_create_edit':True}" attrs="{'readonly' : ['|',('budget_line_state' ,'=', 'submit'),('state' ,'in', ['approved','pending'])]}" />
 
       </group>
     </group>
