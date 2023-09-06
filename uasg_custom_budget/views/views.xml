@@ -3,6 +3,31 @@
     <!-- explicit list view definition -->
 
 
+ <record id="reject_budget_line" model="ir.ui.view">
+            <field name="name">Reject wizard</field>
+            <field name="model">reject.budget.line.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="budget_line_id" readonly="1" />                
+                        </group>
+                    
+                    </sheet>
+                    <footer>
+                        <button name="action_reject" string="Reject" type="object" class="oe_highlight" />
+                       
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+<!-- actions opening views on models -->
+
+
+    
     <record id="reject_budget_line_wizard_action" model="ir.actions.act_window">
             <field name="name">Reject Budget Demand</field>
             <field name="res_model">reject.budget.line.wizard</field>
@@ -10,7 +35,6 @@
             <field name="target">new</field>
             <field name="view_id" ref="uasg_custom_budget.reject_budget_line"/>
 </record>
-
 
     <record model="ir.ui.view" id="budget_list">
       <field name="name">Budgets list</field>
@@ -220,28 +244,7 @@
 
 
 
- <record id="reject_budget_line" model="ir.ui.view">
-            <field name="name">Reject wizard</field>
-            <field name="model">reject.budget.line.wizard</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="budget_line_id" readonly="1" />                
-                        </group>
-                    
-                    </sheet>
-                    <footer>
-                        <button name="action_reject" string="Reject" type="object" class="oe_highlight" />
-                       
-                        <button string="Cancel" class="btn-secondary" special="cancel" />
-                    </footer>
-                </form>
-            </field>
-        </record>
 
-<!-- actions opening views on models -->
 
 <record model="ir.actions.act_window" id="budget_action_window">
   <field name="name">Demand Budgets</field>
