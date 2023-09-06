@@ -162,7 +162,7 @@
 
         <header>
 
-             <button name="action_submit" string="Submit" type="object" class="oe_highlight" attrs="{'invisible': ['|',('budget_line_state', '=', 'submit'),('budget' ,'in', ['approved','pending'])]}" groups="uasg_custom_budget.group_budget_user"/>
+             <button name="action_submit" string="Submit" type="object" class="oe_highlight" attrs="{'invisible': ['|',('budget_line_state', '=', 'submit'),('state' ,'in', ['approved','pending'])]}" groups="uasg_custom_budget.group_budget_user"/>
 
          <field name="budget_line_state" widget="statusbar"/>
 
@@ -173,7 +173,7 @@
           <div class="oe_title">
             <label for="name" string="Subject"/>
             <h1>
-                <field class="text-break" name="name" attrs="{'readonly' : ['|',('budget_line_state' ,'=', 'submit'),('budget' ,'in', ['approved','pending'])]}"/>
+                <field class="text-break" name="name" attrs="{'readonly' : ['|',('budget_line_state' ,'=', 'submit'),('state' ,'in', ['approved','pending'])]}"/>
             </h1>
 
         </div>
