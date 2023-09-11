@@ -113,7 +113,7 @@ class BudgetElements(models.Model):
 
     def action_submit(self):
 
-        mail_template = self.env['mail.template'].search([('model_id','=','budget_line'),('name','=','Budget demand is submitted')])
+        mail_template = self.env['mail.template'].search([('model_id','=','budget.line'),('name','=','Budget demand is submitted')])
         if mail_template : 
             mail_template.send_mail(self.id, force_send=True)
 
@@ -156,7 +156,7 @@ class RejectBudgetLineWizard(models.TransientModel):
 
         self.ensure_one()
 
-        mail_template = self.env['mail.template'].search([('model_id','=','budget_line'),('name','=','Budget demand is Rejected')])
+        mail_template = self.env['mail.template'].search([('model_id','=','budget.line'),('name','=','Budget demand is Rejected')])
         if mail_template : 
             mail_template.send_mail(self.id, force_send=True)
 
