@@ -39,7 +39,7 @@ class UASGProject(models.Model):
 
     def action_submit(self):
 
-        mail_template = self.env['mail.template'].search([('model_id','=','uasg_project'),('name','=','Project is submitted')])
+        mail_template = self.env['mail.template'].search([('model_id','=','uasg.project'),('name','=','Project is submitted')])
         if mail_template : 
             mail_template.send_mail(self.id, force_send=True)
 
