@@ -43,7 +43,7 @@ class UASGProject(models.Model):
     def _compute_progress(self) :
         for record in self : 
 
-            if self.target_date :
+            if record.target_date :
                 if record.target_date <= fields.Date.today() : 
                     if record.status == 'completed' :
                         record.progress ='done'
