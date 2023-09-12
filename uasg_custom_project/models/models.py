@@ -54,8 +54,9 @@ class UASGProject(models.Model):
 
     @api.constrains('target_date')
     def _check_target_date(self):
-        if self.target_date <= self.date:
-            raise ValidationError('Target date must be before the start date.')    
+        if self.target_date : 
+            if self.target_date <= self.date:
+                raise ValidationError('Target date must be before the start date.')    
 
     def action_submit(self):
 
