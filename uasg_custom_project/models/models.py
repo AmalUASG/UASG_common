@@ -38,7 +38,7 @@ class UASGProject(models.Model):
     make_fields_read_only = fields.Boolean(compute='_make_fields_read_only' , tracking=True , default=False)
     business_unit = fields.Many2one('res.company', tracking=True)
     requested_by = fields.Char(tracking=True)
-    progress = fields.Selection(selection=[('in_progress','On track'),('off_track','Of track'),('done','Done')], default='in_progress' ,compute='_compute_progress' ,tracking=True)
+    progress = fields.Selection(selection=[('in_progress','On track'),('off_track','Off track'),('done','Done')], default='in_progress' ,compute='_compute_progress' ,tracking=True)
 
     def _compute_progress(self) :
         for record in self : 
@@ -53,6 +53,8 @@ class UASGProject(models.Model):
                     record.progress ='done'
                 else :
                     record.progress  = 'in_progress'
+            else :
+                record.progress = 'off_track'
 
     @api.constrains('target_date')
     def _check_target_date(self):
