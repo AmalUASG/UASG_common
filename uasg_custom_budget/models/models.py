@@ -238,9 +238,9 @@ class RejectBudgetLineWizard(models.TransientModel):
 
         self.ensure_one()
         
-        # line = self.env['budget.line'].search([('id','=',self.budget_line_id.id)])
+        line = self.env['budget.line'].search([('id','=',self.budget_line_id.id)])
 
-        self.budget_line_id.sudo().write({'budget_line_state':'pending','reject_reason':self.name})
+        line.sudo().write({'budget_line_state':'pending','reject_reason':self.name})
 
         mail_template = self.env['mail.template'].sudo().search([('model_id','=','budget.line'),('name','=','Budget demand is Rejected')])
 
