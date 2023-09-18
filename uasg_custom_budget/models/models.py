@@ -245,7 +245,7 @@ class RejectBudgetLineWizard(models.TransientModel):
         mail_template = self.env['mail.template'].sudo().search([('model_id','=','budget.line'),('name','=','Budget demand is Rejected')])
 
         if mail_template : 
-            mail_template.send_mail(self.id, force_send=True)
+            mail_template.send_mail(line.id, force_send=True)
 
 
 class RejectBudgetWizard(models.TransientModel):
