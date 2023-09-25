@@ -37,8 +37,8 @@
         background: url("../../img/home-menu-bg-overlay.svg"),
             linear-gradient(
                 to bottom,
-                $o-brand-odoo,
-                desaturate(lighten($o-brand-odoo, 20%), 15)
+               #af8d54,
+               #656669
             );
         background-size: cover;
         border-radius: 0;
