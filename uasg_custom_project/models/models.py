@@ -6,6 +6,11 @@ from odoo.exceptions import UserError, ValidationError
 
 
 
+class Users(models.Model):
+
+    _inherit = 'res.partner'
+
+    line_manager = fields.Many2one('res.users')
 
 class Vendor(models.Model):
     
@@ -30,7 +35,7 @@ class UASGProject(models.Model):
     description = fields.Text('Brief Description' , tracking=True)
     assigned_to = fields.Many2one('res.users' , tracking=True )
     vendor = fields.Many2one('vendors' , tracking=True)
-    status = fields.Selection(selection=[('draft','Draft'),('in_progress','In Progress'),('pipeline','Pipeline'),('completed','Completed')], default='draft' , tracking=True)
+    status = fields.Selection(selection=[('draft','Draft'),('pipeline','Pipeline'),('in_progress','In Progress'),('completed','Completed')], default='draft' , tracking=True)
     target_date = fields.Date(tracking=True)
     date = fields.Date(default=datetime.today(),tracking=True)
     project_updates = fields.One2many('uasg.project.update' , 'project_id',tracking=True)
@@ -39,6 +44,22 @@ class UASGProject(models.Model):
     business_unit = fields.Many2one('res.company', tracking=True)
     requested_by = fields.Char(tracking=True)
     progress = fields.Selection(selection=[('in_progress','On track'),('off_track','Off track'),('done','Done')], default='in_progress' ,compute='_compute_progress' ,tracking=True)
+    latest_update = fields.Text(compute='_compute_latest_update')
+    reject_reason = fields.Char()
+
+    @api.depends('project_updates')
+
+    def _compute_latest_update(self) :
+
+        latest_update = ''
+        if self.project_updates :
+
+            for update in self.project_updates:
+
+                latest_update = update.name
+
+        self.latest_update = latest_update
+
 
     def _compute_progress(self) :
         for record in self : 
@@ -69,11 +90,22 @@ class UASGProject(models.Model):
         if mail_template : 
             mail_template.send_mail(self.id, force_send=True)
 
-        self.write ({'status' : 'in_progress'})
+        self.write ({'status' : 'pipeline'})
 
     def action_pipeline(self):
 
-        self.write ({'status' : 'pipeline'})
+        if self.assigned_to.partner_id.line_manager == self.env.user :
+
+            self.write ({'status' : 'in_progress'})
+            
+            mail_template = self.env['mail.template'].sudo().search([('model_id','=','uasg.project'),('name','=','Project has been Approved')])
+
+            if mail_template :
+                mail_template.send_mail(self.id, force_send=True)
+
+        else :
+
+            raise UserError('Sorry , Approval should be done by the Line Manager : ' + str(self.assigned_to.partner_id.line_manager.name))
 
 
     def action_completed(self):
@@ -82,12 +114,17 @@ class UASGProject(models.Model):
 
     def action_reopen(self):
 
-        if self.assigned_to == self.env.user :
+        if self.assigned_to == self.env.user or self.assigned_to.partner_id.line_manager == self.env.user :
 
-            self.write ({'status' : 'pipeline'})
+            self.write ({'status' : 'in_progress'})
+
+            mail_template = self.env['mail.template'].sudo().search([('model_id','=','uasg.project'),('name','=','Project has been Re-opend')])
+
+            if mail_template :
+                mail_template.send_mail(self.id, force_send=True)
         else :
 
-            raise UserError('Sorry , This Action is restricted to the Asignee Only ! ')
+            raise UserError('Sorry , This Action is restricted to the Asignee/line Manager Only ! ')
 
     def _make_fields_read_only(self) :
 
@@ -121,3 +158,34 @@ class ProjectUpdate(models.Model):
         comodel_name='ir.attachment',
         relation='budget_ir_attachments_rel',
         string='Attachments')
+
+
+class RejectProjectWizard(models.TransientModel):
+    _name = 'reject.project.wizard'
+    _description = 'Reject Wizard'
+
+
+    name = fields.Char('Reasons to Reject')
+    project_id = fields.Many2one('uasg.project')
+
+    def action_reject(self):
+
+        
+
+        if self.project_id.assigned_to.partner_id.line_manager == self.env.user :
+
+            project = self.env['uasg.project'].sudo().search([('id','=',self.project_id.id)])
+
+
+            project.status = 'draft'
+
+            project.reject_reason = self.name
+
+            mail_template = self.env['mail.template'].sudo().search([('model_id','=','uasg.project'),('name','=','Project is Rejected')])
+
+            if mail_template :
+                mail_template.send_mail(self.id, force_send=True)
+
+        else :
+
+            raise UserError("Sorry , Only the line Manager can do the Rejection")

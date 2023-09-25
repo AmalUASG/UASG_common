@@ -6,7 +6,7 @@ access_vendors_manager,vendors,model_vendors,group_project_manager,1,1,1,1
 access_vendors_user,vendors,model_vendors,group_project_user,1,0,0,0
 
 access_uasg_project_manager,project,model_uasg_project,group_project_manager,1,1,1,1
-
+access_reject_project_wizard,reject_project_wizard,model_reject_project_wizard,,1,1,1,1
 access_uasg_project_user,project,model_uasg_project,group_project_user,1,1,0,0
 access_uasg_project_update_manager,uasg_project_update,model_uasg_project_update,group_project_manager,1,1,1,1
 access_uasg_project_update_user,uasg_project_update,model_uasg_project_update,group_project_user,1,1,1,1

@@ -2,6 +2,37 @@
   <data>
 
 
+
+ <record id="reject_project" model="ir.ui.view">
+            <field name="name">Reject wizard</field>
+            <field name="model">reject.project.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="project_id" readonly="1" />                
+                        </group>
+                    
+                    </sheet>
+                    <footer>
+                        <button name="action_reject" string="Reject" type="object" class="oe_highlight" />
+                       
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+          <record id="reject_project_wizard_action" model="ir.actions.act_window">
+            <field name="name">Reject Project </field>
+            <field name="res_model">reject.project.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+</record>
+
+
     <record model="ir.ui.view" id="project_list">
       <field name="name">Projects list</field>
       <field name="model">uasg.project</field>
@@ -14,7 +45,7 @@
           <field name="date" string="Start Date"/>
           <field name="target_date"/>
           <field name="business_unit"/>
-           <field name="tag_ids" string="Current Status" widget="many2many_tags" options="{'color_field': 'color'}"/>
+           <field name="latest_update" />
           <field name="status" invisible="1"/>
           <field name="project_updates" widget="many2many_tags" optional="hide"/> 
          <field name="requested_by" optional="hide"/>
@@ -39,9 +70,13 @@
          
          <button name="action_submit" string="Submit" type="object" class="oe_highlight" attrs="{'invisible': [('status', '!=', 'draft')]}" groups="uasg_custom_project.group_project_manager"/>
 
-         <button name="action_pipeline" string="Approve" type="object" class="oe_highlight" attrs="{'invisible': [('status', '!=', 'in_progress')]}" groups="uasg_custom_project.group_project_manager"/>
+         <button name="action_pipeline" string="Approve" type="object" class="oe_highlight" attrs="{'invisible': [('status', '!=', 'pipeline')]}" groups="uasg_custom_project.group_project_manager"/>
 
-         <button name="action_completed" string="Completed" type="object" class="oe_highlight" attrs="{'invisible': [('status', '!=', 'pipeline')]}" groups="uasg_custom_project.group_project_manager"/>
+
+         <button name="%(reject_project_wizard_action)d"  string="Reject" type="action" class="btn-danger" attrs="{'invisible': [('status', '!=', 'pipeline')]}" groups="uasg_custom_project.group_project_manager"  context="{'default_project_id': id}"/>
+
+      
+         <button name="action_completed" string="Completed" type="object" class="oe_highlight" attrs="{'invisible': [('status', '!=', 'in_progress')]}" groups="uasg_custom_project.group_project_manager"/>
 
          <button name="action_reopen" string="Re-Open" type="object" class="oe_highlight" attrs="{'invisible': [('status', '!=', 'completed')]}" groups="uasg_custom_project.group_project_manager"/>
 
@@ -76,6 +111,7 @@
 
      <field name = "description"  style="border-bottom: 1px  solid var(--o-input-border-color);"  attrs="{'readonly':['|',('status','=','completed'),('make_fields_read_only' , '=' , True)]}" />
 
+      <field name="reject_reason" string="Rejected due to" style="border: 1px  solid red;"  attrs="{'invisible':['|',('reject_reason','=',False),('status','!=','draft')],'readonly': [('status','in',['pipeline'])]}"/>
 
 
 
