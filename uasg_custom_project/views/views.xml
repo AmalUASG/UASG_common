@@ -10,11 +10,14 @@
         <tree>
           <field name="name" />
           <field name="assigned_to"/>
-          <field name="description"  />
+          <field name="description" optional="hide" />
           <field name="date" string="Start Date"/>
           <field name="target_date"/>
           <field name="business_unit"/>
+           <field name="tag_ids" string="Current Status" widget="many2many_tags" options="{'color_field': 'color'}"/>
           <field name="status" invisible="1"/>
+          <field name="project_updates" widget="many2many_tags" optional="hide"/> 
+         <field name="requested_by" optional="hide"/>
           <field name="status" widget="badge" decoration-success="status=='completed'" decoration-warning="status=='in_progress'" />
           <field name="progress" string="Progres vs. Deadline" widget="badge" decoration-success="progress=='done'" decoration-warning="progress=='in_progress'" decoration-danger="progress=='off_track'" />
             
@@ -40,6 +43,8 @@
 
          <button name="action_completed" string="Completed" type="object" class="oe_highlight" attrs="{'invisible': [('status', '!=', 'pipeline')]}" groups="uasg_custom_project.group_project_manager"/>
 
+         <button name="action_reopen" string="Re-Open" type="object" class="oe_highlight" attrs="{'invisible': [('status', '!=', 'completed')]}" groups="uasg_custom_project.group_project_manager"/>
+
          <field name="status" widget="statusbar"/>
 
      </header>
@@ -51,7 +56,7 @@
             <field class="text-break"  name="name" placeholder="Project Title" required="1" attrs="{'readonly':['|',('status','=','completed'),('make_fields_read_only' , '=' , True)]}"  />
         </h1>
         <div>
-            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" placeholder="Tags" style="width: 100%"  attrs="{'readonly':['|',('status','=','completed'),('make_fields_read_only' , '=' , True)]}"  />
+            <field name="tag_ids" string="Current Status" widget="many2many_tags" options="{'color_field': 'color'}" placeholder="Tags" style="width: 100%"  attrs="{'readonly':['|',('status','=','completed'),('make_fields_read_only' , '=' , True)]}"  />
         </div>
     </div>
     <group>

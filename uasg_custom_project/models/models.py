@@ -80,6 +80,15 @@ class UASGProject(models.Model):
 
         self.write ({'status' : 'completed'})
 
+    def action_reopen(self):
+
+        if self.assigned_to == self.env.user :
+
+            self.write ({'status' : 'pipeline'})
+        else :
+
+            raise UserError('Sorry , This Action is restricted to the Asignee Only ! ')
+
     def _make_fields_read_only(self) :
 
         user = self.env.user
