@@ -50,15 +50,16 @@ class UASGProject(models.Model):
     @api.depends('project_updates')
 
     def _compute_latest_update(self) :
+        for record in self :
+            project_updates = record.env['uasg.project.update'].sudo().search([('project_id','=',record.id)])
+            latest_update = ''
+            if project_updates :
 
-        latest_update = ''
-        if self.project_updates :
+                for update in project_updates:
 
-            for update in self.project_updates:
+                    latest_update = update.name
 
-                latest_update = update.name
-
-        self.latest_update = latest_update
+            record.latest_update = latest_update
 
 
     def _compute_progress(self) :
