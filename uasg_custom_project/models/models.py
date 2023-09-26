@@ -46,6 +46,10 @@ class UASGProject(models.Model):
     progress = fields.Selection(selection=[('in_progress','On track'),('off_track','Off track'),('done','Done')], default='in_progress' ,compute='_compute_progress' ,tracking=True)
     latest_update = fields.Text(compute='_compute_latest_update')
     reject_reason = fields.Char()
+    company_id = fields.Many2one('res.company',name="Company",default=lambda self: self.env.company)
+    needs_cost = fields.Boolean()
+    currency_id = fields.Many2one('res.currency',related='company_id.currency_id')
+    cost = fields.Monetary()
 
     @api.depends('project_updates')
 
