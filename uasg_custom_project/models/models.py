@@ -51,6 +51,8 @@ class UASGProject(models.Model):
     currency_id = fields.Many2one('res.currency',related='company_id.currency_id')
     cost = fields.Monetary()
 
+
+
     @api.depends('project_updates')
 
     def _compute_latest_update(self) :
@@ -164,6 +166,14 @@ class ProjectUpdate(models.Model):
         relation='budget_ir_attachments_rel',
         string='Attachments')
 
+    @api.model
+    def create(self, vals):
+        templates = super(ProjectUpdate,self).create(vals)
+            # fix attachment ownership
+        for template in templates:
+            if template.attachment_ids:
+                template.attachment_ids.write({'res_model': self._name, 'res_id': template.id})
+            return templates
 
 class RejectProjectWizard(models.TransientModel):
     _name = 'reject.project.wizard'
