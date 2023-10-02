@@ -173,7 +173,7 @@ class ProjectUpdate(models.Model):
         for template in templates:
             if template.attachment_ids:
                 template.attachment_ids.write({'res_model': self._name, 'res_id': template.id})
-            return templates
+        return templates
 
 class RejectProjectWizard(models.TransientModel):
     _name = 'reject.project.wizard'
@@ -192,14 +192,12 @@ class RejectProjectWizard(models.TransientModel):
             project = self.env['uasg.project'].sudo().search([('id','=',self.project_id.id)])
 
 
-            project.status = 'draft'
-
-            project.reject_reason = self.name
+            project.sudo().write({'status':'draft' , 'reject_reason' : self.name})
 
             mail_template = self.env['mail.template'].sudo().search([('model_id','=','uasg.project'),('name','=','Project is Rejected')])
 
             if mail_template :
-                mail_template.send_mail(self.id, force_send=True)
+                mail_template.send_mail(project.id, force_send=True)
 
         else :
 
