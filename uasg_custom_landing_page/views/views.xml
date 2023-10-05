@@ -73,7 +73,7 @@
 
 
 
-        <record id="landing_page" model="ir.ui.view">
+        <record id="landing_page_form" model="ir.ui.view">
             <field name="name">Home</field>
             <field name="model">landing.page</field>
             <field name="arch" type="xml">
@@ -218,13 +218,13 @@
                 </form>
             </field>
         </record>
-        <record id="res_config_setting_act_window" model="ir.actions.act_window">
+        <record id="landing_page_action" model="ir.actions.act_window">
             <field name="name">home</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">landing.page</field>
             <field name="view_mode">form</field>
             <field name="target">inline</field>
-            <field name="view_id" ref="landing_page"/>
+            <field name="view_id" ref="landing_page_form"/>
             <field name="res_id">1</field>
 
             <field name="context">{'default_id': 1 ,'create':0,'delete':0,'edit':0}</field>
@@ -237,7 +237,7 @@
     name="Home"
     groups=""
     sequence="3"
-    action="res_config_setting_act_window"
+    action="landing_page_action"
     />
 
     </data>
