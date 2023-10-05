@@ -104,10 +104,10 @@
         <!-- Background Video-->
      
         <!-- Masthead-->
-        <div class=" row">
-                <div class=" mtcol-md-6 px-4 ml64 ">
+        <div class=" ml64 row">
+                <div class=" col-md-6 px-4  ">
 
-                <h1 class="welcome-text mt-4">Welcome, <span class="text-black fw-bold"><field name="user_id" style="pointer-events: none; cursor: default;"/></span></h1>
+                <h1 class="welcome-text mt-4">Welcome, <span ><field name="user_id" class="warning" style="pointer-events: none; cursor: default;"/></span></h1>
                    
                 </div>
                     <!-- <div class="col-md-6"><span id="clock"></span></div> -->
@@ -120,12 +120,12 @@
 
     setInterval(clock, 1000);
 </script> -->
-                 
+
             </div>
-        <div class="row" >
-            <section class="col-md-6 row"  id="minimal-statistics">
+        <div class=" ml64 row " >
+            <section class="row mt64 col-md-6 "  id="minimal-statistics">
                 
-                       <div class="ml64 mt64 card col-md-4" style="
+                       <div class="card col-md-4" style="
     height: 107px;">
 
              <button name="%(project_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
@@ -148,7 +148,7 @@
 
         <div class="col-md-1"/>
 
-        <div class=" mt64 card col-md-4" style="height: 107px;" >
+        <div class="  card col-md-4" style="height: 107px;" >
           <button name="%(project_action_in_prgress)d"   type="action" class="oe_stat_button oe_read_only" >
 
           <div class="card-content">
@@ -168,7 +168,7 @@
         </div>
 
 
-        <div class="ml64  card col-md-4" style="height: 107px;">
+        <div class="  card col-md-4" style="height: 107px;margin-top:-136px;" >
          <button name="%(project_action_pipeline)d"   type="action" class="oe_stat_button oe_read_only" >
 
           <div class="card-content">
@@ -189,7 +189,7 @@
 
         <div class="col-md-1"/>
 
-        <div class="  card col-md-4" style="height: 107px;">
+        <div class="  card col-md-4" style="height: 107px;margin-top:-136px;">
           <button name="%(project_action_completed)d"   type="action" class="oe_stat_button oe_read_only" >
 
           <div class="card-content">
@@ -209,12 +209,15 @@
         </div>
 
             </section>
-            <div class="col-md-6"><img src="/uasg_custom_landing_page/static/src/img/animation.png" alt="image" style="width: 900px;" /></div>
+                                         <div class="col-md-6"><img src="/uasg_custom_landing_page/static/src/img/animation.png" alt="image" style="width: 800px;" /></div>
+
         </div>
      
        
     </body>
 </html>
+
+
                 </form>
             </field>
         </record>
