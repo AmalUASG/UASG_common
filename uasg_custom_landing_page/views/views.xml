@@ -125,7 +125,7 @@
         <div class=" ml64 row " >
             <section class="row mt64 col-md-6 "  id="minimal-statistics">
                 
-                       <div class="card col-md-4" style="
+                       <div class=" card col-md-4" style="
     height: 107px;">
 
              <button name="%(project_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
@@ -168,7 +168,7 @@
         </div>
 
 
-        <div class="  card col-md-4" style="height: 107px;margin-top:-136px;" >
+        <div class="mt-n5  card col-md-4" style="height: 107px;" >
          <button name="%(project_action_pipeline)d"   type="action" class="oe_stat_button oe_read_only" >
 
           <div class="card-content">
@@ -189,7 +189,7 @@
 
         <div class="col-md-1"/>
 
-        <div class="  card col-md-4" style="height: 107px;margin-top:-136px;">
+        <div class=" mt-n5 card col-md-4" style="height: 107px;">
           <button name="%(project_action_completed)d"   type="action" class="oe_stat_button oe_read_only" >
 
           <div class="card-content">
