@@ -1,0 +1,13 @@
+<odoo>
+    <data noupdate="1">
+
+      <record id="landing_page" model="landing.page">
+            <field name="id">1</field>
+            <field name="model_id" ref="uasg_custom_landing_page.model_landing_page"/>
+            <field name="name">Home Page</field>
+
+      </record>
+
+
+    </data>
+  </odoo>

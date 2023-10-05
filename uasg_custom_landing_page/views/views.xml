@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+<record model="ir.actions.act_window" id="project_action_window">
+  <field name="name">project</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">uasg.project</field>
+  <field name="view_mode">tree,form,pivot,graph</field>
+   <field name ="domain">[('assigned_to','=', uid)]</field>
+   <field name="help" type="html">
+
+   <p class="o_view_nocontent_smiling_face">
+                No Projects are assigned to you!
+              </p>
+          </field>
+</record>
+
+
+
+
+<record model="ir.actions.act_window" id="project_action_completed">
+  <field name="name">project</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">uasg.project</field>
+  <field name="view_mode">tree,form,pivot,graph</field>
+   <field name ="domain">[('assigned_to','=', uid),('status','=','completed')]</field>
+   <field name="help" type="html">
+
+   <p class="o_view_nocontent_smiling_face">
+             You have no completed Projects!
+              </p>
+          </field>
+</record>
+
+
+
+
+
+<record model="ir.actions.act_window" id="project_action_pipeline">
+  <field name="name">project</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">uasg.project</field>
+  <field name="view_mode">tree,form,pivot,graph</field>
+   <field name ="domain">[('assigned_to','=', uid),('status','=','pipeline')]</field>
+   <field name="help" type="html">
+
+   <p class="o_view_nocontent_smiling_face">
+             You have no Pending Projects!
+              </p>
+          </field>
+</record>
+
+
+
+
+
+<record model="ir.actions.act_window" id="project_action_in_prgress">
+  <field name="name">project</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">uasg.project</field>
+  <field name="view_mode">tree,form,pivot,graph</field>
+   <field name ="domain">[('assigned_to','=', uid),('status','=','in_progress')]</field>
+  <field name="help" type="html">
+
+   <p class="o_view_nocontent_smiling_face">
+             You have no In progress Projects!
+              </p>
+            </field>
+</record>
+
+
+
+        <record id="landing_page" model="ir.ui.view">
+            <field name="name">Home</field>
+            <field name="model">landing.page</field>
+            <field name="arch" type="xml">
+                <form string="Settings" class="container-fluid" create="false" >
+                    
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css"/>
+    </head>
+    <body>
+        <!-- Background Video-->
+     
+        <!-- Masthead-->
+        <div class=" row">
+                <div class=" mtcol-md-6 px-4 ml64 ">
+
+                <h1 class="welcome-text mt-4">Welcome, <span class="text-black fw-bold"><field name="user_id" style="pointer-events: none; cursor: default;"/></span></h1>
+                   
+                </div>
+                    <!-- <div class="col-md-6"><span id="clock"></span></div> -->
+            <!-- <script type="text/javascript">
+    var clockElement = document.getElementById('clock');
+
+    function clock() {
+        clockElement.textContent = new Date().toString();
+    }
+
+    setInterval(clock, 1000);
+</script> -->
+                 
+            </div>
+        <div class="row" >
+            <section class="col-md-6 row"  id="minimal-statistics">
+                
+                       <div class="ml64 mt64 card col-md-4" style="
+    height: 107px;">
+
+             <button name="%(project_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
+
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-support warning font-large-3 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3><field name="count_all_projects"/></h3>
+                  <span>My Projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+      </button>
+        </div>
+
+        <div class="col-md-1"/>
+
+        <div class=" mt64 card col-md-4" style="height: 107px;" >
+          <button name="%(project_action_in_prgress)d"   type="action" class="oe_stat_button oe_read_only" >
+
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-pencil warning font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3><field name="count_in_progress"/></h3>
+                  <span>In Progress</span>
+                </div>
+              </div>
+            </div>
+          </div>
+      </button>
+        </div>
+
+
+        <div class="ml64  card col-md-4" style="height: 107px;">
+         <button name="%(project_action_pipeline)d"   type="action" class="oe_stat_button oe_read_only" >
+
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-cup warning font-large-3 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3><field name="count_pipline"/></h3>
+                  <span>Pending Approval</span>
+                </div>
+              </div>
+            </div>
+          </div>
+      </button>
+        </div>
+
+        <div class="col-md-1"/>
+
+        <div class="  card col-md-4" style="height: 107px;">
+          <button name="%(project_action_completed)d"   type="action" class="oe_stat_button oe_read_only" >
+
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-check warning font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3><field name="count_completed"/></h3>
+                  <span>Completed </span>
+                </div>
+              </div>
+            </div>
+          </div>
+      </button>
+        </div>
+
+            </section>
+            <div class="col-md-6"><img src="/uasg_custom_landing_page/static/src/img/animation.png" alt="image" style="width: 900px;" /></div>
+        </div>
+     
+       
+    </body>
+</html>
+                </form>
+            </field>
+        </record>
+        <record id="res_config_setting_act_window" model="ir.actions.act_window">
+            <field name="name">home</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">landing.page</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="view_id" ref="landing_page"/>
+            <field name="res_id">1</field>
+
+            <field name="context">{'default_id': 1 ,'create':0,'delete':0,'edit':0}</field>
+        </record>
+
+
+
+<menuitem
+    id="main"
+    name="Home"
+    groups=""
+    sequence="3"
+    action="res_config_setting_act_window"
+    />
+
+    </data>
+</odoo>

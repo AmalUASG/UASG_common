@@ -20,6 +20,9 @@
         <template id = "uasg_login_layout" name="UASG login layout" inherit_id="web.login_layout">
 
             <xpath expr="//*[@class='text-center small mt-4 pt-3 border-top']" position="replace"/>
+          
+
+                      
 
         </template>
 
