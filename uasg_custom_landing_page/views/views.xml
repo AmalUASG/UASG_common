@@ -230,5 +230,5 @@
             <field name="context">{'default_id': 1 ,'create':0,'delete':0,'edit':0}</field>
         </record>
 
-
+</data>
 </odoo>
