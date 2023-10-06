@@ -252,7 +252,7 @@
         </div>
 
 <!-- <div id = "clock" onload="currentTime()"></div> -->
-                <script type="text/javascript">
+               <!--  <script type="text/javascript">
                  function currentTime() {
   let date = new Date(); 
   let hh = date.getHours();
@@ -280,7 +280,7 @@
 
 currentTime();
                 </script> 
-
+ -->
 
             </section>
                                          <div class="col-md-6 mt64"><img src="/uasg_custom_landing_page/static/src/img/uasg-logo.png" class="img-fluid" alt="image" style="width: 500px;" /></div>
