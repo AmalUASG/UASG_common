@@ -3,7 +3,7 @@
 
       <record id="landing_page" model="landing.page">
             <field name="id">1</field>
-            <field name="name">Home Page</field>
+            <field name="name">Home</field>
 
       </record>
 

@@ -82,8 +82,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
+ <meta name="viewport" 
+          content="width=device-width,  
+                   initial-scale=1" />         <meta name="description" content="" />
         <meta name="author" content="" />
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -104,11 +105,76 @@
         <!-- Background Video-->
      
         <!-- Masthead-->
-        <div class=" ml64 row">
+        <div class=" ml64 row container-fluid">
                 <div class=" col-md-6 px-4  ">
 
                 <h1 class="welcome-text mt-4">Welcome, <span ><field name="user_id" class="warning" style="pointer-events: none; cursor: default;"/></span></h1>
                    
+                </div>
+                <div class="col-md-6 row">
+ <div class=" card col-md-3" style="
+    height: 75px;">
+                 <button name="%(mail.action_discuss)d"   type="action" class="oe_stat_button oe_read_only" >
+
+                  <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-speech warning font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>Inbox</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
+        </div>
+
+
+
+         <div class=" ml-2 card col-md-3" style="
+    height: 75px;">
+
+                 <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
+
+
+                  <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-wallet warning font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>Budget</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </button>
+        </div>
+
+
+        <div class=" ml-2 card col-md-3" style="
+    height: 75px;">
+                 <button name="%(uasg_custom_project.project_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
+
+                  <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-graph warning font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>Projects</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
+        </div>
+                  <!-- <img src="uasg_custom_budget,static/description/icon.png"" class="img-fluid"/> -->
                 </div>
                     <!-- <div class="col-md-6"><span id="clock"></span></div> -->
             <!-- <script type="text/javascript">
@@ -209,7 +275,7 @@
         </div>
 
             </section>
-                                         <div class="col-md-6"><img src="/uasg_custom_landing_page/static/src/img/animation.png" alt="image" style="width: 800px;" /></div>
+                                         <div class="col-md-6"><img src="/uasg_custom_landing_page/static/src/img/animation.png" class="img-fluid" alt="image" style="width: 800px;" /></div>
 
         </div>
      
@@ -232,6 +298,22 @@
 
             <field name="context">{'default_id': 1 ,'create':0,'delete':0,'edit':0}</field>
         </record>
+
+
+
+
+
+<menuitem
+    id="home_main_menu"
+    name="Home"
+    groups=""
+    sequence="1"
+    web_icon="uasg_custom_landing_page,static/description/icon.png"
+    action="landing_page_action"
+    />
+
+     <!-- <menuitem name="Home" id="home_menu" sequence = "1" parent="home_main_menu" action="budget_action_window" groups="group_budget_it_manager,group_budget_approval,group_budget_dept_manager"/> -->
+   
 
 </data>
 </odoo>
