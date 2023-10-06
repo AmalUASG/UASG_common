@@ -77,7 +77,10 @@
             <field name="name">Home</field>
             <field name="model">landing.page</field>
             <field name="arch" type="xml">
-                <form string="Settings" class="container-fluid" create="false" >
+                <form string="Settings" class="container-fluid" create="false" style="padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;" >
                     
 <html lang="en">
     <head>
@@ -105,35 +108,18 @@
         <!-- Background Video-->
      
         <!-- Masthead-->
-        <div class=" ml64 row container-fluid">
-                <div class=" col-md-6 px-4  ">
+        <div class="  row ">
+                <div class=" col-md-6 ">
 
-                <h1 class="welcome-text mt-4">Welcome, <span ><field name="user_id" class="warning" style="pointer-events: none; cursor: default;"/></span></h1>
+                <h2 class="ml64 welcome-text mt-4">Welcome, <span ><field name="user_id" class="warning" style="pointer-events: none; cursor: default;"/></span></h2>
                    
                 </div>
                 <div class="col-md-6 row">
- <div class=" card col-md-3" style="
-    height: 75px;">
-                 <button name="%(mail.action_discuss)d"   type="action" class="oe_stat_button oe_read_only" >
-
-                  <div class="card-content">
-            <div class="card-body">
-              <div class="media d-flex">
-                <div class="align-self-center">
-                  <i class="icon-speech warning font-large-2 float-left"></i>
-                </div>
-                <div class="media-body text-right">
-                  <h3>Inbox</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </button>
-        </div>
 
 
 
-         <div class=" ml-2 card col-md-3" style="
+
+         <div class=" card col-md-3" style="
     height: 75px;">
 
                  <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
@@ -154,9 +140,9 @@
 
         </button>
         </div>
+<div class="col-md-1"/>
 
-
-        <div class=" ml-2 card col-md-3" style="
+        <div class="  card col-md-3" style="
     height: 75px;">
                  <button name="%(uasg_custom_project.project_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
 
@@ -174,18 +160,8 @@
           </div>
         </button>
         </div>
-                  <!-- <img src="uasg_custom_budget,static/description/icon.png"" class="img-fluid"/> -->
+                
                 </div>
-                    <!-- <div class="col-md-6"><span id="clock"></span></div> -->
-            <!-- <script type="text/javascript">
-    var clockElement = document.getElementById('clock');
-
-    function clock() {
-        clockElement.textContent = new Date().toString();
-    }
-
-    setInterval(clock, 1000);
-</script> -->
 
             </div>
         <div class=" ml64 row " >
@@ -233,8 +209,9 @@
       </button>
         </div>
 
+        <div class="col-md-1"/>
 
-        <div class="mt-n5  card col-md-4" style="height: 107px;" >
+        <div class="  card col-md-4" style="height: 107px;" >
          <button name="%(project_action_pipeline)d"   type="action" class="oe_stat_button oe_read_only" >
 
           <div class="card-content">
@@ -255,7 +232,7 @@
 
         <div class="col-md-1"/>
 
-        <div class=" mt-n5 card col-md-4" style="height: 107px;">
+        <div class="  card col-md-4" style="height: 107px;">
           <button name="%(project_action_completed)d"   type="action" class="oe_stat_button oe_read_only" >
 
           <div class="card-content">
@@ -274,8 +251,39 @@
       </button>
         </div>
 
+<!-- <div id = "clock" onload="currentTime()"></div> -->
+                <script type="text/javascript">
+                 function currentTime() {
+  let date = new Date(); 
+  let hh = date.getHours();
+  let mm = date.getMinutes();
+  let ss = date.getSeconds();
+  let session = "AM";
+
+  if(hh === 0){
+      hh = 12;
+  }
+  if(hh > 12){
+      hh = hh - 12;
+      session = "PM";
+   }
+
+   hh = (hh &lt; 10) ? "0" + hh : hh;
+   mm = (mm &lt; 10) ? "0" + mm : mm;
+   ss = (ss &lt; 10) ? "0" + ss : ss;
+    
+   let time = hh + ":" + mm + ":" + ss + " " + session;
+
+  document.getElementById("clock").innerText = time; 
+  let t = setTimeout(function(){ currentTime() }, 1000);
+}
+
+currentTime();
+                </script> 
+
+
             </section>
-                                         <div class="col-md-6"><img src="/uasg_custom_landing_page/static/src/img/animation.png" class="img-fluid" alt="image" style="width: 800px;" /></div>
+                                         <div class="col-md-6 mt64"><img src="/uasg_custom_landing_page/static/src/img/uasg-logo.png" class="img-fluid" alt="image" style="width: 500px;" /></div>
 
         </div>
      
