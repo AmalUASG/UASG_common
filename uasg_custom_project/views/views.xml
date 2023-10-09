@@ -80,6 +80,8 @@
 
          <button name="action_reopen" string="Re-Open" type="object" class="oe_highlight" attrs="{'invisible': [('status', '!=', 'completed')]}" groups="uasg_custom_project.group_project_manager"/>
 
+         <button name="action_draft" string="Convert to Draft" type="object" class="oe_secondry" attrs="{'invisible': [('status', '!=', 'in_progress')]}" groups="uasg_custom_project.group_project_manager"/>
+
          <field name="status" widget="statusbar"/>
 
      </header>

@@ -133,6 +133,20 @@ class UASGProject(models.Model):
 
             raise UserError('Sorry , This Action is restricted to the Asignee/line Manager Only ! ')
 
+
+    def action_draft(self):
+
+        if self.assigned_to == self.env.user or self.assigned_to.partner_id.line_manager == self.env.user :
+
+            self.write ({'status' : 'draft'})
+
+            mail_template = self.env['mail.template'].sudo().search([('model_id','=','uasg.project'),('name','=','Project has been Drafted')])
+
+            if mail_template :
+                mail_template.send_mail(self.id, force_send=True)
+        else :
+
+            raise UserError('Sorry , This Action is restricted to the Asignee/line Manager Only ! ')
     def _make_fields_read_only(self) :
 
         user = self.env.user
