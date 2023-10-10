@@ -17,6 +17,6 @@ class connector(models.Model):
 
 	def connect(self): 
 
-		cnxn = pyodbc.connect('driver=MySQL', host='localhost', database='RemsDB')
+		cnxn = pyodbc.connect(host='10.200.209.225', database='RemsDB',port=1433)
 
 		raise UserError(str(cnxn ))
