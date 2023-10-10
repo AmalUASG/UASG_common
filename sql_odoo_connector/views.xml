@@ -1,0 +1,53 @@
+
+<odoo>
+  <data>
+
+
+
+ <record id="connector_form" model="ir.ui.view">
+            <field name="name">connector</field>
+            <field name="model">connector</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    	  <header>
+                        <button name="connect" string="Reject" type="object" class="oe_highlight" />
+                       
+                           </header>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    
+                    </sheet>
+                  
+                </form>
+            </field>
+        </record>
+
+
+<record model="ir.actions.act_window" id="connector_action">
+  <field name="name">Connector</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">connector</field>
+  <field name="view_mode">tree,form</field>
+
+
+</record>
+
+
+
+
+
+<menuitem
+    id="project_main_menu"
+    name="connector"
+    sequence="1"
+    />
+
+    <!-- menu categories -->
+
+
+    <menuitem name="Connectior" id="project" sequence = "1" parent="project_main_menu" action="connector_action" />
+
+</data>
+</odoo>
