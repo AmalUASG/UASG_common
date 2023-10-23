@@ -87,9 +87,11 @@ class Budget(models.Model):
 
     def _compute_total_budget_cost(self):
 
-        lines = self.env['budget.line'].search([('budget_id', '=', self.id)])
-        total_lines_budget = sum(lines.mapped('cost_by_company_currency'))
-        self.total_budget_cost = total_lines_budget
+        for record in self:
+
+            lines = self.env['budget.line'].search([('budget_id', '=', record.id)])
+            total_lines_budget = sum(lines.mapped('cost_by_company_currency'))
+            record.total_budget_cost = total_lines_budget
 
     def action_submit(self):
 

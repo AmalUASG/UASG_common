@@ -376,6 +376,16 @@
 </record>
 
 
+<record id="action_report_budget" model="ir.actions.report">
+   <field name="name">Budget</field>
+   <field name="model">budget</field>
+   <field name="report_type">qweb-pdf</field>
+   <field name="report_name">uasg_custom_budget.report_budget</field>
+   <field name="report_file">report_budget</field>
+   <field name="binding_model_id" ref="uasg_custom_budget.model_budget"/>
+   <field name="binding_type">report</field>
+</record>
+
 
 <!-- Top menu item -->
 
