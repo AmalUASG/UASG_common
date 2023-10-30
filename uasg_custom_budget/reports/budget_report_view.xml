@@ -39,7 +39,7 @@
                 </table>
                         <br/>
                         <br/>
-                        <table class = "table table-bordered" style="table-layout: fixed" >
+                        <table class = "table table-sm"  >
                             <thead>
                                 <tr>
                                     <th>Objective/Project</th>
@@ -52,8 +52,8 @@
                             <tbody>
                                 <t t-set="lines" t-value="doc.budget_line"/>
                                 <tr t-foreach="lines" t-as="line">
-                                    <td>
-                                        <span t-field="line.name"/>
+                                    <td >
+                                        <span t-field="line.name" />
                                     </td>
                                      <td>
                                         <span t-raw="line.description"/>
