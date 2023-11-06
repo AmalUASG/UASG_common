@@ -108,13 +108,14 @@
                 <h2 class="ml64 welcome-text mt-4">Welcome, <span ><field name="user_id" class="warning" style="pointer-events: none; cursor: default;"/></span></h2>
                    
                 </div>
+
                 <div class="col-md-6 row">
 
 
 
 
          <div class=" card col-md-3" style="
-    height: 75px;">
+    height: 75px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user">
 
                  <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
 
@@ -125,7 +126,7 @@
                 <div class="align-self-center">
                   <i class="icon-wallet warning font-large-2 float-left"></i>
                 </div>
-                <div class="media-body text-right">
+                <div class="media-body text-right ">
                   <h3>Budget</h3>
                 </div>
               </div>
@@ -137,8 +138,8 @@
 <div class="col-md-1"/>
 
         <div class="  card col-md-3" style="
-    height: 75px;">
-                 <button name="%(uasg_custom_project.project_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
+    height: 75px;" groups="uasg_custom_project.group_project_user,uasg_custom_project.group_project_manager">
+                 <button name="%(uasg_custom_project.project_action_window)d"   type="action" class="oe_stat_button oe_read_only"  >
 
                   <div class="card-content">
             <div class="card-body">
@@ -154,12 +155,36 @@
           </div>
         </button>
         </div>
+
+
+        <div class="col-md-1"/>
+
+        <div class="  card col-md-4" style="
+    height: 75px;">
+                 <a href="/slides/all"   >
+
+                  <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-folder warning font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>E-learning</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+
+
                 
                 </div>
 
             </div>
         <div class=" ml64 row " >
-            <section class="row mt64 col-md-6 "  id="minimal-statistics">
+            <section class="row mt64 col-md-6 "  id="minimal-statistics" groups="uasg_custom_project.group_project_user,uasg_custom_project.group_project_manager">
                 
                        <div class=" card col-md-4" style="
     height: 107px;">
