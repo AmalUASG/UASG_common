@@ -90,13 +90,7 @@
                    initial-scale=1" />         <meta name="description" content="" />
         <meta name="author" content="" />
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
+       
         <link href="css/styles.css" rel="stylesheet" />
 
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
@@ -283,7 +277,7 @@ currentTime();
  -->
 
             </section>
-                                         <div class="col-md-6 mt64"><img src="/uasg_custom_landing_page/static/src/img/uasg-logo.png" class="img-fluid" alt="image" style="width: 500px;" /></div>
+                                         <div class="col-md-6 mt64"><img src="/uasg_custom_landing_page/static/src/img/uasg_logo.png" class="img-fluid" alt="image" style="width: 500px;" /></div>
 
         </div>
      
