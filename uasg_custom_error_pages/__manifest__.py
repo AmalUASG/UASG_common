@@ -28,6 +28,7 @@
     'data': [
       
         'views/403.xml',
+         'views/404.xml',
  
     ], 
  
