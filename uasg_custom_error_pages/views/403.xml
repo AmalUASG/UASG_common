@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="403" inherit_id="http_routing.403">
+	
+	<xpath expr="//div[@id='wrap']" position="replace">
+
+		 <div class="row align-items-center">
+                <div class="col-lg-6 pt16 pb16 o_colored_level" style="">
+                    <h5 style="text-align: center;"><span style="font-size: 48px;"><font style="color: rgb(175, 141, 84);">Login Required !</font></span></h5><p style="text-align: center;"/><p style="text-align: center;"><font style="" class="text-600"><strong>You need to be signed in by UASG single sign on to view this page.</strong></font></p><p style="text-align: center;"/><div class="s_hr text-start pt0 pb24" data-snippet="s_hr" data-name="Separator">
+        <hr class="mx-auto w-50" style="border-top-width: 1px; border-top-color: rgb(206, 212, 218);"/><br/><br/><br/><br/>
+    </div><p style="text-align: center;"><a href="/web/login" class="mb-2 btn btn-primary" data-bs-original-title="" title="">Sign in</a></p></div>
+                <div class="col-lg-6 pt16 pb16 o_colored_level" style="">
+                    <img src="/uasg_custom_error_pages/static/img/uasg_logo.png" alt="" class="img img-fluid mx-auto o_we_custom_image" data-original-id="946" data-original-src="/uasg_custom_error_pages/static/img/uasg_logo.png" data-mimetype="image/png" data-resize-width="690" data-bs-original-title="" title="" aria-describedby="tooltip796092" loading="lazy" style=""/>
+                </div>
+            </div>
+	</xpath>
+</template>
+</odoo>

@@ -126,7 +126,7 @@
                 <div class="align-self-center">
                   <i class="icon-wallet warning font-large-2 float-left"></i>
                 </div>
-                <div class="media-body text-right ">
+                <div class="media-body ml8 ">
                   <h3>Budget</h3>
                 </div>
               </div>
@@ -147,7 +147,7 @@
                 <div class="align-self-center">
                   <i class="icon-graph warning font-large-2 float-left"></i>
                 </div>
-                <div class="media-body text-right">
+                <div class="media-body ml8">
                   <h3>Projects</h3>
                 </div>
               </div>
@@ -161,7 +161,7 @@
 
         <div class="  card col-md-4" style="
     height: 75px;">
-                 <a href="/slides/all"   >
+                 <a href="/slides/all" style="text-decoration: inherit;"  class="oe_stat_button oe_read_only" >
 
                   <div class="card-content">
             <div class="card-body">
@@ -169,7 +169,7 @@
                 <div class="align-self-center">
                   <i class="icon-folder warning font-large-2 float-left"></i>
                 </div>
-                <div class="media-body text-right">
+                <div class="media-body ml8">
                   <h3>E-learning</h3>
                 </div>
               </div>
