@@ -1,9 +1,8 @@
-
-from werkzeug import urls
+import requests
+from odoo import models, fields, api
+from datetime import datetime
+from odoo.exceptions import UserError, ValidationError
 import logging
-
-from odoo import api, fields, models, _
-
 
 
 
