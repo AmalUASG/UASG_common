@@ -1,5 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 access_uasg_groups,uasg_groups.uasg_groups,model_uasg_groups,,1,1,1,1
+
 access_ad_configuration,ad_configuration.ad_configuration,model_ad_configuration,,1,1,1,1
-access_uasg_contacts,uasg_contacts,model_uasg_contacts,,1,1,1,1
+
+access_uasg_contacts,uasg_contacts.uasg_contacts,model_uasg_contacts,,1,1,1,1
