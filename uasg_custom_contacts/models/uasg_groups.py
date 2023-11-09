@@ -28,7 +28,8 @@ class UasgContacts(models.Model):
             for u in user :
                 if u.email == record.email :
                     record.user  = u.id
-        return True
+                else :
+                    return True
 
     @api.depends('uasg_id')
     def _update_user_depatment (self):
