@@ -122,12 +122,11 @@ class AdConfiguration(models.Model):
                     elif key == 'jobTitle' :
                         
                         created_member.write({'job_title' : member['jobTitle']})
-        raise UserError(str(response.json().get('@odata.next_link')))
-        
-        while (response.json().get('@odata.next_link')) :
-            raise UserError(str(response.json().get('@odata.next_link')))
+       
+        while (response.json().get('@odata.nextLink')) :
+            # raise UserError(str(response.json().get('@odata.next_link')))
 
-            get_members_url = str(response.json().get('@odata.next_link'))
+            get_members_url = str(response.json().get('@odata.nextLink'))
             headers = {'Content-Type': 'application/json','Authorization' : access_token }
             if get_members_url :
                 response = requests.request("GET" , get_members_url,headers=headers)
