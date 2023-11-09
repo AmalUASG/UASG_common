@@ -40,7 +40,7 @@
        <field name="client_id"/>
        <field name="client_secret"/>
        <field name="active"/>
-       <field name=" contacts_created"/>
+       <!-- <field name=" contacts_created"/> -->
      </group>
     </sheet>
   </form>
