@@ -59,6 +59,11 @@ class Budget(models.Model):
     approval_line = fields.One2many('approval.line','budget_id')
     reject_reason = fields.Char()
     note = fields.Char(tracking=True)
+    department_manager_id = fields.Many2one('uasg.contacts')
+    department_name = fields.Char(related='department_manager_id.department')
+    manager = fields.Char(related='department_manager_id.manager_name')
+    manager_email = fields.Char(related='department_manager_id.manager_email')
+
     
 
 
