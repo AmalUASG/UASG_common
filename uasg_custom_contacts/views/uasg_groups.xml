@@ -34,7 +34,7 @@
        <field name="name"/>
        <field name="uasg_id"/>
        <field name="email"/>
-       <field name="phone"/>
+       <field name="mobile"/>
       </group>
 
     </sheet>
