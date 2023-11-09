@@ -1,0 +1,82 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="uasg_group_list">
+      <field name="name"> list</field>
+      <field name="model">uasg.contacts</field>
+      <field name="arch" type="xml">
+
+                 
+
+        <tree>
+
+          <field name="name" />
+          <field name="uasg_id"/>
+          <field name="email"/>
+          <field name="mobile"/>
+
+      </tree>
+  </field>
+</record>
+
+
+
+<record model="ir.ui.view" id="uasg_group_form">
+  <field name="name">Contact form</field>
+  <field name="model">uasg.contacts</field>
+  <field name="arch" type="xml">
+    <form>
+
+       
+
+     <sheet>
+      <group>
+       <field name="name"/>
+       <field name="uasg_id"/>
+       <field name="email"/>
+       <field name="phone"/>
+      </group>
+
+    </sheet>
+  </form>
+</field>
+</record>
+
+<record model="ir.actions.act_window" id="group_members_action_window">
+  <field name="name">Contacts</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">uasg.contacts</field>
+  <field name="view_mode">tree,form</field>
+  <field name="context">{'create' : False}</field>
+
+</record>
+
+<record model="ir.actions.act_window" id="group_items_action_window">
+  <field name="name">Groups</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">uasg.groups</field>
+  <field name="view_mode">tree,form</field>
+  <field name="context">{'create' : False}</field>
+
+</record>
+
+
+
+<menuitem
+    id="uasg_groups_menu"
+    name="UASG Contacts"
+    parent="base.menu_users"
+   action = "group_items_action_window"
+    />
+
+
+<menuitem
+    id="uasg_groups_members_menu"
+    name="UASG Groups Members"
+    parent="base.menu_users"
+   action = "group_members_action_window"
+    />
+
+
+</data>
+</odoo>

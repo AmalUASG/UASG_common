@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+
+<record model="ir.ui.view" id="ad_configuration_list">
+      <field name="name">AD Configuration</field>
+      <field name="model">ad.configuration</field>
+      <field name="arch" type="xml">
+
+                 
+
+        <tree>
+
+          <field name="name" />
+          <field name="tenant_id"/>
+          <field name="client_id"/>
+          <field name="client_secret"/>
+
+
+      </tree>
+  </field>
+</record>
+
+
+
+<record model="ir.ui.view" id="ad_configuration_form">
+  <field name="name">AD Configuration</field>
+  <field name="model">ad.configuration</field>
+  <field name="arch" type="xml">
+    <form>
+       <header>
+          <!-- <button name="get_groups" string="Get Active Directory Groups" type="object" class="oe_highlight" attrs="{'invisible' : [('groups_created','=',True)]}" /> -->
+
+          <button name="get_contacts" string="Get AD Users" type="object" class="oe_highlight" />
+     </header>
+
+     <sheet>
+      <group>
+       <field name="name"/>
+       <field name="tenant_id"/>
+       <field name="client_id"/>
+       <field name="client_secret"/>
+       <field name="active"/>
+       <field name="groups_created"/>
+     </group>
+    </sheet>
+  </form>
+</field>
+</record>
+
+
+
+<record model="ir.actions.act_window" id="action_ad_configuration">
+  <field name="name">Microsoft AD Credentials</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">ad.configuration</field>
+  <field name="view_mode">tree,form</field>
+</record>
+
+<menuitem id="menu_ad_configuration" name="Microsoft AD Integration"
+    parent="base.menu_users" sequence="30"
+    action="action_ad_configuration" groups="base.group_no_one"/>
+
+  </data>
+</odoo>
