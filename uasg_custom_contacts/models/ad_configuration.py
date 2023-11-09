@@ -171,13 +171,14 @@ class AdConfiguration(models.Model):
         req = requests.request("POST" , url,headers=headers,data = payload)
         req = req.json()
         access_token = req.get('access_token')
+        headers = {'Content-Type': 'application/json','Authorization' : access_token }
+
 
         for contact in contacts :
 
             get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str(contact.uasg_id)+'/companyName')
             response_company = requests.request("GET" , get_user_company,headers=headers)
 
-            raise UserError(str(response_company))
             contact.write({'company' : response_company.json().get('value')})
 
 
