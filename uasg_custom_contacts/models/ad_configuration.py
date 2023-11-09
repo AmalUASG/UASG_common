@@ -183,8 +183,10 @@ class AdConfiguration(models.Model):
             if response_company.json().get('value') : 
 
                 company = response_company.json().get('value')
+              
 
-                contact.id.write({'company' : company})
+                contact.write({'contact' :(1,contact.id,{'company': company})})
+
                 
 
 
