@@ -184,7 +184,7 @@ class AdConfiguration(models.Model):
 
                 company = response_company.json().get('value')
 
-                raise UserError(company + contact)
+                raise UserError(str(company+ str(contact)))
                 
                 super(contacts, contact).write({'company' : company})
                 
