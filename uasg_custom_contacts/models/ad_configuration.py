@@ -96,7 +96,7 @@ class AdConfiguration(models.Model):
         req = requests.request("POST" , url,headers=headers,data = payload)
         req = req.json()
         access_token = req.get('access_token')
-        get_members_url = str('https://graph.microsoft.com/v1.0/users')
+        get_members_url = str('https://graph.microsoft.com/v1.0/users?$top=999')
         headers = {'Content-Type': 'application/json','Authorization' : access_token }
         response = requests.request("GET" , get_members_url,headers=headers)
         members=response.json().get('value')
