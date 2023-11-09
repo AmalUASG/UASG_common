@@ -32,7 +32,7 @@
 
           <button name="get_contacts" string="Get AD Users" type="object" class="oe_highlight" />
            <button name="update_companies" string="Update Users Companies" type="object" class="oe_highlight" />
-             <button name="update_depatments" string="Update Users Departments" type="object" class="oe_highlight" />
+             <!-- <button name="update_depatments" string="Update Users Departments" type="object" class="oe_highlight" /> -->
 
      </header>
 
