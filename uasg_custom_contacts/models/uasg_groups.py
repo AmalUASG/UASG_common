@@ -51,7 +51,8 @@ class UasgContacts(models.Model):
 
             else :
 
-                return True
+                contact.write({'manager_name' : "-",'manager_email' : "-"})
+
 
 
     @api.depends('email')
