@@ -123,6 +123,7 @@ class AdConfiguration(models.Model):
                         
                         created_member.write({'job_title' : member['jobTitle']})
         while (response.json().get('@odata.next_link')) :
+            raise UserError(str(response.json().get('@odata.next_link')))
 
             get_members_url = str(response.json().get('@odata.next_link'))
             headers = {'Content-Type': 'application/json','Authorization' : access_token }
