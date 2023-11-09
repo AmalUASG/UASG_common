@@ -122,6 +122,8 @@ class AdConfiguration(models.Model):
                     elif key == 'jobTitle' :
                         
                         created_member.write({'job_title' : member['jobTitle']})
+        raise UserError(str(response.json().get('@odata.next_link')))
+        
         while (response.json().get('@odata.next_link')) :
             raise UserError(str(response.json().get('@odata.next_link')))
 
