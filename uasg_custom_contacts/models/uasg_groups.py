@@ -47,14 +47,11 @@ class UasgContacts(models.Model):
             
             if response_manager : 
 
-                contact.write({'manager_name' : response_manager.json().get('displayName')},'manager_email' : response_manager.json().get('mail'))
+                contact.write({'manager_name' : response_manager.json().get('displayName'),'manager_email' : response_manager.json().get('mail')})
 
             else :
 
                 return True
-
-
-
 
 
     @api.depends('email')
