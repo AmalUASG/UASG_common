@@ -129,7 +129,7 @@ class AdConfiguration(models.Model):
 
                 get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str( member['id'])+'/department')
                 response_department = requests.request("GET" , get_user_company,headers=headers)
-                reated_member.write({'department' : response_department.json().get('value')})
+                created_member.write({'department' : response_department.json().get('value')})
                     
 
        
