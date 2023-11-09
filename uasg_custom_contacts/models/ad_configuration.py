@@ -182,7 +182,9 @@ class AdConfiguration(models.Model):
             
             if response_company.json().get('value') : 
 
-                contact.write({'company' : str(response_company.json().get('value'))})
+                company = response_company.json().get('value')
+
+                contact.write({'company' : company})
 
 
     def update_depatments  (self):
@@ -208,7 +210,9 @@ class AdConfiguration(models.Model):
             
             if response_department.json().get('value') : 
 
-                contact.write({'company' : str(response_department.json().get('value'))})
+                department = response_department.json().get('value')
+
+                contact.write({'department' : department})
 
 
 
