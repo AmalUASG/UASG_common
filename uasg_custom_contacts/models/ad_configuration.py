@@ -180,9 +180,9 @@ class AdConfiguration(models.Model):
 
             response_company = requests.request("GET" , get_user_company,headers=headers)
             
-            if response_company.value : 
+            if response_company.json().value : 
 
-                raise UserError(response_company.value)
+                raise UserError(response_company.json().value)
                 contact.write({'company' : str(response_company.json().get('value'))})
 
 
