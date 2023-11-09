@@ -164,7 +164,7 @@ class AdConfiguration(models.Model):
         tenant_id = self.tenant_id
         client_id = self.client_id
         client_secret = self.client_secret
-        contacts = self.env['uasg.contacts'].search([()])
+        contacts = self.env['uasg.contacts'].search([])
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         payload = str('grant_type=client_credentials&client_secret='+str(client_secret)+'&client_id='+str(client_id)+'&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default')
         url = str("https://login.microsoftonline.com/"+str(tenant_id)+"/oauth2/v2.0/token")
