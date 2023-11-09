@@ -32,8 +32,6 @@ class UasgContacts(models.Model):
 
     @api.depends('uasg_id')
 
-    def 
-
     def _update_user_depatment (self):
 
         config = self.env['ad.configuration'].search([('active','=',True)],limit=1)

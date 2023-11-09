@@ -186,7 +186,6 @@ class AdConfiguration(models.Model):
               
 
                 contact.write({'company' :(1,contact.id,{'company': company})})
-
                 
 
 
