@@ -77,7 +77,7 @@ class AdConfiguration(models.Model):
     #                     a.write({'description' : i[key]})                
     #         self.groups_created = True
 
-    def get_contatcs(self):
+    def get_contacts(self):
 
         # groups = self.env['uasg.groups'].search([])
 
