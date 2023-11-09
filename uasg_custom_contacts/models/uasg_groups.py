@@ -14,11 +14,12 @@ class UasgContacts(models.Model):
     email = fields.Char()
     mobile = fields.Char()
     #odoo_groups = fields.mayny
-    company = fields.Char(deafult='_update_user_company' )
-    department = fields.Char(deafult='_update_user_depatment' )
+    company = fields.Char(compute='_update_user_company' )
+    department = fields.Char(compute ='_update_user_depatment' )
     job_title= fields.Char()
     user = fields.Many2one('res.users' , compute = '_link_with_res_users' )
     # company_id = Many2one('res.company' , compute = '_link_with_res_company' , store=True)
+    
     @api.depends('email')
     def _link_with_res_users (self) :
 
