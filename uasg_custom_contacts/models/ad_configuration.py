@@ -177,11 +177,12 @@ class AdConfiguration(models.Model):
         for contact in contacts :
 
             get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str(contact.uasg_id)+'/companyName')
-            raise UserError(str(get_user_company))
 
             response_company = requests.request("GET" , get_user_company,headers=headers)
-            if str(response_company.json().get('value')) != None : 
-                raise UserError(str(response_company.json().get('value')))
+            
+            if response_company.value : 
+
+                raise UserError(response_company.value)
                 contact.write({'company' : str(response_company.json().get('value'))})
 
 
