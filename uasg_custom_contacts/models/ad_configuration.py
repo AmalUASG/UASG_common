@@ -122,12 +122,21 @@ class AdConfiguration(models.Model):
                     elif key == 'jobTitle' :
                         
                         created_member.write({'job_title' : member['jobTitle']})
+                    
+                get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str( member['id'])+'/companyName')
+                response_company = requests.request("GET" , get_user_company,headers=headers)
+                created_member.write({'company' : response_company.json().get('value')})
+
+                get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str( member['id'])+'/department')
+                response_department = requests.request("GET" , get_user_company,headers=headers)
+                reated_member.write({'department' : response_department.json().get('value')})
+                    
+
        
         while (response.json().get('@odata.nextLink')) :
             # raise UserError(str(response.json().get('@odata.next_link')))
 
             get_members_url = str(response.json().get('@odata.nextLink'))
-            headers = {'Content-Type': 'application/json','Authorization' : access_token }
             if get_members_url :
                 response = requests.request("GET" , get_members_url,headers=headers)
                 members=response.json().get('value')
@@ -153,6 +162,15 @@ class AdConfiguration(models.Model):
                             elif key == 'jobTitle' :
 
                                 created_member.write({'job_title' : member['jobTitle']})
+
+                        get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str( member['id'])+'/companyName')
+                        response_company = requests.request("GET" , get_user_company,headers=headers)
+                        created_member.write({'company' : response_company.json().get('value')})
+
+                        get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str( member['id'])+'/department')
+                        response_department = requests.request("GET" , get_user_company,headers=headers)
+                        created_member.write({'department' : response_department.json().get('value')})
+
         self.contacts_created = True
 
 
