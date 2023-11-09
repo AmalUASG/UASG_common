@@ -122,7 +122,7 @@ class AdConfiguration(models.Model):
                     elif key == 'jobTitle' :
                         
                         created_member.write({'job_title' : member['jobTitle']})
-        while  response.get('@odata.next_link') :
+        while (response.get('@odata.next_link')) :
 
             get_members_url = str(response.get('@odata.next_link'))
             headers = {'Content-Type': 'application/json','Authorization' : access_token }
@@ -150,7 +150,7 @@ class AdConfiguration(models.Model):
                                 created_member.write({'mobile' : member['mobilePhone']})
                             elif key == 'jobTitle' :
 
-
+                                created_member.write({'job_title' : member['jobTitle']})
         self.contacts_created = True
 
 
