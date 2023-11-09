@@ -183,7 +183,8 @@ class AdConfiguration(models.Model):
             if response_company.json().get('value') : 
 
                 company = response_company.json().get('value')
-
+                
+                super(contacts, contact).write({'company' : company})
                 
 
 
@@ -207,12 +208,13 @@ class AdConfiguration(models.Model):
             get_user_department = str('https://graph.microsoft.com/v1.0/users/'+str(contact.uasg_id)+'/department')
 
             response_department = requests.request("GET" , get_user_department,headers=headers)
+
             
             if response_department.json().get('value') : 
 
                 department = response_department.json().get('value')
 
-                contact.department = department
+                contact.write({'department' : department})
 
 
 
