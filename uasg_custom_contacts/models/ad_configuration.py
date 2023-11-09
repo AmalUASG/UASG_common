@@ -109,9 +109,9 @@ class AdConfiguration(models.Model):
 
                         created_member = contacts.create({'name':member['displayName'] })
 
-                    elif key == 'email' :
+                    elif key == 'mail' :
                         
-                        created_member.write({'email' : member['email']})
+                        created_member.write({'email' : member['mail']})
 
                     elif key == 'id' :
                         
@@ -122,8 +122,36 @@ class AdConfiguration(models.Model):
                     elif key == 'jobTitle' :
                         
                         created_member.write({'job_title' : member['jobTitle']})
+        while  response.get('@odata.next_link') :
 
-                self.contacts_created = True
+            get_members_url = str(response.get('@odata.next_link'))
+            headers = {'Content-Type': 'application/json','Authorization' : access_token }
+            if get_members_url :
+                response = requests.request("GET" , get_members_url,headers=headers)
+                members=response.json().get('value')
+                if members :
+                    for member in members :
+
+                        for key in member : 
+
+                            if key == 'displayName' : 
+
+                                created_member = contacts.create({'name':member['displayName'] })
+
+                            elif key == 'mail' :
+                                
+                                created_member.write({'email' : member['mail']})
+
+                            elif key == 'id' :
+                                
+                                created_member.write({'uasg_id' : member['id']})
+                            elif key == 'mobilePhone' :
+                                
+                                created_member.write({'mobile' : member['mobilePhone']})
+                            elif key == 'jobTitle' :
+
+
+        self.contacts_created = True
 
 
 
