@@ -17,7 +17,7 @@ class UasgContacts(models.Model):
     company = fields.Char(compute='_update_user_company' )
     department = fields.Char(compute ='_update_user_depatment' )
     job_title= fields.Char()
-    user = fields.Many2one('res.users' , compute = '_link_with_res_users' )
+    user = fields.Many2one('res.users' , compute = '_link_with_res_users' , store=True )
     # company_id = Many2one('res.company' , compute = '_link_with_res_company' , store=True)
     
     @api.depends('email')
