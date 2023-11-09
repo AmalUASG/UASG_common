@@ -185,7 +185,7 @@ class AdConfiguration(models.Model):
                 contact.write({'company' : str(response_company.json().get('value'))})
 
 
-    def update_companies (self):
+    def update_depatments  (self):
 
         tenant_id = self.tenant_id
         client_id = self.client_id
