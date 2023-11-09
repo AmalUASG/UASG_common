@@ -207,6 +207,8 @@ class AdConfiguration(models.Model):
             get_user_department = str('https://graph.microsoft.com/v1.0/users/'+str(contact.uasg_id)+'/department')
 
             response_department = requests.request("GET" , get_user_department,headers=headers)
+
+            raise UserError(str(contact.name))
             
             if response_department.json().get('value') : 
 
