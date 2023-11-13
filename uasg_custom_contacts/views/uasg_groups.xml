@@ -105,23 +105,6 @@
 
 </record>
 
-<!-- <record model="ir.actions.act_window" id="group_items_action_window">
-  <field name="name">Groups</field>
-  <field name="type">ir.actions.act_window</field>
-  <field name="res_model">uasg.groups</field>
-  <field name="view_mode">tree,form</field>
-  <field name="context">{'create' : False}</field>
-
-</record> -->
-
-<!-- 
-
-<menuitem
-    id="uasg_groups_menu"
-    name="UASG Contacts"
-    parent="base.menu_users"
-   action = "group_items_action_window"
-    /> -->
 
 
 <menuitem
