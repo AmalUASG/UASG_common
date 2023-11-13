@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class ResUsers(models.Model):
     
-    _inherit="res.user"
+    _inherit="res.users"
 
     
     uasg_contact = fields.Many2one('uasg.contacts',compute='_link_with_uasg_contacts')
