@@ -29,6 +29,8 @@ class UasgContacts(models.Model):
 
         if vals :
 
+            print('sssssssssssssssssss',vals)
+
             config = self.env['ad.configuration'].search([('active','=',True)],limit=1)
             tenant_id = config.tenant_id
             client_id = config.client_id
