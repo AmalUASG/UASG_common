@@ -23,7 +23,7 @@ class UasgContacts(models.Model):
     manager_email = fields.Char(compute ='_get_user_manager' )
     company_id = fields.Many2one('res.company',compute='_get_res_company')
     
-
+    @api.depends('company')
     def _get_res_company(self):
 
         for record in self :
