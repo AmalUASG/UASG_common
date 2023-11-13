@@ -105,24 +105,30 @@ class AdConfiguration(models.Model):
 
                 for key in member : 
 
-                    if key == 'id' : 
+                    if key == 'displayName' : 
 
-                        created_member = contacts.create({'uasg_id' : member['id']})
+                        created_member = contacts.create({'name':member['displayName'] })
 
                     elif key == 'mail' :
                         
                         created_member.write({'email' : member['mail']})
 
-                    elif key == 'displayName' :
+                    elif key == 'id' :
                         
-                        created_member.write({'name':member['displayName'] })
+                        created_member.write({'uasg_id' : member['id']})
                     elif key == 'mobilePhone' :
                         
                         created_member.write({'mobile' : member['mobilePhone']})
                     elif key == 'jobTitle' :
                         
                         created_member.write({'job_title' : member['jobTitle']})
-                    
+
+                if member['id']:
+
+                    get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str( member['id'])+'/companyName')
+                    response_company = requests.request("GET" , get_user_company,headers=headers)
+                    company = response_company.json().get('value')
+                    created_member.write({'company' : company})
                 
 
        
@@ -138,12 +144,6 @@ class AdConfiguration(models.Model):
 
                         for key in member : 
 
-
-                            if key == 'id' :
-
-                                created_member = contacts.create({'uasg_id' : member['id']})
-              
-
                             if key == 'displayName' : 
 
                                 created_member = contacts.create({'name':member['displayName'] })
@@ -152,13 +152,21 @@ class AdConfiguration(models.Model):
                                 
                                 created_member.write({'email' : member['mail']})
 
-                           
+                            elif key == 'id' :
+                                
+                                created_member.write({'uasg_id' : member['id']})
                             elif key == 'mobilePhone' :
                                 
                                 created_member.write({'mobile' : member['mobilePhone']})
                             elif key == 'jobTitle' :
 
                                 created_member.write({'job_title' : member['jobTitle']})
+                    if member['id']:
+
+                        get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str( member['id'])+'/companyName')
+                        response_company = requests.request("GET" , get_user_company,headers=headers)
+                        company = response_company.json().get('value')
+                        created_member.write({'company' : company})
 
                        
         self.contacts_created = True
@@ -190,6 +198,7 @@ class AdConfiguration(models.Model):
               
 
                 contact.write({'company' :(1,contact.id,{'company': company})})
+
                 
 
 
