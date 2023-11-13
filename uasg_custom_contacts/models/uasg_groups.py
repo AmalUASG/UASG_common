@@ -24,10 +24,6 @@ class UasgContacts(models.Model):
     company_id = fields.Many2one('res.company',compute='_get_res_company')
 
 
-
-        return super(UasgContacts, self).create(vals)
-
-    
     @api.depends('company')
     def _get_res_company(self):
 
