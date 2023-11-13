@@ -14,7 +14,7 @@ class UasgContacts(models.Model):
     email = fields.Char()
     mobile = fields.Char()
     #odoo_groups = fields.mayny
-    company = fields.Char(compute='_update_user_company' )
+    company = fields.Char()
     department = fields.Char(compute ='_update_user_depatment' )
     job_title= fields.Char()
     user = fields.Many2one('res.users' , compute = '_link_with_res_users' , store=True )

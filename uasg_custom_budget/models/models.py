@@ -27,11 +27,6 @@ class Category(models.Model):
     name=fields.Char('Category')
 
 
-class Users(models.Model):
-
-    _inherit = 'res.users'
-
-    uasg_department = fields.Many2one('department')
 
 
 class Budget(models.Model):
