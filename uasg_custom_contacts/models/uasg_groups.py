@@ -24,12 +24,11 @@ class UasgContacts(models.Model):
     company_id = fields.Many2one('res.company',compute='_get_res_company')
     
 
-    @api.depends('company')
     def _get_res_company(self):
 
         for record in self :
 
-            uasg_companies = record.env['uasg.company'].search([('name','=',record.company)],limit=1)
+            uasg_companies = record.env['uasg.company'].search([('name','=', record.company)],limit=1)
 
             if uasg_companies :
 
