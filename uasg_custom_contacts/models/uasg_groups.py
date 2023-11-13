@@ -27,7 +27,7 @@ class UasgContacts(models.Model):
     @api.model
     def create(self, vals):
 
-        if vals['uasg_id'] :
+        if vals :
 
             config = self.env['ad.configuration'].search([('active','=',True)],limit=1)
             tenant_id = config.tenant_id
@@ -56,7 +56,7 @@ class UasgContacts(models.Model):
             else :
 
                 vals['company'] = False
-                
+
         return super(UasgContacts, self).create(vals)
 
     
