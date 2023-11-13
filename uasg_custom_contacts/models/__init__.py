@@ -5,3 +5,4 @@
 # from . import microsoft_service
 from . import ad_configuration
 from . import uasg_groups
+from . import res_users
