@@ -16,8 +16,8 @@ class UasgContacts(models.Model):
     company = fields.Char()
     department = fields.Char( )
     job_title= fields.Char()
-    manager_name  = fields.Char(compute ='_get_user_manager' , store=True )
-    manager_email = fields.Char(compute ='_get_user_manager' ,store=True)
+    manager_name  = fields.Char(compute ='_get_user_manager'  )
+    manager_email = fields.Char(compute ='_get_user_manager' )
     company_id = fields.Many2one('res.company',compute='_get_res_company')
 
 
