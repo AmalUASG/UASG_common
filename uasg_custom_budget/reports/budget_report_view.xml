@@ -43,7 +43,7 @@
                             <thead>
                                 <tr>
                                     <th>Objective/Project</th>
-                                    <th>Description</th>
+                                    <!-- <th>Description</th> -->
                                     <th>Justification</th>
                                     <th>Quarter</th>
                                     <th>Amount</th>
@@ -55,9 +55,9 @@
                                     <td >
                                         <span t-field="line.name" />
                                     </td>
-                                     <td>
+                                    <!--  <td>
                                         <span t-raw="line.description"/>
-                                    </td>
+                                    </td> -->
                                      <td>
                                         <span t-field="line.justification"/>
                                     </td>

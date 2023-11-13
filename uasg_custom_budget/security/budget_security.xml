@@ -62,7 +62,7 @@
     <record model="ir.rule" id="budget_based_on_department_and_company">
       <field name="name">visible to the concerned department and company memeber</field>
       <field name="model_id" ref="model_budget"/>
-      <field name="domain_force">[('company_id','=', user.company_id.id),('department','=',user.uasg_department.id)]</field>
+      <field name="domain_force">[('company_id','=', user.company_id.id)]</field>
       <field name="perm_write" eval="True"/>
       <field name="perm_read" eval="True"/>
       <field name="perm_unlink" eval="False"/>
@@ -73,7 +73,7 @@
       <record model="ir.rule" id="budget_line_based_on_department_and_company">
       <field name="name">visible to the concerned department and company memeber</field>
       <field name="model_id" ref="model_budget_line"/>
-      <field name="domain_force">[('company_id','=', user.company_id.id),('department','=',user.uasg_department.id)]</field>
+      <field name="domain_force">[('company_id','=', user.company_id.id)]</field>
       <field name="perm_write" eval="True"/>
       <field name="perm_read" eval="True"/>
       <field name="perm_unlink" eval="True"/>

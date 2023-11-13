@@ -11,9 +11,11 @@
         <tree>
 
           <field name="name" />
-          <field name="uasg_id"/>
           <field name="email"/>
           <field name="mobile"/>
+            <field name="job_title"/>
+           <field name="department"/>
+
 
       </tree>
   </field>
@@ -31,11 +33,21 @@
 
      <sheet>
       <group>
+      <group>
+
        <field name="name"/>
        <field name="uasg_id"/>
        <field name="email"/>
        <field name="mobile"/>
+     </group>
+     <group>
+       <field name="job_title"/>
+        <field name="manager_name"/>
+        <field name="manager_email"/>
+        <field name="department"/>
+
       </group>
+    </group>
 
     </sheet>
   </form>
