@@ -57,7 +57,6 @@ class AdConfiguration(models.Model):
         get_members_url = str('https://graph.microsoft.com/v1.0/users?$select=displayName,mail,id,mobilePhone,jobTitle,companyName,department')
         headers = {'Content-Type': 'application/json','Authorization' : access_token }
         response = requests.request("GET" , get_members_url,headers=headers)
-        raise UserError(str(response))
         members=response.json().get('value')
         if members :
             for member in members :
