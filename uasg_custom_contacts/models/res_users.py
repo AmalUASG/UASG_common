@@ -18,4 +18,5 @@ class ResUsers(models.Model):
             if user :     
                     record.uasg_contact  = user.id
             else :
-                return True
+                record.uasg_contact  = False
+                
