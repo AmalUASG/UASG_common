@@ -13,8 +13,8 @@
           <field name="name" />
           <field name="email"/>
           <field name="mobile"/>
-            <field name="job_title"/>
-           <field name="department"/>
+ <!--            <field name="job_title"/>
+           <field name="department"/> -->
 
 
       </tree>
