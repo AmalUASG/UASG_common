@@ -29,7 +29,7 @@ class UasgContacts(models.Model):
 
         for record in self :
 
-            uasg_companies = record.env['uasg.company'].seacrh([('name','=',record.company)],limit=1)
+            uasg_companies = record.env['uasg.company'].search([('name','=',record.company)],limit=1)
 
             if uasg_companies :
 
