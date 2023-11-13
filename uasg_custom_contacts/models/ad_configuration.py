@@ -115,7 +115,7 @@ class AdConfiguration(models.Model):
 
                     elif key == 'displayName' :
                         
-                        created_member.write({'uasg_id' : member['id']})
+                        created_member.write({'name':member['displayName'] })
                     elif key == 'mobilePhone' :
                         
                         created_member.write({'mobile' : member['mobilePhone']})
@@ -138,6 +138,12 @@ class AdConfiguration(models.Model):
 
                         for key in member : 
 
+
+                            if key == 'id' :
+
+                                created_member = contacts.create({'uasg_id' : member['id']})
+              
+
                             if key == 'displayName' : 
 
                                 created_member = contacts.create({'name':member['displayName'] })
@@ -146,9 +152,7 @@ class AdConfiguration(models.Model):
                                 
                                 created_member.write({'email' : member['mail']})
 
-                            elif key == 'id' :
-                                
-                                created_member.write({'uasg_id' : member['id']})
+                           
                             elif key == 'mobilePhone' :
                                 
                                 created_member.write({'mobile' : member['mobilePhone']})
