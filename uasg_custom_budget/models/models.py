@@ -275,14 +275,14 @@ class RejectBudgetWizard(models.TransientModel):
             mail_template.send_mail(self.id, force_send=True)
 
 
-class Approvals(models.Model):
-    _name = 'budget.approval'
+# class Approvals(models.Model):
+#     _name = 'budget.approval'
 
-    _order = "sequence,id"
+#     _order = "sequence,id"
 
-    name = fields.Many2one('res.users')
-    department = fields.Many2one('department',related='name.uasg_department')
-    description = fields.Text()
-    sequence = fields.Integer(default=10)
+#     name = fields.Many2one('res.users')
+#     department = fields.Many2one('department',related='name.uasg_department')
+#     description = fields.Text()
+#     sequence = fields.Integer(default=10)
 
 
