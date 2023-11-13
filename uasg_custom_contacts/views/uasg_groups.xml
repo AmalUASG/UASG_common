@@ -32,21 +32,21 @@
        
 
      <sheet>
-      <group>
+      <group >
       <group>
 
-       <field name="name"/>
-       <field name="uasg_id"/>
-       <field name="email"/>
-       <field name="mobile"/>
+       <field name="name" readonly="1"/>
+       <field name="uasg_id" readonly="1"/>
+       <field name="email" readonly="1"/>
+       <field name="mobile" readonly="1"/>
      </group>
      <group>
-       <field name="job_title"/>
-        <field name="manager_name"/>
-        <field name="manager_email"/>
-        <field name="department"/>
-
-      </group>
+       <field name="job_title" readonly="1"/>
+        <field name="manager_name" readonly="1"/>
+        <field name="manager_email" readonly="1"/>
+        <field name="department" readonly="1"/>
+        <field name="company" readonly="1"/>
+      </group> 
     </group>
 
     </sheet>
