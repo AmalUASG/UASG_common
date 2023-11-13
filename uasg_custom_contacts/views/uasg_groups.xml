@@ -22,6 +22,37 @@
 </record>
 
 
+   <record model="ir.ui.view" id="uasg_companies_list">
+      <field name="name"> Companies</field>
+      <field name="model">uasg.company</field>
+      <field name="arch" type="xml">         
+        <tree>
+          <field name="name" />
+          <field name="company_id"/>
+      </tree>
+  </field>
+</record>
+
+
+
+
+<record model="ir.ui.view" id="uasg_companies_form">
+  <field name="name">Companies </field>
+  <field name="model">uasg.company</field>
+  <field name="arch" type="xml">
+    <form>
+     <sheet>
+      <group>
+
+       <field name="name" />
+       <field name="company_id" />
+     </group>
+
+    </sheet>
+  </form>
+</field>
+</record>
+
 
 <record model="ir.ui.view" id="uasg_group_form">
   <field name="name">Contact form</field>
