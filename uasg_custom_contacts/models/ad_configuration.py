@@ -105,15 +105,15 @@ class AdConfiguration(models.Model):
 
                 for key in member : 
 
-                    if key == 'displayName' : 
+                    if key == 'id' : 
 
-                        created_member = contacts.create({'name':member['displayName'] })
+                        created_member = contacts.create({'uasg_id' : member['id']})
 
                     elif key == 'mail' :
                         
                         created_member.write({'email' : member['mail']})
 
-                    elif key == 'id' :
+                    elif key == 'displayName' :
                         
                         created_member.write({'uasg_id' : member['id']})
                     elif key == 'mobilePhone' :

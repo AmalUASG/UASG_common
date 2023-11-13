@@ -27,7 +27,7 @@ class UasgContacts(models.Model):
     @api.model
     def create(self, vals):
 
-        if vals :
+        if vals['uasg_id'] :
 
             print('sssssssssssssssssss',vals)
 
