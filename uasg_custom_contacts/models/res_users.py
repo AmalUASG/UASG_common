@@ -18,7 +18,7 @@ class ResUsers(models.Model):
     def _link_with_uasg_contacts (self) :
 
     	for record in self :
-            user = record.env['uasg.contacts'].search([('email','=',record.login)])
+            user = record.env['uasg.contacts'].search([('email','=',record.login)],limit=1)
             if user :     
                     record.uasg_contact  = user.id
             else :
