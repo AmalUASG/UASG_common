@@ -21,7 +21,24 @@ class UasgContacts(models.Model):
     # company_id = Many2one('res.company' , compute = '_link_with_res_company' , store=True)
     manager_name  = fields.Char(compute ='_get_user_manager' )
     manager_email = fields.Char(compute ='_get_user_manager' )
+    company_id = fields.Many2one('res.company',compute='_get_res_company')
     
+
+    @api.depends('company')
+    def _get_res_company(self):
+
+        for record in self :
+
+            uasg_companies = record.env['uasg.company'].seacrh([('name','=',record.company)],limit=1)
+
+            if uasg_companies :
+
+                record.company_id = uasg_companies.ids
+
+            else :
+
+                record.company_id = False
+
 
     @api.depends('uasg_id')
     def _get_user_manager(self):

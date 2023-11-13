@@ -77,6 +77,7 @@
         <field name="manager_email" readonly="1"/>
         <field name="department" readonly="1"/>
         <field name="company" readonly="1"/>
+        <field name="company_id" readonly="1"/>
       </group> 
     </group>
 
