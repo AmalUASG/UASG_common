@@ -24,40 +24,6 @@ class UasgContacts(models.Model):
     company_id = fields.Many2one('res.company',compute='_get_res_company')
 
 
-    @api.model
-    def create(self, vals):
-
-        if vals['uasg_id'] :
-
-            print('sssssssssssssssssss',vals)
-
-            config = self.env['ad.configuration'].search([('active','=',True)],limit=1)
-            tenant_id = config.tenant_id
-            client_id = config.client_id
-            client_secret = config.client_secret
-            headers = {"Content-type": "application/x-www-form-urlencoded"}
-            payload = str('grant_type=client_credentials&client_secret='+str(client_secret)+'&client_id='+str(client_id)+'&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default')
-            url = str("https://login.microsoftonline.com/"+str(tenant_id)+"/oauth2/v2.0/token")
-            req = requests.request("POST" , url,headers=headers,data = payload)
-            req = req.json()
-            access_token = req.get('access_token')
-            headers = {'Content-Type': 'application/json','Authorization' : access_token }
-
-
-            get_user_company = str('https://graph.microsoft.com/v1.0/users/'+str(vals['uasg_id'])+'/companyName')
-
-            response_company = requests.request("GET" , get_user_company,headers=headers)
-
-            
-            if response_company.json().get('value') : 
-
-                company = response_company.json().get('value')
-
-                vals['company'] = company
-
-            else :
-
-                vals['company'] = False
 
         return super(UasgContacts, self).create(vals)
 
