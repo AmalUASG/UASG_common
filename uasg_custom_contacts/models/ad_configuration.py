@@ -105,31 +105,31 @@ class AdConfiguration(models.Model):
                         for key in member : 
 
 
-                    if key == 'displayName' : 
+                        if key == 'displayName' : 
 
-                        created_member = contacts.create({'name':member['displayName'] })
+                            created_member = contacts.create({'name':member['displayName'] })
 
-                    elif key == 'mail' :
-                        
-                        created_member.write({'email' : member['mail']})
+                        elif key == 'mail' :
+                            
+                            created_member.write({'email' : member['mail']})
 
-                    elif key == 'id' :
-                        
-                        created_member.write({'uasg_id' : member['id']})
-                    elif key == 'mobilePhone' :
-                        
-                        created_member.write({'mobile' : member['mobilePhone']})
-                    elif key == 'jobTitle' :
-                        
-                        created_member.write({'job_title' : member['jobTitle']})
+                        elif key == 'id' :
+                            
+                            created_member.write({'uasg_id' : member['id']})
+                        elif key == 'mobilePhone' :
+                            
+                            created_member.write({'mobile' : member['mobilePhone']})
+                        elif key == 'jobTitle' :
+                            
+                            created_member.write({'job_title' : member['jobTitle']})
 
-                    elif key == 'companyName' :
-                        
-                        created_member.write({'company' : member['companyName']})
+                        elif key == 'companyName' :
+                            
+                            created_member.write({'company' : member['companyName']})
 
-                    elif key == 'department' :
-                        
-                        created_member.write({'department' : member['department']})
+                        elif key == 'department' :
+                            
+                            created_member.write({'department' : member['department']})
 
 
                        
