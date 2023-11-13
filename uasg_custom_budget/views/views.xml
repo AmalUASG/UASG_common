@@ -284,7 +284,7 @@
 </record>
 
 
-    <record model="ir.ui.view" id="approval_list">
+  <!--   <record model="ir.ui.view" id="approval_list">
       <field name="name">Approval list</field>
       <field name="model">budget.approval</field>
       <field name="arch" type="xml">
@@ -295,7 +295,7 @@
           <field name="description"/>
       </tree>
   </field>
-</record>
+</record> -->
 
 
 
@@ -355,14 +355,14 @@
 
 </record>
 
-
+<!-- 
 <record model="ir.actions.act_window" id="approval_action_window">
   <field name="name">Approvals</field>
   <field name="type">ir.actions.act_window</field>
   <field name="res_model">budget.approval</field>
   <field name="view_mode">tree,form</field>
 
-</record>
+</record> -->
 
 
 
