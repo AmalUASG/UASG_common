@@ -6,3 +6,4 @@
 from . import ad_configuration
 from . import uasg_groups
 from . import res_users
+from . import uasg_company
