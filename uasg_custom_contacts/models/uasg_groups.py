@@ -32,7 +32,7 @@ class UasgContacts(models.Model):
 
             if uasg_companies :
 
-                record.company_id = uasg_companies.ids
+                record.company_id = uasg_companies.company_id.id
 
             else :
 
