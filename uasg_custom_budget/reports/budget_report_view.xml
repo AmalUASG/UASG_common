@@ -20,14 +20,14 @@
 
                         <td>
                             <strong>Department : </strong>
-                            <span t-field="doc.department.name"/>
+                            <span t-field="doc.department_name"/>
                         </td>
                     </tr>
                     <tr/>
                     <tr>
                         <td >
                             <strong>Department Manager: </strong>
-                            <span t-field="doc.department_manager.name"/>
+                            <span t-field="doc.department_manager_id.name"/>
                         </td>
 
 
@@ -43,7 +43,6 @@
                             <thead>
                                 <tr>
                                     <th>Objective/Project</th>
-                                    <!-- <th>Description</th> -->
                                     <th>Justification</th>
                                     <th>Quarter</th>
                                     <th>Amount</th>
@@ -55,9 +54,7 @@
                                     <td >
                                         <span t-field="line.name" />
                                     </td>
-                                    <!--  <td>
-                                        <span t-raw="line.description"/>
-                                    </td> -->
+                                  
                                      <td>
                                         <span t-field="line.justification"/>
                                     </td>
