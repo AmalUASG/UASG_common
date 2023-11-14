@@ -54,7 +54,7 @@ class AdConfiguration(models.Model):
         req = requests.request("POST" , url,headers=headers,data = payload)
         req = req.json()
         access_token = req.get('access_token')
-        get_members_url = str('https://graph.microsoft.com/v1.0/users?$select=displayName,mail,id,mobilePhone,jobTitle,companyName,department')
+        get_members_url = str('https://graph.microsoft.com/v1.0/users?$filter=accountEnabled%20eq%20true&$select=displayName,mail,id,mobilePhone,jobTitle,companyName,department')
         headers = {'Content-Type': 'application/json','Authorization' : access_token }
         response = requests.request("GET" , get_members_url,headers=headers)
         members=response.json().get('value')
