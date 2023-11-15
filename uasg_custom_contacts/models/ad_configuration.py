@@ -1,6 +1,6 @@
 import requests
 from odoo import models, fields, api
-from datetime import datetime , strptime
+from datetime import datetime
 from odoo.exceptions import UserError, ValidationError
 import logging
 
@@ -229,12 +229,5 @@ class AdConfiguration(models.Model):
                             elif key == 'department' :
                                 
                                 created_member.write({'department' : member['department']})
-
-
-                       
-        self.contacts_created = True
-
-
-    
 
 
