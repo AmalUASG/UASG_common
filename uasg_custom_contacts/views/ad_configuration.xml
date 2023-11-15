@@ -42,7 +42,9 @@
        <field name="client_id"/>
        <field name="client_secret"/>
        <field name="active"/>
-       <field name=" contacts_created" readonly="1"/>
+       <field name="contacts_created" readonly="1"/>
+      <field name="write_date" />
+
      </group>
     </sheet>
   </form>
