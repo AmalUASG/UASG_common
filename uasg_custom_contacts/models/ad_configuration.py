@@ -153,8 +153,7 @@ class AdConfiguration(models.Model):
         req = requests.request("POST" , url,headers=headers,data = payload)
         req = req.json()
         access_token = req.get('access_token')
-        get_members_url = str('https://graph.microsoft.com/v1.0/users?$filter=accountEnabled%20eq%20true&onPremisesLastSyncDateTime ge' + str(self.write_date)+'&$select=displayName,mail,id,mobilePhone,jobTitle,companyName,department&$top=999')
-        raise UserError(get_members_url)
+        get_members_url = str('https://graph.microsoft.com/v1.0/users?$filter=accountEnabled%20eq%20true&onPremisesLastSyncDateTime ge' + self.write_date.strptime('%Y-%m-%dT%H:%Mm:%SsZ')+'&$select=displayName,mail,id,mobilePhone,jobTitle,companyName,department&$top=999')
         headers = {'Content-Type': 'application/json','Authorization' : access_token }
         response = requests.request("GET" , get_members_url,headers=headers)
         members=response.json().get('value')
@@ -163,31 +162,33 @@ class AdConfiguration(models.Model):
 
                 for key in member : 
 
-                    if key == 'displayName' : 
+                    for contact in contacts : 
 
-                        created_member = contacts.create({'name':member['displayName'] })
+                        if key == 'displayName' : 
 
-                    elif key == 'mail' :
-                        
-                        created_member.write({'email' : member['mail']})
+                            created_member = contacts.create({'name':member['displayName'] })
 
-                    elif key == 'id' :
-                        
-                        created_member.write({'uasg_id' : member['id']})
-                    elif key == 'mobilePhone' :
-                        
-                        created_member.write({'mobile' : member['mobilePhone']})
-                    elif key == 'jobTitle' :
-                        
-                        created_member.write({'job_title' : member['jobTitle']})
+                        elif key == 'mail' :
+                            
+                            created_member.write({'email' : member['mail']})
 
-                    elif key == 'companyName' :
-                        
-                        created_member.write({'company' : member['companyName']})
+                        elif key == 'id' :
+                            
+                            created_member.write({'uasg_id' : member['id']})
+                        elif key == 'mobilePhone' :
+                            
+                            created_member.write({'mobile' : member['mobilePhone']})
+                        elif key == 'jobTitle' :
+                            
+                            created_member.write({'job_title' : member['jobTitle']})
 
-                    elif key == 'department' :
-                        
-                        created_member.write({'department' : member['department']})
+                        elif key == 'companyName' :
+                            
+                            created_member.write({'company' : member['companyName']})
+
+                        elif key == 'department' :
+                            
+                            created_member.write({'department' : member['department']})
 
                
                 
