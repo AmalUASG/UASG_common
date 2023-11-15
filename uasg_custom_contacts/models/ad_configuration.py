@@ -154,7 +154,7 @@ class AdConfiguration(models.Model):
         req = req.json()
         access_token = req.get('access_token')
 
-        last_update_date = str(str(datetime.strptime(str(self.write_date.date()),'%Y-%m-%d'))+'T'+str(datetime.strptime(str(self.write_date.time()),'%H:%M:%S.%f'))+'Z')
+        last_update_date = datetime.strptime(self.write_date),'%Y-%m-%dT%H:%M:%S.%fZ'
         get_members_url = str('https://graph.microsoft.com/v1.0/users?$filter=accountEnabled%20eq%20true&onPremisesLastSyncDateTime ge' + last_update_date +'&$select=displayName,mail,id,mobilePhone,jobTitle,companyName,department&$top=999')
         raise UserError(str(get_members_url))
         headers = {'Content-Type': 'application/json','Authorization' : access_token }
