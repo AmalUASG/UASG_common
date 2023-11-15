@@ -29,7 +29,9 @@
     <form>
        <header>
 
-          <button name="get_contacts" string="Get AD Users" type="object" class="oe_highlight" />
+          <button name="get_contacts" string="Get AD Users" type="object" class="oe_highlight" attrs="{'invisible':[('contacts_created','=',True)]}" />
+          <button name="update_contacts" string="Update AD Users" type="object" class="oe_highlight" />
+
 
      </header>
 
@@ -40,7 +42,7 @@
        <field name="client_id"/>
        <field name="client_secret"/>
        <field name="active"/>
-       <!-- <field name=" contacts_created"/> -->
+       <field name=" contacts_created" readonly="1"/>
      </group>
     </sheet>
   </form>

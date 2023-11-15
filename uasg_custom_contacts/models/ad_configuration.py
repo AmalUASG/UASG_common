@@ -1,6 +1,6 @@
 import requests
 from odoo import models, fields, api
-from datetime import datetime
+from datetime import datetime , strptime
 from odoo.exceptions import UserError, ValidationError
 import logging
 
@@ -135,4 +135,106 @@ class AdConfiguration(models.Model):
                        
         self.contacts_created = True
 
-  
+
+    def update_contacts(self) :
+
+
+        tenant_id = self.tenant_id
+        client_id = self.client_id
+        client_secret = self.client_secret
+        contacts = self.env['uasg.contacts'].search([])
+
+
+
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        payload = str('grant_type=client_credentials&client_secret='+str(client_secret)+'&client_id='+str(client_id)+'&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default')
+        url = str("https://login.microsoftonline.com/"+str(tenant_id)+"/oauth2/v2.0/token")
+        req = requests.request("POST" , url,headers=headers,data = payload)
+        req = req.json()
+        access_token = req.get('access_token')
+        get_members_url = str('https://graph.microsoft.com/v1.0/users?$filter=accountEnabled%20eq%20true&onPremisesLastSyncDateTime ge' + str(datetime.strptime(self.write_date,'%Y-%m-%dT%Hu%Mm%SsZ')) + '&$select=displayName,mail,id,mobilePhone,jobTitle,companyName,department&$top=999')
+        raise UserError(get_members_url)
+        headers = {'Content-Type': 'application/json','Authorization' : access_token }
+        response = requests.request("GET" , get_members_url,headers=headers)
+        members=response.json().get('value')
+        if members :
+            for member in members :
+
+                for key in member : 
+
+                    if key == 'displayName' : 
+
+                        created_member = contacts.create({'name':member['displayName'] })
+
+                    elif key == 'mail' :
+                        
+                        created_member.write({'email' : member['mail']})
+
+                    elif key == 'id' :
+                        
+                        created_member.write({'uasg_id' : member['id']})
+                    elif key == 'mobilePhone' :
+                        
+                        created_member.write({'mobile' : member['mobilePhone']})
+                    elif key == 'jobTitle' :
+                        
+                        created_member.write({'job_title' : member['jobTitle']})
+
+                    elif key == 'companyName' :
+                        
+                        created_member.write({'company' : member['companyName']})
+
+                    elif key == 'department' :
+                        
+                        created_member.write({'department' : member['department']})
+
+               
+                
+       
+        while (response.json().get('@odata.nextLink')) :
+            # raise UserError(str(response.json().get('@odata.next_link')))
+
+            get_members_url = str(response.json().get('@odata.nextLink'))
+            if get_members_url :
+                response = requests.request("GET" , get_members_url,headers=headers)
+                members=response.json().get('value')
+                if members :
+                    for member in members :
+
+                        for key in member : 
+
+
+                            if key == 'displayName' : 
+
+                                created_member = contacts.create({'name':member['displayName'] })
+
+                            elif key == 'mail' :
+                                
+                                created_member.write({'email' : member['mail']})
+
+                            elif key == 'id' :
+                                
+                                created_member.write({'uasg_id' : member['id']})
+                            elif key == 'mobilePhone' :
+                                
+                                created_member.write({'mobile' : member['mobilePhone']})
+                            elif key == 'jobTitle' :
+                                
+                                created_member.write({'job_title' : member['jobTitle']})
+
+                            elif key == 'companyName' :
+                                
+                                created_member.write({'company' : member['companyName']})
+
+                            elif key == 'department' :
+                                
+                                created_member.write({'department' : member['department']})
+
+
+                       
+        self.contacts_created = True
+
+
+    
+
+
