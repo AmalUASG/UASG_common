@@ -100,7 +100,6 @@ class AdConfiguration(models.Model):
                 
        
         while (response.json().get('@odata.nextLink')) :
-            # raise UserError(str(response.json().get('@odata.next_link')))
 
             get_members_url = str(response.json().get('@odata.nextLink'))
             if get_members_url :
