@@ -20,6 +20,7 @@ class UasgContacts(models.Model):
     manager_email = fields.Char()
     company_id = fields.Many2one('res.company',compute='_get_res_company')
     active = fields.Boolean()
+    account_enabled = fields.Boolean()
 
 
     @api.depends('company')

@@ -95,7 +95,7 @@ class AdConfiguration(models.Model):
                         created_member.write({'manager_name' : member['manager']['displayName'],'manager_email' : member['manager']['mail']})
                     elif key == 'accountEnabled' :
                         
-                        created_member.write({'active' : member['accountEnabled']})
+                        created_member.write({'account_enabled' : member['accountEnabled']})
                
                 
        
@@ -143,7 +143,7 @@ class AdConfiguration(models.Model):
                                 created_member.write({'manager_name' : member['manager']['displayName'],'manager_email' : member['manager']['mail']})
                             elif key == 'accountEnabled' :
                         
-                                created_member.write({'active' : member['accountEnabled']})
+                                created_member.write({'account_enabled' : member['accountEnabled']})
                
 
                        
@@ -261,7 +261,7 @@ class AdConfiguration(models.Model):
                                 created_member.write({'manager_name' : member['manager']['displayName'],'manager_email' : member['manager']['mail']})
                             elif key == 'accountEnabled' :
                         
-                                created_member.write({'active' : member['accountEnabled']})
+                                created_member.write({'account_enabled' : member['accountEnabled']})
 
        
         while (response.json().get('@odata.nextLink')) :
@@ -366,4 +366,4 @@ class AdConfiguration(models.Model):
                                     created_member.write({'manager_name' : member['manager']['displayName'],'manager_email' : member['manager']['mail']})
                                 elif key == 'accountEnabled' :
                             
-                                    created_member.write({'active' : member['accountEnabled']})
+                                    created_member.write({'account_enabled' : member['accountEnabled']})
