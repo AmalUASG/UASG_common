@@ -181,10 +181,10 @@ class AdConfiguration(models.Model):
                             else :
                                 contact.write({'name' : member['displayName']})
 
-                            if member['mail'] == contact.mail :
+                            if member['mail'] == contact.email :
                                 True
                             else :
-                                contact.write({'mail' : member['mail']})
+                                contact.write({'email' : member['mail']})
 
                             if member['id'] == contact.uasg_id :
                                 True
@@ -286,10 +286,10 @@ class AdConfiguration(models.Model):
                                     else :
                                         contact.write({'name' : member['displayName']})
 
-                                    if member['mail'] == contact.mail :
+                                    if member['mail'] == contact.email :
                                         True
                                     else :
-                                        contact.write({'mail' : member['mail']})
+                                        contact.write({'email' : member['mail']})
 
                                     if member['id'] == contact.uasg_id :
                                         True
