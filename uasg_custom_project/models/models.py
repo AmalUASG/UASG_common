@@ -128,10 +128,10 @@ class UASGProject(models.Model):
         url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/authorize") 
         req = requests.request("GET" , url,headers=headers,data=payload)
         # req = req.json()
-        raise UserError(str(req))
-        # req = req.json()
-        # access_token = req.get('access_token')
         # raise UserError(str(req))
+        # req = req.json()
+        access_token = req.get('access_token')
+        raise UserError(str(access_token))
 
         url = "https://graph.microsoft.com/v1.0/me/sendMail"
         headers = {'Content-Type': 'application/json','Authorization' : access_token }
