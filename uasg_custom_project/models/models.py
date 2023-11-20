@@ -98,50 +98,52 @@ class UASGProject(models.Model):
 
         
 
-        message = json.dumps({
-          "message": {
-            "subject": mail_template.subject,
-            "body": {
-              "contentType": "Html",
-              "content": mail_template.body_html,
-            },
-            "toRecipients": [
-              {
-                "emailAddress": {
-                  "address": mail_template.email_to
-                }
-              }
-            ],
-            "ccRecipients": [
-              {
-                "emailAddress": {
-                  "address": mail_template.email_cc
-                }
-              }
-            ]
-          },
-          "saveToSentItems": "true"
-        })
+        # message = json.dumps({
+        #   "message": {
+        #     "subject": mail_template.subject,
+        #     "body": {
+        #       "contentType": "Html",
+        #       "content": mail_template.body_html,
+        #     },
+        #     "toRecipients": [
+        #       {
+        #         "emailAddress": {
+        #           "address": mail_template.email_to
+        #         }
+        #       }
+        #     ],
+        #     "ccRecipients": [
+        #       {
+        #         "emailAddress": {
+        #           "address": mail_template.email_cc
+        #         }
+        #       }
+        #     ]
+        #   },
+        #   "saveToSentItems": "true"
+        # })
 
-        headers = {"Content-type": "application/x-www-form-urlencoded"}
-        payload = str('grant_type=client_credentials&client_secret=vqM8Q~C8xLH55ysYRLKnYpW8.wFh100HVqukqdm3&client_id=2e98a997-764b-41e6-976f-4451a215e063&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default')
-        url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/token")
-        req = requests.request("POST" , url,headers=headers,data = payload)
+        # headers = {"Content-type": "application/x-www-form-urlencoded"}
+        # payload = str('grant_type=client_credentials&client_secret=vqM8Q~C8xLH55ysYRLKnYpW8.wFh100HVqukqdm3&client_id=2e98a997-764b-41e6-976f-4451a215e063&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default')
+        # url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/token")
+        # req = requests.request("POST" , url,headers=headers,data = payload)
 
-        req = req.json()
+        # req = req.json()
 
-        access_token = req.get('access_token')
+        # access_token = req.get('access_token')
 
+        # # raise UserError(str(req))
 
-        url = "https://graph.microsoft.com/v1.0/me/sendMail"
-        headers = {'Content-Type': 'application/json','Authorization' : access_token }
-        response = requests.request("POST" , url,headers=headers,data=message)
-        raise UserError(str(response))
-        if response :
+        # url = "https://graph.microsoft.com/v1.0/me/sendMail"
+        # headers = {'Content-Type': 'application/json','Authorization' : access_token }
+        # raise UserError(str(headers))
+        # response = requests.request("POST" , url,headers=headers,data=message)
+        # raise UserError(str(response))
+        # if response :
 
-            raise UserError(str(response))
+        #     raise UserError(str(response))
 
-            # mail_template.send_mail(self.id, force_send=True)
+        mail_template.send_mail(self.id, force_send=True)
 
         self.write ({'status' : 'pipeline'})
 
