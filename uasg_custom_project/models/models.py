@@ -134,13 +134,13 @@ class UASGProject(models.Model):
         # raise UserError(str(req))
 
         url = "https://graph.microsoft.com/v1.0/me/sendMail"
-        headers = {'Content-Type': 'application/json','Authorization' : access_token }
+        # headers = {'Content-Type': 'application/json','Authorization' : access_token }
         # raise UserError(str(headers))
-        response = requests.request("POST" , url,headers=headers,data=message)
+        # response = requests.request("POST" , url,headers=headers,data=message)
         # raise UserError(str(response))
-        if response :
+        # if response :
 
-            raise UserError(str(response))
+        #     raise UserError(str(response))
 
         mail_template.send_mail(self.id, force_send=True)
 
