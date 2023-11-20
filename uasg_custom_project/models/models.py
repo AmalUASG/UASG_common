@@ -129,7 +129,7 @@ class UASGProject(models.Model):
         req = requests.request("GET" , url,headers=headers,data=payload)
         # req = req.json()
         # raise UserError(str(req))
-        req = json.loads(req.text)        # access_token = request.GET.get('token')
+        # req = json.loads(req.text)        # access_token = request.GET.get('token')
         raise UserError(str(req))
 
         url = "https://graph.microsoft.com/v1.0/me/sendMail"
