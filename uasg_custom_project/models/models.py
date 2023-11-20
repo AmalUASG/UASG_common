@@ -135,9 +135,9 @@ class UASGProject(models.Model):
         # req = json.loads(req.text)        # access_token = request.GET.get('token')
         # raise UserError(str(req))
 
-        url = str("https://graph.microsoft.com/v1.0/users/"+self.env.user.uasg_contact.uasg_id+"/sendMail")
+        url = str("https://graph.microsoft.com/v1.0/users/"+self.env.user.uasg_contact.uasg_id+"/sendmail")
         headers = {'Content-Type': 'application/json','Authorization' : access_token }
-        # raise UserError(str(headers))
+        raise UserError(str(headers))
         response = requests.request("POST" , url,headers=headers,data=message)
         response = response.json()
         raise UserError(str(response))
