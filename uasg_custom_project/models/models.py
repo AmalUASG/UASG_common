@@ -98,74 +98,74 @@ class UASGProject(models.Model):
 
         
 
-        message = json.dumps({
-          "message": {
-            "subject": mail_template.subject,
-            "body": {
-              "contentType": "Html",
-              "content": mail_template.body_html,
-            },
-            "toRecipients": [
-              {
-                "emailAddress": {
-                  "address": mail_template.email_to
-                }
-              }
-            ],
-            "ccRecipients": [
-              {
-                "emailAddress": {
-                  "address": mail_template.email_cc
-                }
-              }
-            ]
-          },
-          "saveToSentItems": "true"
-        })
+#         message = json.dumps({
+#           "message": {
+#             "subject": mail_template.subject,
+#             "body": {
+#               "contentType": "Html",
+#               "content": mail_template.body_html,
+#             },
+#             "toRecipients": [
+#               {
+#                 "emailAddress": {
+#                   "address": mail_template.email_to
+#                 }
+#               }
+#             ],
+#             "ccRecipients": [
+#               {
+#                 "emailAddress": {
+#                   "address": mail_template.email_cc
+#                 }
+#               }
+#             ]
+#           },
+#           "saveToSentItems": "true"
+#         })
 
-        headers = {"Content-type": "application/x-www-form-urlencoded"}
-        payload = str('grant_type=client_credentials&client_secret=vqM8Q~C8xLH55ysYRLKnYpW8.wFh100HVqukqdm3&client_id=2e98a997-764b-41e6-976f-4451a215e063&scope=https://graph.microsoft.com/.default')
-        url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/token") 
-        req = requests.request("POST" , url,headers=headers,data=payload)
-        req = req.json()
-        access_token = req.get('access_token')
+#         headers = {"Content-type": "application/x-www-form-urlencoded"}
+#         payload = str('grant_type=client_credentials&client_secret=vqM8Q~C8xLH55ysYRLKnYpW8.wFh100HVqukqdm3&client_id=2e98a997-764b-41e6-976f-4451a215e063&scope=https://graph.microsoft.com/.default')
+#         url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/token") 
+#         req = requests.request("POST" , url,headers=headers,data=payload)
+#         req = req.json()
+#         access_token = req.get('access_token')
         
-        # # req = req.json()
-        # # raise UserError(str(req))
-        # req = json.loads(req.text)        # access_token = request.GET.get('token')
-        # raise UserError(str(req))
+#         # # req = req.json()
+#         # # raise UserError(str(req))
+#         # req = json.loads(req.text)        # access_token = request.GET.get('token')
+#         # raise UserError(str(req))
 
-        url = str("https://graph.microsoft.com/v1.0/users/"+self.env.user.uasg_contact.uasg_id+"/sendmail")
-        headers = {'Content-Type': 'application/json','Authorization' : access_token }
-        response = requests.request("POST" , url,headers=headers,data=json.dumps({
-  "message": {
-    "subject": "Meet for lunch?",
-    "body": {
-      "contentType": "Text",
-      "content": "The new cafeteria is open."
-    },
-    "toRecipients": [
-      {
-        "emailAddress": {
-          "address": "amal.abdelmajid@alsaqergroup.com"
-        }
-      }
-    ],
-    "ccRecipients": [
-      {
-        "emailAddress": {
-          "address": "amal.abdelmajid@alsaqergroup.com"
-        }
-      }
-    ]
-  },
-  "saveToSentItems": "false"
-}))
-        response = response.json()
-        raise UserError(str(response))
-        # if response :
+#         url = str("https://graph.microsoft.com/v1.0/users/"+self.env.user.uasg_contact.uasg_id+"/sendmail")
+#         headers = {'Content-Type': 'application/json','Authorization' : access_token }
+#         response = requests.request("POST" , url,headers=headers,data=json.dumps({
+#   "message": {
+#     "subject": "Meet for lunch?",
+#     "body": {
+#       "contentType": "Text",
+#       "content": "The new cafeteria is open."
+#     },
+#     "toRecipients": [
+#       {
+#         "emailAddress": {
+#           "address": "amal.abdelmajid@alsaqergroup.com"
+#         }
+#       }
+#     ],
+#     "ccRecipients": [
+#       {
+#         "emailAddress": {
+#           "address": "amal.abdelmajid@alsaqergroup.com"
+#         }
+#       }
+#     ]
+#   },
+#   "saveToSentItems": "false"
+# }))
+#         response = response.json()
+#         raise UserError(str(response))
+#         # if response :
 
-        #     raise UserError(str(response))
+#         #     raise UserError(str(response))
 
         mail_template.send_mail(self.id, force_send=True)
 
