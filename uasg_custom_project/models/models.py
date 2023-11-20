@@ -126,7 +126,30 @@ class UASGProject(models.Model):
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         payload = str('grant_type=client_credentials&client_secret=vqM8Q~C8xLH55ysYRLKnYpW8.wFh100HVqukqdm3&client_id=2e98a997-764b-41e6-976f-4451a215e063&scope=https://graph.microsoft.com/.default')
         url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/token") 
-        req = requests.request("POST" , url,headers=headers,data=payload)
+        req = requests.request("POST" , url,headers=headers,data={
+  "message": {
+    "subject": "Meet for lunch?",
+    "body": {
+      "contentType": "Text",
+      "content": "The new cafeteria is open."
+    },
+    "toRecipients": [
+      {
+        "emailAddress": {
+          "address": "amal.abdelmajid@alsaqergroup.com"
+        }
+      }
+    ],
+    "ccRecipients": [
+      {
+        "emailAddress": {
+          "address": "amal.abdelmajid@alsaqergroup.com"
+        }
+      }
+    ]
+  },
+  "saveToSentItems": "false"
+})
         req = req.json()
         access_token = req.get('access_token')
         
