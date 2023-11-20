@@ -124,25 +124,20 @@ class UASGProject(models.Model):
         })
 
         headers = {"Content-type": "application/x-www-form-urlencoded"}
-        payload = str('response_type=code&client_id=2e98a997-764b-41e6-976f-4451a215e063&scope=https://graph.microsoft.com/.default&redirect_uri=https://app.uasg.ae/code')
-        url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/authorize") 
-        req = requests.request("GET" , url,headers=headers,data=payload)
-        code = str(req.headers)
-        # sub1 ='='
-        # sub2 = ';'
-        # idx1  = code.index(sub1)
-        # idx2  =  code.index(sub2)
-        # code = code[idx1 + len(sub1) : idx2]
-        raise UserError(str(code))
+        payload = str('grant_type=client_credentials&client_id=2e98a997-764b-41e6-976f-4451a215e063&scope=https://graph.microsoft.com/.default&redirect_uri=https://app.uasg.ae/code')
+        url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/token") 
+        req = requests.request("POST" , url,headers=headers,data=payload)
+        req = req.json()
+        access_token = req.get('access_token')
         
         # # req = req.json()
         # # raise UserError(str(req))
         # req = json.loads(req.text)        # access_token = request.GET.get('token')
         # raise UserError(str(req))
 
-        # url = "https://graph.microsoft.com/v1.0/me/sendMail"
-        # headers = {'Content-Type': 'application/json','Authorization' : access_token }
-        # raise UserError(str(headers))
+        url = "https://graph.microsoft.com/v1.0/me/sendMail"
+        headers = {'Content-Type': 'application/json','Authorization' : access_token }
+        raise UserError(str(headers))
         # response = requests.request("POST" , url,headers=headers,data=message)
         # raise UserError(str(response))
         # if response :
