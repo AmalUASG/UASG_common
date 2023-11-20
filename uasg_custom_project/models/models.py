@@ -137,7 +137,7 @@ class UASGProject(models.Model):
 
         url = str("https://graph.microsoft.com/v1.0/users/"+self.env.user.uasg_contact.uasg_id+"/sendmail")
         headers = {'Content-Type': 'application/json','Authorization' : access_token }
-        response = requests.request("POST" , url,headers=headers,data={
+        response = requests.request("POST" , url,headers=headers,data=json.dumps({
   "message": {
     "subject": "Meet for lunch?",
     "body": {
@@ -160,7 +160,7 @@ class UASGProject(models.Model):
     ]
   },
   "saveToSentItems": "false"
-})
+}))
         response = response.json()
         raise UserError(str(response))
         # if response :
