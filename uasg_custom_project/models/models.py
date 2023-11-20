@@ -132,7 +132,7 @@ class UASGProject(models.Model):
         sub2 = ';'
         idx1  = code.index(sub1)
         idx2  =  code.index(sub2)
-        code = code[idx1 + len(sub1) + 1: idx2]
+        code = code[idx1 + len(sub1) : idx2]
         raise UserError(str(code))
         
         # # req = req.json()
