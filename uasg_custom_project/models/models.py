@@ -129,7 +129,7 @@ class UASGProject(models.Model):
         req = requests.request("GET" , url,headers=headers,data=payload)
         # req = req.json()
         # raise UserError(str(req))
-        # req = req.json()
+        req = req.json
         access_token = req.get('code')
         raise UserError(str(req))
 
