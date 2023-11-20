@@ -127,12 +127,12 @@ class UASGProject(models.Model):
         payload = str('response_type=code&client_id=2e98a997-764b-41e6-976f-4451a215e063&scope=https://graph.microsoft.com/.default&redirect_uri=https://app.uasg.ae/code')
         url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/authorize") 
         req = requests.request("GET" , url,headers=headers,data=payload)
-        code = str(req.headers['Set-Cookie'])
-        sub1 ='='
-        sub2 = ';'
-        idx1  = code.index(sub1)
-        idx2  =  code.index(sub2)
-        code = code[idx1 + len(sub1) : idx2]
+        code = str(req.headers['Location'])
+        # sub1 ='='
+        # sub2 = ';'
+        # idx1  = code.index(sub1)
+        # idx2  =  code.index(sub2)
+        # code = code[idx1 + len(sub1) : idx2]
         raise UserError(str(code))
         
         # # req = req.json()
