@@ -127,10 +127,10 @@ class UASGProject(models.Model):
         payload = str('response_type=code&client_id=2e98a997-764b-41e6-976f-4451a215e063&scope=https://graph.microsoft.com/.default&redirect_uri=https://app.uasg.ae/auth_oauth/signin')
         url = str("https://login.microsoftonline.com/58481125-7f09-407d-921a-dc425b00fd0f/oauth2/v2.0/authorize") 
         req = requests.request("GET" , url,headers=headers,data=payload)
-        req = req.json()
+        # req = req.json()
         # raise UserError(str(req))
         # req = json.loads(req.text)        # access_token = request.GET.get('token')
-        raise UserError(str(req))
+        raise UserError(str(req.text))
 
         url = "https://graph.microsoft.com/v1.0/me/sendMail"
         # headers = {'Content-Type': 'application/json','Authorization' : access_token }
