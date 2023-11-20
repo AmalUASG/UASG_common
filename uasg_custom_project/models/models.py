@@ -139,6 +139,7 @@ class UASGProject(models.Model):
         headers = {'Content-Type': 'application/json','Authorization' : access_token }
         # raise UserError(str(headers))
         response = requests.request("POST" , url,headers=headers,data=message)
+        response = response.json()
         raise UserError(str(response))
         # if response :
 
