@@ -43,7 +43,7 @@ class Budget(models.Model):
     name = fields.Char('Name')
     department = fields.Many2one('department')
     department_manager = fields.Many2one('res.users',name="Department Manager",related="department.department_manager", store=True)
-    budget_line = fields.One2many('budget.line','budget_id',compute='_compute_budget_line',store=True)Ansha Puthiya Veettil
+    budget_line = fields.One2many('budget.line','budget_id',compute='_compute_budget_line',store=True)
     state = fields.Selection(selection=[('draft','Draft'),('in_progress','In Progress'),('pending','Pending Approval'),('approved','approved'),], default='draft' ,  tracking=True)
     tag_ids=fields.Many2many('budget.tags', 'budget_tags_rel','budget_id','tag_id', string='Tags', help="Optional tags you may want to assign for custom reporting", ondelete='restrict')
     color = fields.Integer(string='Color Index')
