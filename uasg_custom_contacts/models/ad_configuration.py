@@ -82,18 +82,18 @@ class AdConfiguration(models.Model):
                         created_member.write({'job_title' : member['jobTitle']})
 
                     elif key == 'companyName' :
+
                         if member['companyName'] not in uasg_company.mapped('name') :
                             uasg_company.create({'name':member['companyName']})
                         created_member.write({'company' : uasg_company.filtered(lambda r: r.name  == member['companyName'])})
 
-                        
-                        created_member.write({'company' : member['companyName']})
+
 
                     elif key == 'department' :
 
                         if member['department'] not in uasg_department.mapped('name') :
                             uasg_department.create({'name':member['department']})
-                        created_member.write({'department' : uasg_department.filtered(lambda r: r.name  == member['department']),'company' : uasg_company.filtered(lambda r: r.name  == member['companyName'])}})
+                        created_member.write({'department' : uasg_department.filtered(lambda r: r.name  == member['department']),'company' : uasg_company.filtered(lambda r: r.name  == member['companyName'])})
 
                     elif key == 'manager' :
                         
