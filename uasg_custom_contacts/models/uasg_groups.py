@@ -14,7 +14,7 @@ class UasgContacts(models.Model):
     email = fields.Char()
     mobile = fields.Char()
     company = fields.Char()
-    department = fields.Char( )
+    department = fields.Char()
     job_title= fields.Char()
     manager_name  = fields.Char()
     manager_email = fields.Char()
