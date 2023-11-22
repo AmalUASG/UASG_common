@@ -18,6 +18,7 @@ class ResUsers(models.Model):
             user = record.env['uasg.contacts'].search([('email','=',record.login)],limit=1)
             if user :     
                     record.uasg_contact  = user.id
+                    record.company_id =user.company_id
+
             else :
                 record.uasg_contact  = False
-                record.company_id =user.company_id
