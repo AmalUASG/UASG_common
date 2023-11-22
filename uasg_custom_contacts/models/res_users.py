@@ -18,11 +18,14 @@ class ResUsers(models.Model):
             user = record.env['uasg.contacts'].search([('email','=',record.login)],limit=1)
             if user :     
                     record.uasg_contact  = user.id
-                    # if user.company_id.id not in record.company_ids.ids:
-                    #     record.company_ids = [(4, user.company_id.id)]
-                    # else :
-                    #     record.company_id = user.company_id.id
+                    record.company_id =user.company_id
 
             else :
                 record.uasg_contact  = False
-                record.company_id  = False
+
+
+    @api.constrains('company_id', 'company_ids', 'active')
+    def _check_company(self):
+        for user in self.filtered(lambda u: u.active):
+            if user.company_id not in user.company_ids:
+                return True
