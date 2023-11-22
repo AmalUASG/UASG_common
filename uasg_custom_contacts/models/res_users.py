@@ -19,7 +19,7 @@ class ResUsers(models.Model):
             if user :     
                     record.uasg_contact  = user.id
                     record.company_id =user.company_id
-                    record.write({'company_ids': [0, user.company_id.id]})
+                    record.write({'company_ids': [4, user.company_id.id ,user.company_id.id]})
 
             else :
                 record.uasg_contact  = False
