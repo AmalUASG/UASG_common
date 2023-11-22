@@ -210,7 +210,7 @@ class AdConfiguration(models.Model):
                             else :
                                 contact.write({'department' : member['department']})
 
-                            if member['Manager']['displayName'] == contact.manager_name :
+                            if member['manager']['displayName'] == contact.manager_name :
                                 True
                             else :
                                 contact.write({'manager_name' : member['manager']['displayName']})
