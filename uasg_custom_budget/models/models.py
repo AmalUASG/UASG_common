@@ -41,10 +41,9 @@ class Budget(models.Model):
             year_list.append((str(y), str(y)))
         return year_list
     name = fields.Char('Name')
-    company_id = fields.Many2one('res.company',name="Company")
     department = fields.Many2one('department')
     department_manager = fields.Many2one('res.users',name="Department Manager",related="department.department_manager", store=True)
-    budget_line = fields.One2many('budget.line','budget_id',compute='_compute_budget_line',store=True)
+    budget_line = fields.One2many('budget.line','budget_id',compute='_compute_budget_line',store=True)Ansha Puthiya Veettil
     state = fields.Selection(selection=[('draft','Draft'),('in_progress','In Progress'),('pending','Pending Approval'),('approved','approved'),], default='draft' ,  tracking=True)
     tag_ids=fields.Many2many('budget.tags', 'budget_tags_rel','budget_id','tag_id', string='Tags', help="Optional tags you may want to assign for custom reporting", ondelete='restrict')
     color = fields.Integer(string='Color Index')
@@ -55,6 +54,8 @@ class Budget(models.Model):
     reject_reason = fields.Char()
     note = fields.Char(tracking=True)
     department_manager_id = fields.Many2one('uasg.contacts')
+    company_id = fields.Many2one('res.company',related='department_manager_id.company_id' , name="Company")
+
     department_name = fields.Char(related='department_manager_id.department')
     manager = fields.Char(related='department_manager_id.manager_name')
     manager_email = fields.Char(related='department_manager_id.manager_email')

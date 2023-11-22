@@ -150,10 +150,11 @@
         <field name="total_budget_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
     </group>
     <group >
-      <field name="company_id" string="Business Unit" attrs="{'readonly':[('state','in',['pending','approved'])]}" />
 
       <field name="department_manager_id" attrs="{'readonly':[('state','in',['pending','approved'])]}"/>
-            <field name="department_name" options="{'no_create': True, 'no_create_edit':True}" attrs="{'readonly':[('state','in',['pending','approved'])]}"/>
+    <field name="department_name" options="{'no_create': True, 'no_create_edit':True}" readonly="1" />
+    <field name="company_id" string="Business Unit" readonly="1" />
+
 
       <field name="reject_reason" string="Rejected due to" style="border: 1px  solid red;"  attrs="{'invisible':['|',('reject_reason','=',False),('state','!=','draft')],'readonly': [('state','in',['pending','approved'])]}"/>
 
