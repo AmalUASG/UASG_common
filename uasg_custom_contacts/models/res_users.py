@@ -26,3 +26,4 @@ class ResUsers(models.Model):
 
             else :
                 record.uasg_contact  = False
+                record.company_id  = False
