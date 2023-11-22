@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 
 
-class UasgDeaprtments(models.Model):
+class UasgDeprtments(models.Model):
     
     _name="uasg.department"
 
