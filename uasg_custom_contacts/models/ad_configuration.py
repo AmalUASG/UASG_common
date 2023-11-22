@@ -46,9 +46,8 @@ class AdConfiguration(models.Model):
         client_id = self.client_id
         client_secret = self.client_secret
         contacts = self.env['uasg.contacts'].search([])
-
-
-
+        uasg_company  = self.env['uasg.company'].search([])
+        uasg_department  = self.env['uasg.department'].search([])
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         payload = str('grant_type=client_credentials&client_secret='+str(client_secret)+'&client_id='+str(client_id)+'&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default')
         url = str("https://login.microsoftonline.com/"+str(tenant_id)+"/oauth2/v2.0/token")
@@ -83,12 +82,18 @@ class AdConfiguration(models.Model):
                         created_member.write({'job_title' : member['jobTitle']})
 
                     elif key == 'companyName' :
+                        if member['companyName'] not in uasg_company.mapped('name') :
+                            uasg_company.create({'name':member['companyName']})
+                        created_member.write({'company' : uasg_company.filtered(lambda r: r.name  == member['companyName'])})
+
                         
                         created_member.write({'company' : member['companyName']})
 
                     elif key == 'department' :
-                        
-                        created_member.write({'department' : member['department']})
+
+                        if member['department'] not in uasg_department.mapped('name') :
+                            uasg_department.create({'name':member['department']})
+                        created_member.write({'department' : uasg_department.filtered(lambda r: r.name  == member['department']),'company' : uasg_company.filtered(lambda r: r.name  == member['companyName'])}})
 
                     elif key == 'manager' :
                         

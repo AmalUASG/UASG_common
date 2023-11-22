@@ -113,9 +113,9 @@
     <form>
 
         <header>
-         <button name="action_submit" string="Assign" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['pending','approved','in_progress'])]}" groups="uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_it_manager"/>
+         <button name="action_submit" string="Assign" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['pending','approved','in_progress'])]}" groups="uasg_custom_budget.group_budget_it_manager"/>
 
-         <button name="action_submit_2" string="Submit to Approval" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['draft','pending','approved'])]}" groups="uasg_custom_budget.group_budget_it_manager"/>
+         <button name="action_submit_2" string="Submit to Approval" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['draft','pending','approved'])]}" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_dept_manager"/>
 
 
          <button name="action_approve" string="Approve" type="object" class="oe_highlight" attrs="{'invisible': ['|',('state', 'in', ['draft','approved','in_progress']),('budget_type','=','other')]}" groups="uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_it_manager"/>
