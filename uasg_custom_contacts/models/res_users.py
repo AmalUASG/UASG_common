@@ -18,11 +18,10 @@ class ResUsers(models.Model):
             user = record.env['uasg.contacts'].search([('email','=',record.login)],limit=1)
             if user :     
                     record.uasg_contact  = user.id
-                    if user.company_id.id not in record.company_ids.ids:
-                        for record in self:
-                            record.company_ids = [(4, user.company_id.id)]
-                    else :
-                        record.company_id = user.company_id.id
+                    # if user.company_id.id not in record.company_ids.ids:
+                    #     record.company_ids = [(4, user.company_id.id)]
+                    # else :
+                    #     record.company_id = user.company_id.id
 
             else :
                 record.uasg_contact  = False
