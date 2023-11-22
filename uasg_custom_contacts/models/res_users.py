@@ -8,7 +8,7 @@ class ResUsers(models.Model):
 
     
     uasg_contact = fields.Many2one('uasg.contacts',compute='_link_with_uasg_contacts')
-    uasg_department = fields.Many2one(related='uasg_contact.department')
+    uasg_department = fields.Char(related='uasg_contact.department')
 
 
     @api.depends('login')
