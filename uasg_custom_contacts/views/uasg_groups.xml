@@ -34,16 +34,6 @@
 </record>
 
 
-   <record model="ir.ui.view" id="uasg_departments_list">
-      <field name="name"> Deaprtments</field>
-      <field name="model">uasg.department</field>
-      <field name="arch" type="xml">         
-        <tree>
-          <field name="name" />
-          <field name="company_id"/>
-      </tree>
-  </field>
-</record>
 
 
 <record model="ir.ui.view" id="uasg_companies_form">
@@ -116,14 +106,6 @@
 </record>
 
 
-<record model="ir.actions.act_window" id="uasg_departments_action_window">
-  <field name="name">Deaprtments</field>
-  <field name="type">ir.actions.act_window</field>
-  <field name="res_model">uasg.department</field>
-  <field name="view_mode">tree,form</field>
-
-</record>
-
 
 <menuitem
     id="uasg_groups_members_menu"
@@ -139,15 +121,6 @@
     name="UASG Companies "
     parent="base.menu_users"
    action = "uasg_companies_action_window"
-    />
-
-
-
-<menuitem
-    id="uasg_departments_menu"
-    name="UASG Departments "
-    parent="base.menu_users"
-   action = "uasg_departments_action_window"
     />
 
 
