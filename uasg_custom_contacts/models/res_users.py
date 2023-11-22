@@ -28,4 +28,5 @@ class ResUsers(models.Model):
     def _check_company(self):
         for user in self.filtered(lambda u: u.active):
             if user.company_id not in user.company_ids:
+                user.company_ids = [4, user.company_id.id]
                 return True
