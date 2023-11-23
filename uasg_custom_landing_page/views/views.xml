@@ -114,11 +114,9 @@
 
 
 
-         <div class=" card col-md-3" style="
-    height: 90px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user">
+         <div class=" card col-md-3" style="height: 90px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user">
 
                  <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
-
 
                   <div class="card-content">
             <div class="card-body">
@@ -126,7 +124,7 @@
                 <div class="align-self-center">
                   <i class="icon-wallet warning font-large-2 float-left"></i>
                 </div>
-                <div class="media-body align-self-center  ">
+                <div class="media-body  ">
                   <h4>IT Demand Budget</h4>
                 </div>
               </div>
@@ -137,8 +135,7 @@
         </div>
 <div class="col-md-1"/>
 
-        <div class="  card col-md-3" style="
-    height: 75px;" groups="uasg_custom_project.group_project_user,uasg_custom_project.group_project_manager">
+        <div class="  card col-md-3" style="height: 90px;" groups="uasg_custom_project.group_project_user,uasg_custom_project.group_project_manager">
                  <button name="%(uasg_custom_project.project_action_window)d"   type="action" class="oe_stat_button oe_read_only"  >
 
                   <div class="card-content">
