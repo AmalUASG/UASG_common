@@ -115,7 +115,7 @@
 
 
 
-         <div class=" col-md-4" style="height: 90px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user" >
+         <div class="card col-md-4" style="height: 90px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user" >
                  <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class=" oe_stat_button oe_read_only" style="width: 200px !important;height:100px" >
 
                   <div class="  ">
@@ -134,7 +134,7 @@
         </div>
 
 
-        <div class="   col-md-4" style="height: 90px;" groups="uasg_custom_project.group_project_user,uasg_custom_project.group_project_manager">
+        <div class=" card  col-md-4" style="height: 90px;" groups="uasg_custom_project.group_project_user,uasg_custom_project.group_project_manager">
                  <button name="%(uasg_custom_project.project_action_window)d"   type="action" class=" oe_stat_button oe_read_only" style="width: 200px !important;height:90px"  >
 
                   <div class="  card-content">
@@ -156,7 +156,7 @@
         <!-- <t t-if="uasg_department != 'ICT Department'"> -->
           
           <field name="uasg_department" invisible="1"/>
-           <div class=" col-md-4" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
+           <div class="card  col-md-4" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
                  <button class=" oe_stat_button oe_read_only" style="width: 200px !important;height:100px" >
 
                   <div class="  ">
@@ -175,7 +175,7 @@
         </button>
         </div>
 
-           <div class=" col-md-4" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
+           <div class="card col-md-4" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
                  <button class=" oe_stat_button oe_read_only" style="width: 200px !important;height:100px;" >
 
                   <div class="">
@@ -197,7 +197,7 @@
        
 
 
-        <div class="   col-md-4" style="width: 200px !important;height:100px" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
+        <div class="  card col-md-4" style="width: 200px !important;height:100px" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
                  <a href="/slides/all" style="text-decoration: inherit;"  class=" oe_stat_button oe_read_only" >
 
                   <div class="card-content">
