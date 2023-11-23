@@ -126,8 +126,8 @@
                 <div class="align-self-center">
                   <i class="icon-wallet warning font-large-2 float-left"></i>
                 </div>
-                <div class="media-body ml8 ">
-                  <h3>Budget</h3>
+                <div class="media-body align-self-center  ">
+                  <h4>IT Demand Budget</h4>
                 </div>
               </div>
             </div>
@@ -160,7 +160,7 @@
         <!-- <t t-if="uasg_department != 'ICT Department'"> -->
           
           <field name="uasg_department" invisible="1"/>
-           <div class="card col-md-3" style="height: fit-content" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
+           <div class="card col-md-3" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
                  <button class="oe_stat_button oe_read_only">
 
                   <div class="card-content">
@@ -180,7 +180,7 @@
         </div>
         <div class="col-md-1" attrs="{'invisible':[('uasg_department','=','ICT Department')]}"/>
 
-           <div class="card col-md-3" style="height: fit-content" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
+           <div class="card col-md-3" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
                  <button class="oe_stat_button oe_read_only">
 
                   <div class="card-content">
@@ -204,7 +204,7 @@
         <div class="col-md-1"/>
 
         <div class="  card col-md-4" style="
-    height: fit-content;" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
+    height: 90px;" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
                  <a href="/slides/all" style="text-decoration: inherit;"  class="oe_stat_button oe_read_only" >
 
                   <div class="card-content">
