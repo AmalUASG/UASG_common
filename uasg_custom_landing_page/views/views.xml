@@ -197,7 +197,7 @@
        
 
 
-        <div class="  card col-md-4" style="width: 200px !important;height:100px" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
+        <div class="  card col-md-4"  attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
                  <a href="/slides/all" style="text-decoration: inherit;"  class=" oe_stat_button oe_read_only" >
 
                   <div class="card-content">
