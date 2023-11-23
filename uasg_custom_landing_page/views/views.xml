@@ -157,10 +157,54 @@
         </div>
 
 
+        <!-- <t t-if="uasg_department != 'ICT Department'"> -->
+          
+          <field name="uasg_department" invisible="1"/>
+           <div class="card col-md-3" style="height: fit-content" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
+                 <button class="oe_stat_button oe_read_only">
+
+                  <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-graph warning font-large-2 "/>
+                </div>
+                <div class="media-body ">
+                  <h4>Projects</h4>
+                  (Coming Soon)
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
+        </div>
+        <div class="col-md-1" attrs="{'invisible':[('uasg_department','=','ICT Department')]}"/>
+
+           <div class="card col-md-3" style="height: fit-content" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
+                 <button class="oe_stat_button oe_read_only">
+
+                  <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-graph warning font-large-2 "/>
+                </div>
+                <div class="media-body ">
+                  <h4>E-learning</h4>
+                  (Coming Soon)
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
+        </div>
+
+       
+
         <div class="col-md-1"/>
 
         <div class="  card col-md-4" style="
-    height: 75px;">
+    height: fit-content;" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
                  <a href="/slides/all" style="text-decoration: inherit;"  class="oe_stat_button oe_read_only" >
 
                   <div class="card-content">

@@ -20,6 +20,8 @@ class LandingPage(models.Model):
 
     count_in_progress = fields.Integer(default=0,compute='get_all_in_progress')
 
+    uasg_department = fields.Char(related='user_id.uasg_department')
+
 
 
     def get_current_user(self):
