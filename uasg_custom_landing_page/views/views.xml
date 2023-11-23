@@ -116,9 +116,9 @@
 
          <div class="  col-md-3" style="height: 90px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user">
 
-                 <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class="oe_stat_button oe_read_only" style="width: 200px;" >
+                 <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class="card oe_stat_button oe_read_only" style="width: 200px !important;height:90px" >
 
-                  <div class="card card-content">
+                  <div class=" card-content">
             <div class=" card-body">
               <div class="media d-flex">
                 <div class="align-self-center">
@@ -136,10 +136,9 @@
 <div class="col-md-1"/>
 
         <div class="   col-md-3" style="height: 90px;" groups="uasg_custom_project.group_project_user,uasg_custom_project.group_project_manager">
-                 <button name="%(uasg_custom_project.project_action_window)d"   type="action" class="oe_stat_button oe_read_only" style="
-    width:  200px !important;"  >
+                 <button name="%(uasg_custom_project.project_action_window)d"   type="action" class="card oe_stat_button oe_read_only" style="width: 200px !important;height:90px"  >
 
-                  <div class=" card card-content">
+                  <div class="  card-content">
             <div class="card-body">
               <div class="media d-flex">
                 <div class="align-self-center">
@@ -159,10 +158,9 @@
           
           <field name="uasg_department" invisible="1"/>
            <div class=" col-md-3" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
-                 <button class="oe_stat_button oe_read_only" style="
-    width:  200px !important;" >
+                 <button class="card oe_stat_button oe_read_only" style="width: 200px !important;height:90px" >
 
-                  <div class=" card card-content">
+                  <div class="  card-content">
             <div class="card-body">
               <div class="media d-flex">
                 <div class="align-self-center">
@@ -180,10 +178,9 @@
         <div class="col-md-1" attrs="{'invisible':[('uasg_department','=','ICT Department')]}"/>
 
            <div class=" col-md-3" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
-                 <button class="oe_stat_button oe_read_only" style="
-    width:  200px !important;" >
+                 <button class="card oe_stat_button oe_read_only" style="width: 200px !important;height:90px" >
 
-                  <div class="card card-content">
+                  <div class="card-content">
             <div class="card-body">
               <div class="media d-flex">
                 <div class="align-self-center">
@@ -203,11 +200,10 @@
 
         <div class="col-md-1"/>
 
-        <div class="   col-md-4" style="
-    height: 90px;" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
-                 <a href="/slides/all" style="text-decoration: inherit;"  class="oe_stat_button oe_read_only" >
+        <div class="   col-md-4" style="width: 200px !important;height:90px" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
+                 <a href="/slides/all" style="text-decoration: inherit;"  class="card oe_stat_button oe_read_only" >
 
-                  <div class="card card-content">
+                  <div class="card-content">
             <div class="card-body">
               <div class="media d-flex">
                 <div class="align-self-center">
