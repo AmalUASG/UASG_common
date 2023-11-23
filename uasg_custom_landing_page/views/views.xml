@@ -115,7 +115,7 @@
 
 
          <div class=" card col-md-3" style="
-    height: 75px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user">
+    height: 90px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user">
 
                  <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class="oe_stat_button oe_read_only" >
 
