@@ -59,6 +59,7 @@ class Budget(models.Model):
     department_name = fields.Char(related='department_manager_id.department')
     manager = fields.Char(related='department_manager_id.manager_name')
     manager_email = fields.Char(related='department_manager_id.manager_email')
+    active = fields.Boolean(default=True)
 
     
 

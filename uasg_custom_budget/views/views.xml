@@ -150,7 +150,7 @@
         <field name="total_budget_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
     </group>
     <group >
-
+<field name="active" invisible="1"/>
       <field name="department_manager_id" attrs="{'readonly':[('state','in',['pending','approved'])]}"/>
     <field name="department_name" options="{'no_create': True, 'no_create_edit':True}" readonly="1" />
     <field name="company_id" string="Business Unit" readonly="1" />
@@ -167,15 +167,15 @@
         <tree string="Demands" editable="bottom" >
             <field name="name" string="Project/Object"/>
             <field name="budget_line_state" invisible="1"/>
-            <field name="create_uid"  />
-            <field name="justification"/>
+            <field name="justification" required="1"/>
             <field name="quarter"/>
             <field name="currency_id" invisible="1"/>
             <field name="budget_type" invisible="1"/>
             <field name="state" invisible="1"/>
             <field name="cost_by_company_currency" string="Amount in AED" widget="monetary" options="{'currency_field': 'company_currency_id'}" sum="Total Amount"/>
-             <button name="%(reject_budget_line_wizard_action)d" string="Reject" type="action" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval"
-            context="{'default_budget_line_id': id}" attrs="{'invisible':['|','|',('budget_line_state','=','pending'),('budget_type','=','other'),('state','=','approved')]}"/>
+              <field name="create_uid"  />
+
+
             <!-- <field name="budget_line_state" string="State" /> -->
         </tree>
     </field>
