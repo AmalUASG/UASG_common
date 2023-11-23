@@ -114,29 +114,28 @@
 
 
 
-         <div class="  col-md-3" style="height: 90px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user">
 
-                 <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class="card oe_stat_button oe_read_only" style="width: 200px !important;height:90px" >
+         <div class=" col-md-4" style="height: 90px;" groups="uasg_custom_budget.group_budget_it_manager,uasg_custom_budget.group_budget_approval,uasg_custom_budget.group_budget_dept_manager,uasg_custom_budget.group_budget_user" >
+                 <button name="%(uasg_custom_budget.budget_action_window)d"   type="action" class=" oe_stat_button oe_read_only" style="width: 200px !important;height:100px" >
 
-                  <div class=" card-content">
-            <div class=" card-body">
+                  <div class="  ">
+            <div class="">
               <div class="media d-flex">
                 <div class="align-self-center">
-                  <i class="icon-wallet warning font-large-2 float-left"></i>
+                  <i class="icon-graph warning font-large-2 "/>
                 </div>
-                <div class="media-body  ">
-                  <h4>IT Demand Budget</h4>
+                <div class="media-body mt8">
+                  <h5>IT Demand Budget</h5>
                 </div>
               </div>
             </div>
           </div>
-
         </button>
         </div>
-<div class="col-md-1"/>
 
-        <div class="   col-md-3" style="height: 90px;" groups="uasg_custom_project.group_project_user,uasg_custom_project.group_project_manager">
-                 <button name="%(uasg_custom_project.project_action_window)d"   type="action" class="card oe_stat_button oe_read_only" style="width: 200px !important;height:90px"  >
+
+        <div class="   col-md-4" style="height: 90px;" groups="uasg_custom_project.group_project_user,uasg_custom_project.group_project_manager">
+                 <button name="%(uasg_custom_project.project_action_window)d"   type="action" class=" oe_stat_button oe_read_only" style="width: 200px !important;height:90px"  >
 
                   <div class="  card-content">
             <div class="card-body">
@@ -145,7 +144,7 @@
                   <i class="icon-graph warning font-large-2 float-left"></i>
                 </div>
                 <div class="media-body ml8">
-                  <h3>Projects</h3>
+                  <h5>Projects</h5>
                 </div>
               </div>
             </div>
@@ -157,17 +156,17 @@
         <!-- <t t-if="uasg_department != 'ICT Department'"> -->
           
           <field name="uasg_department" invisible="1"/>
-           <div class=" col-md-3" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
-                 <button class="card oe_stat_button oe_read_only" style="width: 200px !important;height:90px" >
+           <div class=" col-md-4" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
+                 <button class=" oe_stat_button oe_read_only" style="width: 200px !important;height:100px" >
 
-                  <div class="  card-content">
-            <div class="card-body">
+                  <div class="  ">
+            <div class="">
               <div class="media d-flex">
                 <div class="align-self-center">
                   <i class="icon-graph warning font-large-2 "/>
                 </div>
-                <div class="media-body ">
-                  <h4>Projects</h4>
+                <div class="media-body mt8">
+                  <h5>Projects</h5>
                   (Coming Soon)
                 </div>
               </div>
@@ -175,19 +174,18 @@
           </div>
         </button>
         </div>
-        <div class="col-md-1" attrs="{'invisible':[('uasg_department','=','ICT Department')]}"/>
 
-           <div class=" col-md-3" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
-                 <button class="card oe_stat_button oe_read_only" style="width: 200px !important;height:90px" >
+           <div class=" col-md-4" style="height: 90px;" attrs="{'invisible':[('uasg_department','=','ICT Department')]}" >
+                 <button class=" oe_stat_button oe_read_only" style="width: 200px !important;height:100px;" >
 
-                  <div class="card-content">
-            <div class="card-body">
+                  <div class="">
+            <div class="">
               <div class="media d-flex">
                 <div class="align-self-center">
                   <i class="icon-graph warning font-large-2 "/>
                 </div>
-                <div class="media-body ">
-                  <h4>E-learning</h4>
+                <div class="media-body mt8 ">
+                  <h5>E-learning</h5>
                   (Coming Soon)
                 </div>
               </div>
@@ -198,10 +196,9 @@
 
        
 
-        <div class="col-md-1"/>
 
-        <div class="   col-md-4" style="width: 200px !important;height:90px" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
-                 <a href="/slides/all" style="text-decoration: inherit;"  class="card oe_stat_button oe_read_only" >
+        <div class="   col-md-4" style="width: 200px !important;height:100px" attrs="{'invisible':[('uasg_department','!=','ICT Department')]}">
+                 <a href="/slides/all" style="text-decoration: inherit;"  class=" oe_stat_button oe_read_only" >
 
                   <div class="card-content">
             <div class="card-body">
@@ -210,7 +207,7 @@
                   <i class="icon-folder warning font-large-2 float-left"></i>
                 </div>
                 <div class="media-body ml8">
-                  <h3>E-learning</h3>
+                  <h5>E-learning</h5>
                 </div>
               </div>
             </div>
