@@ -14,14 +14,27 @@ class ResUsers(models.Model):
     @api.depends('login')
     def _link_with_uasg_contacts (self) :
 
-    	for record in self :
+        for record in self :
             user = record.env['uasg.contacts'].search([('email','=',record.login)],limit=1)
             if user :     
                     record.uasg_contact  = user.id
-                    record.company_id =user.company_id
-
+                    # if user.company_id :
+                    #     record.company_id =user.company_id.id
+                    # else :
+                    #     record.company_id  = False
             else :
-                record.uasg_contact  = False
+                record.uasg_contact = False
+
+        return True
+
+    @api.onchange('uasg_contact')
+    def _link_with_company_id(self):
+
+        for record in self :
+
+            if record.uasg_contact : 
+
+                record.company_id = record.uasg_contact.company_id.id
 
 
     @api.constrains('company_id', 'company_ids', 'active')

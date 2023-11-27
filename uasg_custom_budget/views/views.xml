@@ -111,7 +111,29 @@
   <field name="model">budget</field>
   <field name="arch" type="xml">
     <form>
+<style>
+  
+  th.o_column_sortable[data-name="cost_by_company_currency"]
 
+{ 
+
+width:200px !important; 
+
+max-width:200px !important;
+
+ } 
+ 
+ 
+ th.o_column_sortable[data-name="quarter"]
+
+{ 
+
+width:120px !important; 
+
+max-width:120px !important;
+
+ } 
+</style>
         <header>
          <button name="action_submit" string="Assign" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['pending','approved','in_progress'])]}" groups="uasg_custom_budget.group_budget_it_manager"/>
 
@@ -124,12 +146,11 @@
 
          <field name="state" widget="statusbar"/>
      </header>
-
-     <sheet>
+ <sheet>
       <div class="oe_title">
         <label for="name" string="Title"/>
         <h1>
-            <field class="text-break" name="name" placeholder="e.g. IT Demand plan for 2023" required="1" attrs="{'readonly':[('state','in',['pending','approved'])]}"/>
+            <field class="text-break" name="name" placeholder="e.g. IT Demand plan for 2023" required="1" attrs="{'readonly':[('state','in',['pending','in_progress','approved'])]}"/>
         </h1>
         <div>
             <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" placeholder="Tags" style="width: 100%" attrs="{'readonly':[('state','in',['pending','approved'])]}"/>
@@ -146,34 +167,41 @@
         </div> -->
         <field name="currency_id" invisible="1"/>
         <field name="budget_type" invisible="1"/>
-        <field name="budget_type" groups="uasg_custom_budget.group_budget_it_manager" attrs="{'readonly':[('state','in',['pending','approved'])]}"/>
+        <field name="budget_type" groups="uasg_custom_budget.group_budget_it_manager" attrs="{'readonly':[('state','in',['pending','in_progress','approved'])]}"/>
         <field name="total_budget_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
     </group>
-    <group >
+    <group>
 <field name="active" invisible="1"/>
-      <field name="department_manager_id" attrs="{'readonly':[('state','in',['pending','approved'])]}"/>
-    <field name="department_name" options="{'no_create': True, 'no_create_edit':True}" readonly="1" />
-    <field name="company_id" string="Business Unit" readonly="1" />
+      <field name="department_manager_id" options='{"no_open": True}' attrs="{'readonly':[('state','in',['pending','in_progress','approved'])]}"/>
+    <field name="department_name" options="{'no_create': True, 'no_create_edit':True}" readonly="1"/>
+    <field name="company_id" options='{"no_open": True}' string="Business Unit" readonly="1"/>
 
 
-      <field name="reject_reason" string="Rejected due to" style="border: 1px  solid red;"  attrs="{'invisible':['|',('reject_reason','=',False),('state','!=','draft')],'readonly': [('state','in',['pending','approved'])]}"/>
+
+      <field name="reject_reason" string="Rejected due to" style="border: 1px  solid red;" attrs="{'invisible':['|',('reject_reason','=',False),('state','!=','draft')],'readonly': [('state','in',['pending','approved'])]}"/>
 
   </group>
 </group>
 
-<notebook >
-    <page string="Budget Demands" name="demands" >
-      <field name="budget_line"  widget="section_and_note_one2many"  mode="tree,kanban" attrs="{'readonly':[('state','in',['pending','approved'])]}">
-        <tree string="Demands" editable="bottom" >
-            <field name="name" string="Project/Object"/>
+<notebook>
+    <page string="Budget Demands" name="demands">
+      
+<div class="o_tooltip o_tooltip_visible  bottom o_animated" style="top: 40px !important; left: 1318.58px !important; width: 28px !important; height: 28px !important; margin: 0px !important;">
+        <div class="o_tooltip_overlay" style="inset: 0px -50px -50px;"/>
+        <div class="o_tooltip_content" style="font-size: 12px; width: 100%; height: 100%;">Welcome on your course's home page. It's still empty for now. Click on "<b>New</b>" to write your first course.</div>
+    </div>
+      <field name="budget_line" widget="section_and_note_one2many" mode="tree,kanban" attrs="{'readonly':[('state','in',['pending','approved'])]}">
+        <tree string="Demands" editable="bottom">
+            <field name="name" data-toggle="tooltip" string="Project/Object"/>
             <field name="budget_line_state" invisible="1"/>
             <field name="justification" required="1"/>
-            <field name="quarter"/>
+            <field name="quarter" string="Time Frame"/>
+            <field name="cost_by_company_currency" class="mr8" string="   Estimated Cost   " widget="monetary" options="{'currency_field': 'company_currency_id'}" sum="Total Amount"/>
+
             <field name="currency_id" invisible="1"/>
             <field name="budget_type" invisible="1"/>
             <field name="state" invisible="1"/>
-            <field name="cost_by_company_currency" string="Amount in AED" widget="monetary" options="{'currency_field': 'company_currency_id'}" sum="Total Amount"/>
-              <field name="create_uid"  />
+              <!--<field name="create_uid"/>-->
 
 
             <!-- <field name="budget_line_state" string="State" /> -->
@@ -194,6 +222,7 @@
 
 
 </notebook>
+
 </sheet>
 <div class="oe_chatter">
     <field name="message_follower_ids"/>
