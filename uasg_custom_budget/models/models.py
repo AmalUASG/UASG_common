@@ -10,6 +10,12 @@ class Tag(models.Model):
     name = fields.Char()
     color = fields.Integer(string='Color Index')
 
+class UserManual(models.Model):
+    
+    _name="user.manual"
+    
+    name = fields.Char()
+    file = fields.Many2many('ir.attachment')
 class Department(models.Model):
     _name='department'
     _description="UASG Departments"
@@ -60,8 +66,26 @@ class Budget(models.Model):
     manager = fields.Char(related='department_manager_id.manager_name')
     manager_email = fields.Char(related='department_manager_id.manager_email')
     active = fields.Boolean(default=True)
+    user_manual = fields.Many2many('ir.attachment',compute='_get_user_manual')
 
-    
+
+    def _get_user_manual(self):
+
+        user_manaual = self.env['user.manual'].search([],limit=1)
+        for record in self :
+
+            if user_manaual :
+
+                record.user_manual = user_manaual.file
+
+
+    def print_user_manual(self):
+
+        return {
+        'type': 'ir.actions.act_url',
+        'name': 'user manual',
+        'url': '/web/content/' + str(self.user_manual.id) + '?download=true',
+    }
 
 
     def _compute_budget_line (self):

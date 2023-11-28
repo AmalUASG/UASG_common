@@ -147,6 +147,15 @@ max-width:120px !important;
          <field name="state" widget="statusbar"/>
      </header>
  <sheet>
+
+    <div class="oe_button_box" name="button_box">
+                        <button name="print_user_manual" type="object" class="oe_stat_button" icon="fa-info-o">
+                            <!-- <field string="Registered" name="answer_count" widget="statinfo"/> -->
+                        </button>
+                        
+                    </div>
+
+
       <div class="oe_title">
         <label for="name" string="Title"/>
         <h1>
@@ -350,6 +359,24 @@ max-width:120px !important;
             </field>
         </record>
 
+
+         <record id="user_manual_form" model="ir.ui.view">
+            <field name="name">User Manuald</field>
+            <field name="model">user.manual</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                             <field name="file" widget="many2many_binary"/>
+
+                        </group>
+                    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
 <!-- actions opening views on models -->
 
 <record model="ir.actions.act_window" id="budget_action_window">
@@ -408,6 +435,16 @@ max-width:120px !important;
 </record>
 
 
+<record model="ir.actions.act_window" id="manual_action_window">
+  <field name="name">Manual</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">user.manual</field>
+  <field name="view_mode">tree,form</field>
+
+
+</record>
+
+
 <record id="action_report_budget" model="ir.actions.report">
    <field name="name">Budget</field>
    <field name="model">budget</field>
@@ -417,6 +454,7 @@ max-width:120px !important;
    <field name="binding_model_id" ref="uasg_custom_budget.model_budget"/>
    <field name="binding_type">report</field>
 </record>
+
 
 
 <!-- Top menu item -->
@@ -439,6 +477,7 @@ max-width:120px !important;
     <menuitem name="Configuration" id="configuration" sequence = "3" parent="budget_main_menu" groups="base.group_system"/>
 
     <menuitem name="Departments" id="departments" parent="configuration" action="department_action_window"/>
+    <menuitem name="User Manual" id="maula" parent="configuration" action="manual_action_window"/>
 
     <menuitem name="Categories" id="categories" parent="configuration" action="categories_action_window"/>
 

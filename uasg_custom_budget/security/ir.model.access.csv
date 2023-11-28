@@ -28,3 +28,4 @@ access_reject_budget_wizard,reject_budget_wizard,model_reject_budget_wizard,,1,1
 
 
 access_approval_line,approval_line,model_approval_line,,1,1,1,1
+access_user_manual,user_manual,model_user_manual,,1,1,1,1

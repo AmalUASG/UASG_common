@@ -7,14 +7,16 @@ from odoo.exceptions import UserError
 
 class connector(models.Model):
 
-	_name = "connector"
+    _name = "connector"
 
-	name = fields.Char()
+    name = fields.Char()
 
-	def connect(self): 
-
-
-		raise UserError(str(pyodbc.connect('Driver={ODBC Driver 17 for SQL Server},Server=localhost,DATABASE=RemsDB,LongAsMax=yes,Trusted_Connection=yes')
-))
-
-		print (cnxn)
+    def connect(self): 
+        conn_str = f'FILEDSN=C://Users/amal.abdelmajid/Desktop/[ODBC].dsn'
+        cnxn = pyodbc.connect("DSN=KEYLOOP1")
+        raise UserError(str(cnxn))
+        cursor = cnxn.cursor()
+        cursor.execute("select * from DD_01_PRICE")
+        row = cursor.fetchall()
+        # self.write(row)
+        raise UserError(str(row))
