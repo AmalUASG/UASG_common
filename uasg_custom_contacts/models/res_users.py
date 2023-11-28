@@ -9,6 +9,7 @@ class ResUsers(models.Model):
     
     uasg_contact = fields.Many2one('uasg.contacts',compute='_link_with_uasg_contacts')
     uasg_department = fields.Char(related='uasg_contact.department')
+    
 
 
     @api.depends('login')
@@ -27,19 +28,24 @@ class ResUsers(models.Model):
 
         return True
 
-    @api.onchange('uasg_contact')
-    def _link_with_company_id(self):
+    # @api.onchange('uasg_contact')
+    # def _link_with_company_id(self):
 
-        for record in self :
+    #     for record in self :
 
-            if record.uasg_contact : 
+    #         if record.uasg_contact : 
 
-                record.company_id = record.uasg_contact.company_id.id
+    #             record.company_id = record.uasg_contact.company_id.id
 
 
-    @api.constrains('company_id', 'company_ids', 'active')
-    def _check_company(self):
-        for user in self.filtered(lambda u: u.active):
-            if user.company_id not in user.company_ids:
-                user.company_ids = [4, user.company_id.id]
-                return True
+    # @api.constrains('company_id', 'company_ids', 'active')
+    # def _check_company(self):
+    #     for user in self.filtered(lambda u: u.active):
+                
+    #         if user.uasg_contact : 
+
+    #             user.company_id = user.uasg_contact.company_id.id
+
+    #         if user.company_id not in user.company_ids:
+    #             user.company_ids = [4, user.company_id.id]
+    #             return True

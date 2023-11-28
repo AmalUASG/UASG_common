@@ -46,9 +46,11 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name" />
+          <field name="department_manager_id"/>
+
           <field name="company_id"/>
-          <field name="department" string="Department" />
-          <field name="state" widget="badge" decoration-success="state=='approved'" decoration-warning="state=='pending'" />
+        <field name="department_name" string="Department"/>          
+        <field name="state" widget="badge" decoration-success="state=='approved'" decoration-warning="state=='pending'" />
 
       </tree>
   </field>
@@ -149,8 +151,8 @@ max-width:120px !important;
  <sheet>
 
     <div class="oe_button_box" name="button_box">
-                        <button name="print_user_manual" type="object" class="oe_stat_button" icon="fa-info-o">
-                            <!-- <field string="Registered" name="answer_count" widget="statinfo"/> -->
+                        <button name="print_user_manual" type="object" class="oe_stat_button" icon="fa-info-circle">
+                            <span>User Manual</span>
                         </button>
                         
                     </div>
@@ -205,7 +207,7 @@ max-width:120px !important;
             <field name="budget_line_state" invisible="1"/>
             <field name="justification" required="1"/>
             <field name="quarter" string="Time Frame"/>
-            <field name="cost_by_company_currency" class="mr8" string="   Estimated Cost   " widget="monetary" options="{'currency_field': 'company_currency_id'}" sum="Total Amount"/>
+            <field name="cost_by_company_currency" class="mr8" string=" Estimated Cost" widget="monetary" options="{'currency_field': 'company_currency_id'}" sum="Total Amount"/>
 
             <field name="currency_id" invisible="1"/>
             <field name="budget_type" invisible="1"/>
