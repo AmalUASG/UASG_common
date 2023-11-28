@@ -200,25 +200,19 @@ class AdConfiguration(models.Model):
                             else :
                                 contact.write({'job_title' : member['jobTitle']})
 
-                            if member['jobTitle'] == contact.job_title :
-                                True
-                            else :
-                                contact.write({'job_title' : member['jobTitle']})
-
                             if member['department'] == contact.department :
                                 True
                             else :
                                 contact.write({'department' : member['department']})
-
-                            if member['manager']['displayName'] == contact.manager_name :
-                                True
-                            else :
-                                contact.write({'manager_name' : member['manager']['displayName']})
-
-                            if member['manager']['mail'] == contact.manager_name :
-                                True
-                            else :
-                                contact.write({'manager_name' : member['manager']['displayName']})
+                            if member['manager']:
+                                if member['manager']['displayName'] == contact.manager_name :
+                                    True
+                                else :
+                                    contact.write({'manager_name' : member['manager']['displayName']})
+                                if member['manager']['mail'] == contact.manager_email :
+                                    True
+                                else :
+                                    contact.write({'manager_email' : member['manager']['displayName']})
 
                             if member['accountEnabled'] == contact.active :
                                 True
