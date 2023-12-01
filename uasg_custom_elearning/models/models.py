@@ -13,6 +13,7 @@ class Slides(models.Model):
         string='Video Source', compute="_compute_video_source_type")
 
 
+
     @api.depends('video_url')
     def _compute_video_source_type(self):
         for slide in self:
@@ -72,3 +73,10 @@ class Slides(models.Model):
 
             slide.embed_code = embed_code
             slide.embed_code_external = embed_code_external or embed_code
+
+class SlideChannel(models.Model):
+
+    _inherit="slide.channel"
+
+    
+    company_id = fields.Many2one('res.company')

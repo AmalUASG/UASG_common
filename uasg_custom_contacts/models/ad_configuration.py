@@ -212,7 +212,7 @@ class AdConfiguration(models.Model):
                                 if member['manager']['mail'] == contact.manager_email :
                                     True
                                 else :
-                                    contact.write({'manager_email' : member['manager']['displayName']})
+                                    contact.write({'manager_email' : member['manager']['manager_email']})
 
                             if member['accountEnabled'] == contact.active :
                                 True
@@ -309,15 +309,16 @@ class AdConfiguration(models.Model):
                                     else :
                                         contact.write({'department' : member['department']})
 
-                                    if member['manager']['displayName'] == contact.manager_name :
-                                        True
-                                    else :
-                                        contact.write({'manager_name' : member['manager']['displayName']})
+                                    if member['manager']:
+                                        if member['manager']['displayName'] == contact.manager_name :
+                                            True
+                                        else :
+                                            contact.write({'manager_name' : member['manager']['displayName']})
+                                        if member['manager']['mail'] == contact.manager_email :
+                                            True
+                                        else :
+                                            contact.write({'manager_email' : member['manager']['mail']})
 
-                                    if member['manager']['mail'] == contact.manager_name :
-                                        True
-                                    else :
-                                        contact.write({'manager_name' : member['manager']['displayName']})
 
                                     if member['accountEnabled'] == contact.active :
                                         True
