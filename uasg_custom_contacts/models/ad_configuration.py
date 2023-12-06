@@ -204,7 +204,7 @@ class AdConfiguration(models.Model):
                                 True
                             else :
                                 contact.write({'department' : member['department']})
-                            if member['manager']:
+                            if member['manager']['displayName']:
                                 if member['manager']['displayName'] == contact.manager_name :
                                     True
                                 else :
