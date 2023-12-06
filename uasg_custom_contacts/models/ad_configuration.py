@@ -204,15 +204,19 @@ class AdConfiguration(models.Model):
                                 True
                             else :
                                 contact.write({'department' : member['department']})
-                            if member['manager']['displayName']:
-                                if member['manager']['displayName'] == contact.manager_name :
-                                    True
-                                else :
-                                    contact.write({'manager_name' : member['manager']['displayName']})
-                                if member['manager']['mail'] == contact.manager_email :
-                                    True
-                                else :
-                                    contact.write({'manager_email' : member['manager']['manager_email']})
+                            try :
+                                if member['manager']['displayName']:
+                                    if member['manager']['displayName'] == contact.manager_name :
+                                        True
+                                    else :
+                                        contact.write({'manager_name' : member['manager']['displayName']})
+                                    if member['manager']['mail'] == contact.manager_email :
+                                        True
+                                    else :
+                                        contact.write({'manager_email' : member['manager']['manager_email']})
+                            except :
+
+                                True
 
                             if member['accountEnabled'] == contact.active :
                                 True
