@@ -5,7 +5,10 @@
          <field name="inherit_id" ref="website_slides.view_slide_channel_form"/>
          <field name="arch" type="xml">
                 <xpath expr="//field[@name='tag_ids']" position="after">
-                		<field name="company_ids" placeholder="Companies"/>
+                	<group>
+                	<field name="all_companies"/>
+                		<field name="company_id" attrs="{'invisible':[('all_companies','=',True)]}"/>
+                	</group>
                 </xpath>
             </field>
    

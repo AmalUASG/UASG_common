@@ -78,5 +78,5 @@ class SlideChannel(models.Model):
 
     _inherit="slide.channel"
 
-    
-    company_ids = fields.Many2many('res.company')
+    all_companies = fields.Boolean(default=True)
+    company_id = fields.Many2one('res.company')
