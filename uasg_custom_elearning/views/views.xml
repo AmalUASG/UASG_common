@@ -1,0 +1,14 @@
+<odoo>
+ <record id="elearning_inherit_slide_channel" model="ir.ui.view">
+       <field name="name">slide.channel.inheritance</field>
+           <field name="model">slide.channel</field>
+         <field name="inherit_id" ref="website_slides.view_slide_channel_form"/>
+         <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                		<field name="company_ids" placeholder="Companies"/>
+                </xpath>
+            </field>
+   
+       </record>
+
+</odoo>
