@@ -492,7 +492,7 @@ max-width:120px !important;
     <!-- menu categories -->
 
 
-    <menuitem name="Plans" id="demand_budgets" sequence = "1" parent="budget_main_menu" action="budget_action_window" groups="group_budget_it_manager,group_budget_approval,group_budget_dept_manager"/>
+    <menuitem name="Plans" id="demand_budgets" sequence = "1" parent="budget_main_menu" action="budget_action_window" groups="group_budget_it_manager,group_budget_dept_manager"/>
 
     <menuitem name="Final Plans" id="final_plan" sequence = "1" parent="budget_main_menu" action="final_budget_action_window" groups="group_budget_it_manager,group_budget_approval"/>
 
