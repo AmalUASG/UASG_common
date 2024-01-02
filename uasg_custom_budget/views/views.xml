@@ -169,16 +169,14 @@ max-width:120px !important;
     </div>
     <group>
         <group>
-     <!--     <label for="duration_from" string="Planned Duration"/>
-         <div name="dates" class="o_row" >
-            <field name="duration_from" widget="date" attrs="{'readonly':[('state','in',['pending','approved'])]}" />
-            <i class="fa fa-long-arrow-right mx-2 oe_edit_only" aria-label="Arrow icon" title="Arrow"/>
-            <i class="fa fa-long-arrow-right mx-2 oe_read_only" aria-label="Arrow icon" title="Arrow" attrs="{'invisible': [('duration_from', '=', False), ('duration_to', '=', False)]}"/>
-            <field name="duration_to" widget="date" attrs="{'readonly':[('state','in',['pending','approved'])]}" />
-        </div> -->
         <field name="currency_id" invisible="1"/>
         <field name="budget_type" invisible="1"/>
         <field name="budget_type" groups="uasg_custom_budget.group_budget_it_manager" attrs="{'readonly':[('state','in',['pending','in_progress','approved'])]}"/>
+                <field name="final_plan" invisible="1" />
+
+
+        <field name="final_plan" groups="uasg_custom_budget.group_budget_it_manager" />
+
         <field name="total_budget_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
     </group>
     <group>
@@ -195,19 +193,25 @@ max-width:120px !important;
 </group>
 
 <notebook>
-    <page string="Budget Demands" name="demands">
+    <page string="Budget Demands" name="demands" >
       
-<div class="o_tooltip o_tooltip_visible  bottom o_animated" style="top: 40px !important; left: 1318.58px !important; width: 28px !important; height: 28px !important; margin: 0px !important;">
-        <div class="o_tooltip_overlay" style="inset: 0px -50px -50px;"/>
-        <div class="o_tooltip_content" style="font-size: 12px; width: 100%; height: 100%;">Welcome on your course's home page. It's still empty for now. Click on "<b>New</b>" to write your first course.</div>
-    </div>
+
       <field name="budget_line" widget="section_and_note_one2many" mode="tree,kanban" attrs="{'readonly':[('state','in',['pending','approved'])]}">
-        <tree string="Demands" editable="bottom">
-            <field name="name" data-toggle="tooltip" string="Project/Object"/>
+        <tree string="Demands" editable="bottom"  >
+            <field name="final_plan" invisible="1" />
+
+            <field name="name" data-toggle="tooltip" string="Project/Object" attrs="{'column_invisible': [('parent.final_plan', '=',  True)]}"/>
+            <field name="name"  string="Contract"  attrs="{'column_invisible': [('parent.final_plan', '=',  False)]}"/>
+
             <field name="budget_line_state" invisible="1"/>
             <field name="justification" required="1"/>
-            <field name="quarter" string="Time Frame"/>
+           <field name="description" string="Cost Center" attrs="{'column_invisible': [('parent.final_plan', '=',  False)]}"/>
+
+            <field name="quarter" string="Time Frame" attrs="{'column_invisible': [('parent.final_plan', '=',  True)]}"/>
+            <field name="final_plan" invisible="1" />
+
             <field name="cost_by_company_currency" class="mr8" string=" Estimated Cost" widget="monetary" options="{'currency_field': 'company_currency_id'}" sum="Total Amount"/>
+            <field name="category_id" string="Contract Type"  attrs="{'column_invisible': [('parent.final_plan', '=',  False)]}"/>
 
             <field name="currency_id" invisible="1"/>
             <field name="budget_type" invisible="1"/>
@@ -217,8 +221,13 @@ max-width:120px !important;
 
             <!-- <field name="budget_line_state" string="State" /> -->
         </tree>
+
     </field>
 </page>
+
+
+
+   
 
 <!-- 
 <page string="Approvals" name="approvals" >
@@ -325,18 +334,6 @@ max-width:120px !important;
 </record>
 
 
-  <!--   <record model="ir.ui.view" id="approval_list">
-      <field name="name">Approval list</field>
-      <field name="model">budget.approval</field>
-      <field name="arch" type="xml">
-        <tree editable="bottom">
-          <field name="sequence" widget='handle'/>
-          <field name="name" required="1"/>
-          <field name="department"  string="Department" />
-          <field name="description"/>
-      </tree>
-  </field>
-</record> -->
 
 
 
@@ -389,6 +386,17 @@ max-width:120px !important;
 </record>
 
 
+<record model="ir.actions.act_window" id="final_budget_action_window">
+  <field name="name">Final Plans</field>
+  <field name="type">ir.actions.act_window</field>
+  <field name="res_model">budget</field>
+  <field name="view_mode">tree,form</field>
+  <field name="view_id" />
+  <field name="domain">[('final_plan','=',True)]</field>
+    <field name="context">{'create':0,'delete':0}</field>
+
+
+</record>
 
 
 
@@ -485,6 +493,9 @@ max-width:120px !important;
 
 
     <menuitem name="Plans" id="demand_budgets" sequence = "1" parent="budget_main_menu" action="budget_action_window" groups="group_budget_it_manager,group_budget_approval,group_budget_dept_manager"/>
+
+    <menuitem name="Final Plans" id="final_plan" sequence = "1" parent="budget_main_menu" action="final_budget_action_window" groups="group_budget_it_manager,group_budget_approval"/>
+
 
     <menuitem name="Budget Items" id="items" sequence = "2" parent="budget_main_menu" groups = "uasg_custom_budget.group_budget_user" action="budget_items_action_window"/>
 

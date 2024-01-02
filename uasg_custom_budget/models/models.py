@@ -61,7 +61,7 @@ class Budget(models.Model):
     note = fields.Char(tracking=True)
     department_manager_id = fields.Many2one('uasg.contacts')
     company_id = fields.Many2one('res.company',related='department_manager_id.company_id' , name="Company")
-
+    final_plan = fields.Boolean()
     department_name = fields.Char(related='department_manager_id.department')
     manager = fields.Char(related='department_manager_id.manager_name')
     manager_email = fields.Char(related='department_manager_id.manager_email')
@@ -193,6 +193,7 @@ class BudgetElements(models.Model):
     cost_by_company_currency = fields.Monetary()
     description = fields.Text()
     budget_id = fields.Many2one('budget' ,   required=1)
+    final_plan = fields.Boolean(related="budget_id.final_plan")
     category_id = fields.Many2one('category')
     company_id = fields.Many2one('res.company',name="Company",related='budget_id.company_id', store=True)
     department = fields.Many2one('department',related='budget_id.department',store=True)
