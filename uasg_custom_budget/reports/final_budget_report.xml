@@ -1,0 +1,82 @@
+<odoo>
+ 
+
+   <template id="report_final_budget">
+        <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>
+                            <span t-field="doc.name"/>
+                        </h2>
+                        <table class="table table-borderless" style="table-layout: fixed">
+
+                          <tr>
+
+                            <td>
+                            <strong>Business Unit : </strong>
+                            <span t-field="doc.company_id.name"/>
+                       </td>
+
+                        <td>
+                            <strong>Department : </strong>
+                            <span t-field="doc.department_name"/>
+                        </td>
+                    </tr>
+                    <tr/>
+                    <tr>
+                        <td >
+                            <strong>Department Manager: </strong>
+                            <span t-field="doc.department_manager_id.name"/>
+                        </td>
+
+
+                      <!--   <td >
+                            <strong>Total Amount: </strong>
+                            <span t-field="doc.total_budget_cost"/>
+                        </td> -->
+                    </tr>
+                </table>
+                        <br/>
+                        <br/>
+                        <table class = "table table-sm"  >
+                            <thead>
+                                <tr>
+                                    <th>Contract</th>
+                                    <th>Justification</th>
+                                    <th>Cost Center</th>
+                                    <th>Estimated Cost</th>
+                                    <th>Type of the Contract</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="lines" t-value="doc.budget_line"/>
+                                <tr t-foreach="lines" t-as="line">
+                                    <td>
+                                        <span t-field="line.name" />
+                                    </td>
+                                  
+                                     <td>
+                                        <span t-field="line.justification"/>
+                                    </td>
+                                     <td style="text-align: center;">
+                                        <span t-field="line.description"/>
+                                    </td>
+                                     <td style="text-align: center;">
+                                        <span t-field="line.cost_by_company_currency"/>
+                                    </td>
+
+                                    <td style="text-align: center;">
+                                        <span t-field="line.category_id.name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

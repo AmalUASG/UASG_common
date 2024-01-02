@@ -29,6 +29,7 @@
         'security/budget_security.xml',
         'security/ir.model.access.csv',
         'reports/budget_report_view.xml',
+        'reports/final_budget_report.xml',
         'views/views.xml',
         'views/templates.xml',
         
