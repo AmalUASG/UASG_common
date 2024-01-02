@@ -50,7 +50,7 @@ class Budget(models.Model):
     department = fields.Many2one('department')
     department_manager = fields.Many2one('res.users',name="Department Manager",related="department.department_manager", store=True)
     budget_line = fields.One2many('budget.line','budget_id',compute='_compute_budget_line',store=True)
-    state = fields.Selection(selection=[('draft','Draft'),('in_progress','In Progress'),('pending','Pending Approval'),('approved','approved'),], default='draft' ,  tracking=True)
+    state = fields.Selection(selection=[('draft','Draft'),('in_progress','In Progress'),('pending','Pending Approval'),('approved','approved'),('final','Final')], default='draft' ,  tracking=True)
     tag_ids=fields.Many2many('budget.tags', 'budget_tags_rel','budget_id','tag_id', string='Tags', help="Optional tags you may want to assign for custom reporting", ondelete='restrict')
     color = fields.Integer(string='Color Index')
     total_budget_cost = fields.Monetary(compute='_compute_total_budget_cost')
@@ -186,7 +186,7 @@ class BudgetElements(models.Model):
 
     
     name = fields.Char('Name' , required="1")
-    state = fields.Selection(selection=[('draft','Draft'),('in_progress','In Progress'),('pending','Pending Approval'),('approved','approved'),], related='budget_id.state')
+    state = fields.Selection(selection=[('draft','Draft'),('in_progress','In Progress'),('pending','Pending Approval'),('approved','approved'),('final','Final')], related='budget_id.state')
 
     currency_id = fields.Many2one('res.currency',string='Company Currency',default=lambda self: self.env.company.currency_id)
     cost = fields.Monetary()
