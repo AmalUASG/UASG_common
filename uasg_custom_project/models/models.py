@@ -60,7 +60,7 @@ class UASGProject(models.Model):
 
         if self.currency_id : 
 
-            self.department = self.currency_id.uasg_department
+            self.department = self.create_uid.uasg_department
 
 
 
