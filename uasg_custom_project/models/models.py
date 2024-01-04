@@ -68,7 +68,7 @@ class UASGProject(models.Model):
             
 
     @api.depends('create_uid')
-    def is_user_department(self):
+    def _compute_user_department(self):
 
         for record in self :
 
