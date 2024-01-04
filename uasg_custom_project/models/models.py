@@ -53,7 +53,7 @@ class UASGProject(models.Model):
     cost = fields.Monetary()
     active = fields.Boolean(default=True)
     department = fields.Char(compute='_compute_department')
-    is_user_department = fields.Boolean(compute='_compute_user_department')
+    is_user_department = fields.Boolean(compute='_compute_user_department',store=True)
 
 
     @api.depends('create_uid')
