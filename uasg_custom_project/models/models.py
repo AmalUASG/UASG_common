@@ -74,7 +74,7 @@ class UASGProject(models.Model):
 
             if record.create_uid :
 
-                if record.department == record.create_uid.uasg_department :
+                if record.department == self.env.uasg_department :
 
                     record.is_user_department = True
                 else :
