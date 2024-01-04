@@ -52,7 +52,7 @@ class UASGProject(models.Model):
     currency_id = fields.Many2one('res.currency',related='company_id.currency_id')
     cost = fields.Monetary()
     active = fields.Boolean(default=True)
-    department = fields.Char(default=lambda self: self.env.user..uasg_department)
+    department = fields.Char(default=lambda self: self.env.user.uasg_department)
     is_user_department = fields.Boolean(compute='_compute_user_department')
 
             
