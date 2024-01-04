@@ -63,7 +63,7 @@ class UASGProject(models.Model):
 
             if record.create_uid :
 
-                record.department = self.create_uid.uasg_department
+                record.department = record.create_uid.uasg_department
 
             
 
