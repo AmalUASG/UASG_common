@@ -52,18 +52,8 @@ class UASGProject(models.Model):
     currency_id = fields.Many2one('res.currency',related='company_id.currency_id')
     cost = fields.Monetary()
     active = fields.Boolean(default=True)
-    department = fields.Char(compute='_compute_department')
-    is_user_department = fields.Boolean(compute='_compute_user_department',store=True)
-
-
-    @api.depends('create_uid')
-    def _compute_department(self):
-
-        for record in self :
-
-            if record.create_uid :
-
-                record.department = record.create_uid.uasg_department
+    department = fields.Char(related='create_uid.uasg_department')
+    is_user_department = fields.Boolean(compute='_compute_user_department')
 
             
 
