@@ -17,11 +17,11 @@
       <field name="name">Manager</field>
       <field name="category_id" ref="module_category_uasg_project"/>
     </record>
-<!-- 
+
     <record id="group_it_director" model="res.groups">
       <field name="name">IT Director</field>
       <field name="category_id" ref="module_category_uasg_project"/>
-    </record> -->
+    </record>
 
 <!-- 
      <record model="ir.rule" id="project_based_on_assignee">
