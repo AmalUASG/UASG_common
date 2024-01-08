@@ -40,7 +40,7 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name" />
-          <field name="assigned_to"/>
+          <field name="uasg_contact" string="Assigned to"/>
           <field name="description" optional="hide" />
           <field name="date" string="Start Date"/>
           <field name="target_date"/>
@@ -102,7 +102,7 @@
             <field name="date" string="Start Date" style="border-bottom: 1px  solid var(--o-input-border-color);" attrs="{'readonly':['|',('status','!=','draft'),('make_fields_read_only' , '=' , True)]}" />
             <field name="target_date" required="1" style="border-bottom: 1px  solid var(--o-input-border-color);" attrs="{'readonly':['|',('status','!=','draft'),('make_fields_read_only' , '=' , True)]}" />
 
-        <field name="assigned_to" style="border-bottom: 1px  solid var(--o-input-border-color);" required="1" widget="many2one_avatar_user" attrs="{'readonly':['|',('status','!=','draft'),('make_fields_read_only' , '=' , True)]}"  options="{'no_create': True, 'no_create_edit':True}" />
+<field name="uasg_contact"  style="border-bottom: 1px  solid var(--o-input-border-color);" required="1" attrs="{'readonly':['|',('status','!=','draft'),('make_fields_read_only' , '=' , True)]}" options="{'no_create': True, 'no_create_edit':True}" string="Assigned to"/>
         <field name="vendor" style="border-bottom: 1px  solid var(--o-input-border-color);"  attrs="{'readonly':['|',('status','!=','draft'),('make_fields_read_only' , '=' , True)]}" options="{'no_open': True}"/>
         <field name="currency_id"  invisible="1"/>
         <field name="needs_cost" attrs="{'readonly':['|',('status','!=','draft'),('make_fields_read_only' , '=' , True)]}" string="Need Cost?"/>
