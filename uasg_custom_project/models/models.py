@@ -35,7 +35,7 @@ class UASGProject(models.Model):
     name = fields.Char('Project Name' , tracking=True)
     description = fields.Text('Brief Description' , tracking=True)
     uasg_contact = fields.Many2one('uasg.contacts')
-    # user_email = fields.Char(related="uasg_contact.email")
+    user_email = fields.Char(related="uasg_contact.email")
     assigned_to = fields.Many2one('res.users' , tracking=True, compute='_compute_assign_to' )
 
     @api.depends('uasg_contact')
@@ -43,7 +43,7 @@ class UASGProject(models.Model):
 
         
         for record in self :
-            user_id = self.env['res.users'].search([('uasg_contact','=',record.uasg_contact)],limit=1)
+            user_id = self.env['res.users'].search([('login','=',record.user_email)])
             if record.uasg_contact != None :
                 record.assigned_to = user_id.id
             
