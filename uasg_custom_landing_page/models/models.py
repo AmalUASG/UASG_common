@@ -63,6 +63,6 @@ class LandingPage(models.Model):
 
         for record in self :
 
-            assigned_projects = record.env['uasg.project'].search_count([('uasg_contact','=',self.env.user.uasg_contact),('status','=','in_progress')])
+            assigned_projects = record.env['uasg.project'].search_count([('uasg_contact','=',self.env.user.uasg_contact.id),('status','=','in_progress')])
 
             record.count_in_progress = assigned_projects
