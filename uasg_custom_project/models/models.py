@@ -212,7 +212,7 @@ class UASGProject(models.Model):
 
     def action_reopen(self):
 
-        if self.assign_uasg_contact == self.env.user or self.self.assign_uasg_contact.manager_email == self.env.user.login :
+        if self.assign_uasg_contact == self.env.user or self.assign_uasg_contact.manager_email == self.env.user.login :
 
             self.write ({'status' : 'in_progress'})
 
