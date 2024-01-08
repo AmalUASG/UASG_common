@@ -211,7 +211,7 @@ class UASGProject(models.Model):
 
     def action_reopen(self):
 
-        if self.assigned_to == self.env.user or self.assigned_to.partner_id.line_manager == self.env.user :
+        if self.assigned_to == self.env.user or self.self.assigned_to.uasg_contact.manager_email == self.env.user.login :
 
             self.write ({'status' : 'in_progress'})
 
@@ -226,7 +226,7 @@ class UASGProject(models.Model):
 
     def action_draft(self):
 
-        if self.assigned_to == self.env.user or self.assigned_to.partner_id.line_manager == self.env.user :
+        if self.assigned_to == self.env.user or self.assigned_to.uasg_contact.manager_email == self.env.user.login :
 
             self.write ({'status' : 'draft'})
 
@@ -291,7 +291,7 @@ class RejectProjectWizard(models.TransientModel):
 
         
 
-        if self.project_id.assigned_to.partner_id.line_manager == self.env.user :
+        if self.assigned_to.uasg_contact.manager_email == self.env.user.login :
 
             project = self.env['uasg.project'].sudo().search([('id','=',self.project_id.id)])
 
