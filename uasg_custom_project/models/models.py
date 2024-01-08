@@ -40,7 +40,7 @@ class UASGProject(models.Model):
     @api.depends('uasg_contact')
     def _compute_assign_to(self):
 
-        user_id = self.env['res.users'].search([('uasg_contact','=',self.uasg_contact.id)],limit=1)
+        user_id = self.env['res.users'].search([('uasg_contact','=',self.uasg_contact.id)])
         for record in self :
             if record.uasg_contact :
                 record.assigned_to = user_id.id
