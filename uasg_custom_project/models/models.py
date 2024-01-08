@@ -42,7 +42,7 @@ class UASGProject(models.Model):
 
         user_id = self.env['res.users'].search([('uasg_contact','=',self.uasg_contact.id)])
         for record in self :
-            if record.uasg_contact :
+            if record.uasg_contact != None :
                 record.assigned_to = user_id.id
             
 
