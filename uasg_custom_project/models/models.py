@@ -191,7 +191,7 @@ class UASGProject(models.Model):
 
     def action_pipeline(self):
 
-        if self.assigned_to.partner_id.line_manager == self.env.user :
+        if self.assigned_to.uasg_contact.manager_email == self.env.user.login :
 
             self.write ({'status' : 'in_progress'})
             
@@ -202,7 +202,7 @@ class UASGProject(models.Model):
 
         else :
 
-            raise UserError('Sorry , Approval should be done by the Line Manager : ' + str(self.assigned_to.partner_id.line_manager.name))
+            raise UserError('Sorry , Approval should be done by the Line Manager : ' + str(self.assigned_to.uasg_contact.manager_name))
 
 
     def action_completed(self):
