@@ -21,7 +21,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base' ,'uasg_custom_budget','uasg_custom_elearning'],
+    'depends': ['base' , 'uasg_custom_project','uasg_custom_budget','uasg_custom_elearning'],
 
     # always loaded
     'data': [

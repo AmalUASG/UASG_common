@@ -11,6 +11,7 @@ class LandingPage(models.Model):
     name = fields.Char()
 
     user_id = fields.Many2one('res.users',compute='get_current_user')
+    current_usag_contact = fields.Many2one('uasg.contact',related="user_id.uasg_contact")
 
     count_all_projects = fields.Integer(default=0,compute='get_all_projects')
 
@@ -21,7 +22,6 @@ class LandingPage(models.Model):
     count_in_progress = fields.Integer(default=0,compute='get_all_in_progress')
 
     uasg_department = fields.Char(related='user_id.uasg_department')
-
 
 
     def get_current_user(self):
@@ -35,7 +35,7 @@ class LandingPage(models.Model):
 
         for record in self :
 
-            assigned_projects = record.env['uasg.project'].search_count([('assigned_to','=',record.user_id.id)])
+            assigned_projects = record.env['uasg.project'].search_count([('uasg_contact','=',self.env.user.uasg_contact.id)])
 
             record.count_all_projects = assigned_projects
 
@@ -44,7 +44,7 @@ class LandingPage(models.Model):
 
         for record in self :
 
-            assigned_projects = record.env['uasg.project'].search_count([('assigned_to','=',record.user_id.id),('status','=','pipeline')])
+            assigned_projects = record.env['uasg.project'].search_count([('uasg_contact','=',self.env.user.uasg_contact.id),('status','=','pipeline')])
 
             record.count_pipline = assigned_projects
 
@@ -54,7 +54,7 @@ class LandingPage(models.Model):
 
         for record in self :
 
-            assigned_projects = record.env['uasg.project'].search_count([('assigned_to','=',record.user_id.id),('status','=','completed')])
+            assigned_projects = record.env['uasg.project'].search_count([('uasg_contact','=',self.env.user.uasg_contact.id),('status','=','completed')])
 
             record.count_completed = assigned_projects
 
@@ -63,6 +63,6 @@ class LandingPage(models.Model):
 
         for record in self :
 
-            assigned_projects = record.env['uasg.project'].search_count([('assigned_to','=',record.user_id.id),('status','=','in_progress')])
+            assigned_projects = record.env['uasg.project'].search_count([('uasg_contact','=',self.env.user.uasg_contact),('status','=','in_progress')])
 
             record.count_in_progress = assigned_projects
