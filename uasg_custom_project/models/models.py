@@ -34,8 +34,7 @@ class UASGProject(models.Model):
 
     name = fields.Char('Project Name' , tracking=True)
     description = fields.Text('Brief Description' , tracking=True)
-    assign_uasg_contact = fields.Many2one('uasg.contacts' , tracking=True )
-    assigned_to = fields.Many2one('res.user' , tracking=True )
+    assigned_to = fields.Many2one('uasg.contact' , tracking=True )
     vendor = fields.Many2one('vendors' , tracking=True)
     status = fields.Selection(selection=[('draft','Draft'),('pipeline','Pipeline'),('in_progress','In Progress'),('completed','Completed')], default='draft' , tracking=True)
     target_date = fields.Date(tracking=True)
@@ -192,7 +191,7 @@ class UASGProject(models.Model):
 
     def action_pipeline(self):
 
-        if self.assign_uasg_contact.manager_email == self.env.user.login :
+        if self.assigned_to.manager_email == self.env.user.login :
 
             self.write ({'status' : 'in_progress'})
             
@@ -203,7 +202,7 @@ class UASGProject(models.Model):
 
         else :
 
-            raise UserError('Sorry , Approval should be done by the Line Manager : ' + str(self.assign_uasg_contact.manager_name))
+            raise UserError('Sorry , Approval should be done by the Line Manager : ' + str(self.assigned_to.manager_name))
 
 
     def action_completed(self):
@@ -212,7 +211,7 @@ class UASGProject(models.Model):
 
     def action_reopen(self):
 
-        if self.assign_uasg_contact == self.env.user or self.assign_uasg_contact.manager_email == self.env.user.login :
+        if self.assigned_to == self.env.user or self.self.assigned_to.manager_email == self.env.user.login :
 
             self.write ({'status' : 'in_progress'})
 
@@ -227,7 +226,7 @@ class UASGProject(models.Model):
 
     def action_draft(self):
 
-        if self.assigned_to == self.env.user or self.assign_uasg_contact.manager_email == self.env.user.login :
+        if self.assigned_to == self.env.user or self.assigned_to.manager_email == self.env.user.login :
 
             self.write ({'status' : 'draft'})
 
@@ -292,7 +291,7 @@ class RejectProjectWizard(models.TransientModel):
 
         
 
-        if self.assign_uasg_contact.manager_email == self.env.user.login :
+        if self.assigned_to.manager_email == self.env.user.login :
 
             project = self.env['uasg.project'].sudo().search([('id','=',self.project_id.id)])
 
