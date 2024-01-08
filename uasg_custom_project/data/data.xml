@@ -1,4 +1,5 @@
 <odoo>
+    <data noupdate="1">
 
       <record id="project_submission_email_template" model="mail.template">
             <field name="name">Project is submitted</field>
