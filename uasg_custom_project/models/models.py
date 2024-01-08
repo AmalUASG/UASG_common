@@ -35,7 +35,19 @@ class UASGProject(models.Model):
     name = fields.Char('Project Name' , tracking=True)
     description = fields.Text('Brief Description' , tracking=True)
     uasg_contact = fields.Many2one('uasg.contacts')
-    assigned_to = fields.Many2one('res.users' , tracking=True )
+    assigned_to = fields.Many2one('res.users' , tracking=True, compute='_compute_assign_to' )
+
+    @api.depends('uasg_contact')
+    def _compute_assign_to(self):
+
+        user_id = self.env['res.users'].search([('uasg_contact','=',self.uasg_contact)],limit=1)
+        for record in self :
+            if record.uasg_contact :
+                record.assigned_to = user_id.id
+            else :
+                record.assigned_to = True
+
+
     vendor = fields.Many2one('vendors' , tracking=True)
     status = fields.Selection(selection=[('draft','Draft'),('pipeline','Pipeline'),('in_progress','In Progress'),('completed','Completed')], default='draft' , tracking=True)
     target_date = fields.Date(tracking=True)
